@@ -17,7 +17,7 @@
 
         <input type ="submit" value="ログイン">
     <p><a href="top.php">（仮設：マイページトップ）</a></p>
-        
+    <p><a href="admin.php">（仮設：管理者ページトップ）</a></p>        
         
     </form>
         

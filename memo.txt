@@ -1,0 +1,12 @@
+git init
+git add .
+git commit -m "画面遷移作成中"
+
+git remote add origin https://github.com/ytk-ua/ParkingReservationSys.git
+git branch -M main
+git push -u origin main
+
+<繰り返しの登録>
+git add .
+git commit -m "xxxx"
+git push origin main
