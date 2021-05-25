@@ -16,7 +16,6 @@
         <input type="checkbox" name="login_keep">次回からユーザーIDの入力を省略する<br>
 
         <input type ="submit" value="ログイン">
-    <p><a href="top.php">（仮設：マイページトップ）</a></p>
     <p><a href="admin.php">（仮設：管理者ページトップ）</a></p>        
         
     </form>

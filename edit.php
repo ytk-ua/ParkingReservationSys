@@ -1,7 +1,7 @@
 <?php
     //(C)
     require_once 'daos/UserDAO.php';
-    
+
     // var_dump($_GET);
     $id = $_GET['id'];
     // print $id;

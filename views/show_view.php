@@ -20,7 +20,14 @@
         <li>パスワード：<?= $user->password ?></li>
     </ul>
     <p><a href="edit.php?id=<?= $user->id ?>">編集</a></p>
-
+    <p>
+        <form action="delete.php" method="POST">
+        <input type="hidden" name="id" value="<?= $user->id ?>">
+        <input type="hidden" name="name" value="<?= $user->name ?>">
+        <button type="submit">削除</button>
+        </form>
+    </p>
+    
     <h2>利用実績</h2>
 
 

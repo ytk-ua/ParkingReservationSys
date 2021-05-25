@@ -1,7 +1,7 @@
 <?php
     //(C)
     require_once 'daos/UserDAO.php';
-    // session_start();
+    session_start();
     // var_dump($_POST);
     $name = $_POST['name'];
     $user_id = $_POST['user_id'];
@@ -15,6 +15,7 @@
     // $_SESSION['user'] = $user;
     //UserDAOを使ってDBに保存
     UserDAO::insert($user);
+    $_SESSION['flash_message'] = $name . 'さんが追加されました';
     
     // 画面遷移（マイページトップへ）
     header('location: top.php');

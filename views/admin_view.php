@@ -8,7 +8,20 @@
     <h1>管理者ページトップ</h1>
             
     <!--//カウント関数は数を数をかずえてくれる-->
-    <p>（仮表示）登録ずみユーザー一覧</p>
+    <p>（仮表示）登録ユーザー一覧</p>
+    
+    <p>
+        <form action="search_user.php">
+            <input type="search" name="name">
+            <button type="submit">検索</button>
+        </form>
+    </p>
+        
+        
+    
+    <?php if($flash_message !== null): ?>
+    <p><?= $flash_message ?></p>
+    <?php endif; ?>
     
     <?php if(count($users) === 0): ?>
     <p>ユーザーは誰もいません</p>

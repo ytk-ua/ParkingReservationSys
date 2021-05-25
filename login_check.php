@@ -1,15 +1,24 @@
 <?php
     //(C)
-    //[memo]データが来てるかの確認だけを以下で実施。
-    var_dump($_POST);
+    session_start();
+    require_once 'daos/UserDAO.php';
+    // var_dump($_POST);
     $user_id = $_POST['user_id'];
-    echo $user_id;
+    // echo $user_id;
     $password = $_POST['password'];
-    print $password;
+    // print $password;
     
-    //ログインチェック機能の記載必要！
-
-
-    //画面遷移（マイページトップへ）
-    // header('location: top.php');
-    // exit;
+    //UserDAOを使ってDBにそんな入力値を持つ人がいるかを探す
+    $user = UserDAO::check($user_id, $password);
+    // var_dump($user);
+    
+    //そんな人がいれば、
+    if($user !== false){
+        //セッションにその人を保存
+        $_SESSION['login_user'] = $user;
+        header('Location: top.php');
+        exit;
+    }else{
+        header('Location: login.php');
+        exit;
+    }

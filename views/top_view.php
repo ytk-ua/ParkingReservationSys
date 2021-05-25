@@ -7,8 +7,14 @@
 </head>
 <body>
     <h1>マイページトップ</h1>
-    <p><a href="edit.php">編集</a></p>
-    <p><a href="index.php">ログアウト</a></p>
+    <p><?= $login_user->name ?>さん、ようこそ！</p>
+    
+    <?php if($flash_message !== null): ?>
+    <p><?= $flash_message ?></p>
+    <?php endif; ?>
+
+    <p><a href="edit.php?id=<?= $login_user->id ?>">編集</a></p>
+    <p><a href="logout.php">ログアウト</a></p>
 
     <ul>
         <li><a href="reserve.php">予約登録</a></li>
