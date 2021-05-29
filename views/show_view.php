@@ -30,7 +30,7 @@
     
     <h2>利用実績</h2>
 
-
+    <p><a href="admin_user.php">ユーザー管理に戻る</a></p>
     <p><a href="admin.php">管理者ページトップに戻る</a></p>
 </body>
 </html>

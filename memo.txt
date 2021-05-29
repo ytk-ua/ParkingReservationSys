@@ -1,7 +1,10 @@
+=============<Git>=============
+<初回登録>
 git init
 git add .
 git commit -m "画面遷移作成中"
 
+<GitHubとの連携>
 git remote add origin https://github.com/ytk-ua/ParkingReservationSys.git
 git branch -M main
 git push -u origin main
@@ -10,3 +13,52 @@ git push -u origin main
 git add .
 git commit -m "xxxx"
 git push origin main
+
+=============<MySQL>=============
+<起動> DB名：rsv_sys
+sudo systemctl start mariadb
+mysql -u root
+use rsv_sys;
+
+<"useres"テーブル作成[DB：rsv_sys]>
+create table users(
+    id int auto_increment primary key,
+    name varchar(255) not null,
+    user_id varchar(255) not null,
+    email varchar(255) not null unique,
+    password varchar(255) not null,
+    created_at timestamp default CURRENT_TIMESTAMP
+);
+
+<"parking"テーブル作成[DB：rsv_sys]>
+create table parking(
+    id int auto_increment primary key,
+    parking_id varchar(255) not null unique,
+    adress varchar(255) not null,
+    size varchar(255) not null,
+    price varchar(255),
+    remarks varchar(255),
+    created_at timestamp default CURRENT_TIMESTAMP
+);
+
+<"reserves"テーブル作成[DB：rsv_sys]>
+create table reserves(
+    id int auto_increment primary key,
+    user_id varchar(255) not null,
+    start_date int not null,
+    start_time int not null,
+    end_date int not null,
+    end_time int not null,
+    parking_id varchar(255) not null,
+    room_no int not null,
+    email varchar(255) not null unique,
+    tel int not null,
+    remarks varchar(255),
+    created_at timestamp default CURRENT_TIMESTAMP,
+    foreign key(user_id) references users(id)
+    on delete cascade
+    on update cascade,
+    foreign key(parking_id) references parking(id)
+    on delete cascade
+    on update cascade
+);

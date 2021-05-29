@@ -11,5 +11,5 @@
     
     $_SESSION['flash_message'] = $id . '番目のユーザー:' . $name .'さんを削除しました';
     
-    header('Location: admin.php');
+    header('Location: admin_user.php');
     exit;

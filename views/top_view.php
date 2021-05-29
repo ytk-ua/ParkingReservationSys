@@ -13,11 +13,11 @@
     <p><?= $flash_message ?></p>
     <?php endif; ?>
 
-    <p><a href="edit.php?id=<?= $login_user->id ?>">編集</a></p>
+    <p><a href="edit.php?id=<?= $login_user->id ?>">登録情報編集</a></p>
     <p><a href="logout.php">ログアウト</a></p>
 
     <ul>
-        <li><a href="reserve.php">予約登録</a></li>
+        <li><a href="reserve_create.php">予約登録</a></li>
         <li><a href="searce_vacant.php">空き状況確認</a></li>
         <li><a href="reserve_list.php">予約確認</a></li>
         <li><a href="use_list.php">利用実績確認</a></li>

@@ -1,10 +1,16 @@
 <?php
     //(C)
     // require_once 'daos/ReserveDAO.php';
-    // session_start();
+    session_start();
+    require_once 'models/User.php';
+    //login_check.phpでSESSIONにいれたログインユーザー情報を引き出す
+    $login_user = $_SESSION['login_user'];
     var_dump($_POST);
+    
     // $park_no = $_POST['park_no'];
     // echo $park_no;
+    // $user_id = $login_user['user_id'];
+    // echo $user_id;
 
     // $name = $_POST['name'];
     // $user_id = $_POST['user_id'];

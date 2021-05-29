@@ -1,14 +1,14 @@
 <?php
     //(C)
-    require_once 'daos/UserDAO.php';
+    require_once 'daos/ParkingDAO.php';
     //$_POSTを指定してないので＄_GETで飛んでくる
     // var_dump($_GET);
     session_start();
-    $keyword = $_GET['name'];
+    $keyword = $_GET['parking_id'];
     
     //$keywordであいまい検索する。
-    $users = UserDAO::search($keyword);
-    // var_dump($users);
+    $parkings = ParkingDAO::search($keyword);
+    // var_dump($parkings);
     
     //検索キーワードが空の場合は、flash_messageに何も表示しない。
     if($keyword === ''){
@@ -18,4 +18,4 @@
     }
     
     //HTML表示
-    include_once 'views/admin_user_view.php';
+    include_once 'views/admin_parking_view.php';

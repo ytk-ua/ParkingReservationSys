@@ -1,5 +1,5 @@
 <?php
-    //(C)
+    // (C)
     require_once 'daos/UserDAO.php';
     session_start();
     // var_dump($_POST);
