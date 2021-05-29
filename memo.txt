@@ -44,21 +44,22 @@ create table parking(
 <"reserves"テーブル作成[DB：rsv_sys]>
 create table reserves(
     id int auto_increment primary key,
-    user_id varchar(255) not null,
+    user_mul int not null,
     start_date int not null,
     start_time int not null,
     end_date int not null,
     end_time int not null,
+    parking_mul int not null,
     parking_id varchar(255) not null,
     room_no int not null,
     email varchar(255) not null unique,
     tel int not null,
     remarks varchar(255),
     created_at timestamp default CURRENT_TIMESTAMP,
-    foreign key(user_id) references users(id)
+    foreign key(user_mul) references users(id)
     on delete cascade
     on update cascade,
-    foreign key(parking_id) references parking(id)
+    foreign key(parking_mul) references parking(id)
     on delete cascade
     on update cascade
 );

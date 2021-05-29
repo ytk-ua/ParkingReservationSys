@@ -1,24 +1,23 @@
 <?php
     //(C)
     // require_once 'daos/ReserveDAO.php';
+    require_once 'daos/UserDAO.php';
     session_start();
-    require_once 'models/User.php';
     //login_check.phpでSESSIONにいれたログインユーザー情報を引き出す
     $login_user = $_SESSION['login_user'];
     var_dump($_POST);
     
-    // $park_no = $_POST['park_no'];
-    // echo $park_no;
-    // $user_id = $login_user['user_id'];
-    // echo $user_id;
+    $user_mul = $_POST['id'];
+    $start_date = $_POST['start_date'];
+    $start_time = $_POST['start_time'];
+    $end_date = $_POST['end_date'];
+    $end_time = $_POST['end_time'];
+    $parking_mul = $_POST['parking_mul'];
+    // // $user_id = $login_user['user_id'];
+    // // echo $user_id;
 
-    // $name = $_POST['name'];
-    // $user_id = $_POST['user_id'];
-    // $email = $_POST['email'];
-    // $password = $_POST['password'];
-    
-    //Reserveクラスの新しいインスタンス生成
-    // $reserve = new Reserve($name, $user_id, $email, $password);
+    // //Reserveクラスの新しいインスタンス生成
+    $reserve = new Reserve($user_mul, $start_date, $start_time, $end_date, $end_time, $parking_mul);
     // var_dump($reserve);
     
     //ReserveDAOを使ってDBに保存

@@ -12,12 +12,22 @@
     <form action="reserve_store.php" method="POST">
         開始日時： <input type="date" name="start_date"><input type="time" name="start_time"><br>
         終了日時： <input type="date" name="end_date"><input type="time" name="end_time"><br>
-        利用駐車場番号： <select name= "parking_id">
-            <option value = "">選択してください</option>
-            <option value = "park1">No.1</option>
-            <option value = "park2">No.2</option>
-            <option value = "park3">No.3</option>
-            </select><br>
+        <!--利用駐車場番号： <select name= "parking_mul">-->
+        <!--    <option value = "">選択してください</option>-->
+        <!--    <option value = "park1">No.1</option>-->
+        <!--    <option value = "park2">No.2</option>-->
+        <!--    <option value = "park3">No.3</option>-->
+        <!--    </select><br>-->
+        利用駐車場番号： 
+        <select name= "parking_mul">
+        <?php if(count($parkings) === 0): ?>
+        <p>登録された駐車場はありません</p>
+        <?php else: ?>
+        <?php foreach($parkings as $parking): ?>
+        <option value = "<?= $parking->id ?>"><?= $parking->parking_id ?></option>
+        <?php endforeach; ?>
+        <?php endif; ?>
+        </select><br>
         Room No： <input type="number" name="room_no"><br>
         メールアドレス： <input type="email" name="email" value="<?= $login_user->email ?>"><br>
         緊急連絡先： <input type="tel" name="tel"><br>
