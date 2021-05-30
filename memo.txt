@@ -63,3 +63,10 @@ create table reserves(
     on delete cascade
     on update cascade
 );
+
+<Tableのデータ型の変更（日付:date,時間:timeに変更）>
+alter table テーブル名 modify カラム名　データ型;
+alter table reserves modify start_date date;
+alter table reserves modify start_time time;
+alter table reserves modify end_date date;
+alter table reserves modify end_time time;

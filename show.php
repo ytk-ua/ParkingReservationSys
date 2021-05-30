@@ -1,7 +1,7 @@
 <?php
     //(C)
     require_once 'daos/UserDAO.php';
-    session_start();
+    // session_start();
     
     // var_dump($_GET);
     $id = $_GET['id'];

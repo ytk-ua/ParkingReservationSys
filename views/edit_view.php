@@ -16,6 +16,6 @@
         <input type="hidden" name="id" value="<?= $user->id ?>">
         <input type="submit" value="更新">
     </form>
-    <p><a href="index.php">キャンセル</a></p>
+    <p><a href="top.php">キャンセル</a></p>
 </body>
 </html>
