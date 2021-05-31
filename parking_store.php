@@ -10,7 +10,7 @@
     $remarks = $_POST['remarks'];
     
     //Parkingクラスの新しいインスタンス生成
-    $parking = new Parking($parking_id, $adress, $size, $preice, $remarks);
+    $parking = new Parking($parking_id, $adress, $size, $price, $remarks);
     // var_dump($parking);
     
     // // $_SESSION['user'] = $user;

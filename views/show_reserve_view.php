@@ -23,7 +23,7 @@
         <li>駐車場ID：<?= $reserve->parking_id ?></li>
     </ul>
     
-        <p><a href="edit.php?id=<?= $user->id ?>">編集</a></p>
+        <p><a href="edit_reserve.php?id=<?= $reserve->id ?>">編集</a></p>
     <p>
         <form action="delete.php" method="POST">
         <input type="hidden" name="id" value="<?= $user->id ?>">

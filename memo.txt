@@ -1,3 +1,11 @@
+＜エラー状況＞
+・”show_reserve.php”で予約のIDをクリックし、予約情報の詳細を見ようとするときちんと表示されない。
+　データとしては飛んでいそうだが重複のデータもありおかしい。
+・”reserve_create.php"で同じユーザーでの予約登録が２回目ができない。
+・”edit_parking.php”で駐車場情報を編集し更新ボタンを押しても更新されない。
+　データベースも更新されない。
+
+
 =============<Git>=============
 <初回登録>
 git init
@@ -64,9 +72,11 @@ create table reserves(
     on update cascade
 );
 
-<Tableのデータ型の変更（日付:date,時間:timeに変更）>
+<Table"reserves"のデータ型の変更（日付:date,時間:timeに変更）>
 alter table テーブル名 modify カラム名　データ型;
 alter table reserves modify start_date date;
 alter table reserves modify start_time time;
 alter table reserves modify end_date date;
 alter table reserves modify end_time time;
+
+
