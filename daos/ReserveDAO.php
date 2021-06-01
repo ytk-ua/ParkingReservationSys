@@ -86,7 +86,7 @@
                 $stmt->execute();                
                 
                 // Fetch ModeをResereveクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Resereve');
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reserve');
                 // SELECT文の結果を Userクラスのインスタンスに格納。Fetch->抜き出せの意。
                 $reserve = $stmt->fetch();
                 
@@ -97,6 +97,33 @@
             }
             // 完成したユーザー、はいあげる
             return $reserve;             
+        }
+
+        //user_mul番目のユーザーの予約登録情報を全て取得するメソッド
+        public static function find2($user_mul){
+          // 例外処理:tryブロック。try chatch最後はcatchで終わる。
+            try{
+                // データベースに接続して万能の神様誕生。
+                $pdo = self::get_connection();
+                // SELECT文実行準備
+                $stmt = $pdo->prepare('SELECT * FROM reserves WHERE user_mul=:user_mul');
+                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
+                $stmt->bindValue(':user_mul', $user_mul, PDO::PARAM_INT);
+                // SELECT文本番実行
+                $stmt->execute();                
+                
+                // Fetch ModeをResereveクラスに設定。マッピング。PHPで使いやすい様に書き換える。
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reserve');
+                // SELECT文の結果を Reserveクラスのインスタンスに格納。Fetch->抜き出せの意。
+                $reserves = $stmt->fetchAll();
+                
+            }catch(PDOException $e){
+            }finally{
+                // 後処理
+                self::close_connection($pdo, $stmt);
+            }
+            // 完成した予約情報、はいあげる
+            return $reserves;             
         }
         
         //$id番目のユーザー情報を更新

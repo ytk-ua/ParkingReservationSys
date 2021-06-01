@@ -1,10 +1,18 @@
 ＜エラー状況＞
-・”show_reserve.php”で予約のIDをクリックし、予約情報の詳細を見ようとするときちんと表示されない。
-　データとしては飛んでいそうだが重複のデータもありおかしい。
-・”reserve_create.php"で同じユーザーでの予約登録が２回目ができない。
+[未対応]
 ・”edit_parking.php”で駐車場情報を編集し更新ボタンを押しても更新されない。
 　データベースも更新されない。
-
+・テーブル設計の再考。
+　制約の付け方やemailや電話番号など個人にUniqueに紐づけられている特性はusersテーブルに保存する。
+[済み]
+・”show_reserve.php”で予約のIDをクリックし、予約情報の詳細を見ようとするときちんと表示されない。
+　データとしては飛んでいそうだが重複のデータもありおかしい。
+　->ReserveDAOのfindメソッドのreserveに以下のスペルミス。
+　　$stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Resereve');
+・”reserve_create.php"で同じユーザーでの予約登録が２回目ができない。
+　->reserves テーブルで emailカラムが unique設定されているため、
+　　同じemailを持った＠同一人物が登録できない状態。
+　　emailや電話番号など個人にuniqueに紐づけられている特性はusersテーブルに保存するのが普通。
 
 =============<Git>=============
 <初回登録>
