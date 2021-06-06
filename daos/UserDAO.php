@@ -48,12 +48,14 @@
                 // データベースに接続して万能の神様誕生
                 $pdo = self::get_connection();
                 // 具体的な値はあいまいにしたまま INSERT文の実行準備
-                $stmt = $pdo->prepare('INSERT INTO users(name, user_id, email, password) VALUES(:name, :user_id, :email, :password)');
+                $stmt = $pdo->prepare('INSERT INTO users(name, room_no, account, password, email, tel) VALUES(:name, :room_no, :account, :password, :email, :tel)');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':name', $user->name, PDO::PARAM_STR);
-                $stmt->bindValue(':user_id', $user->user_id, PDO::PARAM_STR);
-                $stmt->bindValue(':email', $user->email, PDO::PARAM_STR);
+                $stmt->bindValue(':room_no', $user->room_no, PDO::PARAM_INT);
+                $stmt->bindValue(':account', $user->account, PDO::PARAM_STR);
                 $stmt->bindValue(':password', $user->password, PDO::PARAM_STR);
+                $stmt->bindValue(':email', $user->email, PDO::PARAM_STR);
+                $stmt->bindValue(':tel', $user->tel, PDO::PARAM_STR);
 
                 // INSERT文本番実行
                 $stmt->execute();
@@ -99,12 +101,14 @@
                 // データベースに接続して万能の神様誕生
                 $pdo = self::get_connection();
                 // 具体的な値はあいまいにしたまま UPDATE文の実行準備
-                $stmt = $pdo->prepare('UPDATE users SET name=:name, user_id=:user_id, email=:email, password=:password WHERE id=:id');
+                $stmt = $pdo->prepare('UPDATE users SET name=:name, room_no=:room_no, account=:account, password=:password, email=:email, tel=:tel WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':name', $user->name, PDO::PARAM_STR);
-                $stmt->bindValue(':user_id', $user->user_id, PDO::PARAM_STR);
-                $stmt->bindValue(':email', $user->email, PDO::PARAM_STR);
+                $stmt->bindValue(':room_no', $user->room_no, PDO::PARAM_INT);
+                $stmt->bindValue(':account', $user->account, PDO::PARAM_STR);
                 $stmt->bindValue(':password', $user->password, PDO::PARAM_STR);
+                $stmt->bindValue(':email', $user->email, PDO::PARAM_STR);
+                $stmt->bindValue(':tel', $user->tel, PDO::PARAM_STR);
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 
                 // UPDATE文本番実行
@@ -162,15 +166,15 @@
         }
         
         //user_id, passwordをもらってその人をDBから探し出す
-        public static function check($user_id, $password){
+        public static function check($account, $password){
           // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM users WHERE user_id=:user_id AND password=:password');
+                $stmt = $pdo->prepare('SELECT * FROM users WHERE account=:account AND password=:password');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+                $stmt->bindValue(':account', $account, PDO::PARAM_STR);
                 $stmt->bindValue(':password', $password, PDO::PARAM_STR);
                 // SELECT文本番実行
                 $stmt->execute();                

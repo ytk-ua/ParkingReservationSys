@@ -2,10 +2,6 @@
 [未対応]
 ・”edit_parking.php”で駐車場情報を編集し更新ボタンを押しても更新されない。
 　データベースも更新されない。
-・テーブル設計の再考。
-　・制約の付け方やemailや電話番号など個人にUniqueに紐づけられている特性はusersテーブルに保存する。
-　・フィールドのカラム名の変更
-　  users :user_id->account, parking：adress->address
 ・”reserve_list.php”で削除ボタンを押した後に、"delete_reserve.php"を経由し、
 　”reserve_list.php”に戻ってきた際には、予約の一覧が消えてしまうのはなぜか？
 ・登録済みの予約を編集する際に”edit_reserve.php”にて駐車場の番号の選択が表示されなくなる。
@@ -19,6 +15,10 @@
 　->reserves テーブルで emailカラムが unique設定されているため、
 　　同じemailを持った＠同一人物が登録できない状態。
 　　emailや電話番号など個人にuniqueに紐づけられている特性はusersテーブルに保存するのが普通。
+・テーブル設計の再考。
+　・制約の付け方やemailや電話番号など個人にUniqueに紐づけられている特性はusersテーブルに保存する。
+　・フィールドのカラム名の変更
+　  users :user_id->account, parking：adress->address
 
 =============<Git>=============
 <初回登録>

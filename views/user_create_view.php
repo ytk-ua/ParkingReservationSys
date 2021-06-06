@@ -10,11 +10,11 @@
  
     <form action="user_store.php" method="POST">
         名前： <input type="text" name="name"><br>
-        <!--Room No： <input type="number" name="room_no"><br>-->
-        メールアドレス： <input type="email" name="email"><br>
-        <!--電話番号： <input type="tel" name="tel"><br>-->
-        ユーザーID： <input type="text" name="user_id"><br>
+        部屋番号： <input type="number" name="room_no"><br>
+        アカウント名： <input type="text" name="account"><br>
         パスワード： <input type="password" name="password"><br>
+        メールアドレス： <input type="email" name="email"><br>
+        電話番号： <input type="text" name="tel"><br>
         <input type="reset" value="リセットする"><br>
         <input type="submit" value="登録">
     </form>

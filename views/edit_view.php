@@ -10,9 +10,11 @@
  
     <form action="update.php" method="POST">
         名前： <input type="text" name="name" value="<?= $user->name ?>"><br>
-        メールアドレス： <input type="email" name="email" value="<?= $user->email ?>"><br>
-        ユーザーID： <input type="text" name="user_id" value="<?= $user->user_id ?>"><br>
+        部屋番号： <input type="number" name="room_no" value="<?= $user->room_no ?>"><br>
+        アカウント名： <input type="text" name="account" value="<?= $user->account ?>"><br>
         パスワード： <input type="password" name="password" value="<?= $user->password ?>"><br>
+        メールアドレス： <input type="email" name="email" value="<?= $user->email ?>"><br>
+        電話番号： <input type="tel" name="tel" value="<?= $user->tel ?>"><br>
         <input type="hidden" name="id" value="<?= $user->id ?>">
         <input type="submit" value="更新">
     </form>

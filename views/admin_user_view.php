@@ -28,7 +28,8 @@
     <ul>
         <li>ID:<a href="show.php?id=<?= $user->id ?>"><?= $user->id ?></a></li>
         <li>名前：<?= $user->name ?></li>
-        <li>ユーザーID：<?= $user->user_id ?></li>
+        <li>部屋番号：<?= $user->room_no ?></li>
+        <li>アカウント名：<?= $user->account ?></li>
     </ul>
     <?php endforeach; ?>
     <?php endif; ?>

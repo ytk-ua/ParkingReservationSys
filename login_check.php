@@ -3,13 +3,13 @@
     session_start();
     require_once 'daos/UserDAO.php';
     // var_dump($_POST);
-    $user_id = $_POST['user_id'];
+    $account = $_POST['account'];
     // echo $user_id;
     $password = $_POST['password'];
     // print $password;
     
     //UserDAOを使ってDBにそんな入力値を持つ人がいるかを探す
-    $user = UserDAO::check($user_id, $password);
+    $user = UserDAO::check($account, $password);
     // var_dump($user);
     
     //そんな人がいれば、

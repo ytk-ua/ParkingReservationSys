@@ -6,14 +6,14 @@
 </head>
 <body>
     <h1>ログイン・新規ユーザー登録</h1>
-    <p>ログインするには以下のユーザーID、パスワードを入力してください。<br>
+    <p>ログインするには以下のアカウント名、パスワードを入力してください。<br>
         初めての方は「新規ユーザー登録」をクリックしてください</p>
     <form action="login_check.php" method="POST">
-        ユーザーID<br>
-        <input type="text" name="user_id"><br>
+        アカウント名<br>
+        <input type="text" name="account"><br>
         パスワード<br>
         <input type="password" name="password"><br>
-        <input type="checkbox" name="login_keep">次回からユーザーIDの入力を省略する<br>
+        <input type="checkbox" name="login_keep">次回からアカウント名の入力を省略する<br>
 
         <input type ="submit" value="ログイン">
     <p><a href="admin.php">（仮設：管理者ページトップ）</a></p>        

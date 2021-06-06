@@ -15,9 +15,11 @@
     <ul>
         <li>ID:<?= $user->id ?></li>
         <li>名前：<?= $user->name ?></li>
-        <li>ユーザーID：<?= $user->user_id ?></li>
-        <li>メールアドレス：<?= $user->email ?></li>
+        <li>部屋番号：<?= $user->room_no ?></li>
+        <li>アカウント：<?= $user->account ?></li>
         <li>パスワード：<?= $user->password ?></li>
+        <li>メールアドレス：<?= $user->email ?></li>
+        <li>電話番号：<?= $user->tel ?></li>
     </ul>
     <p><a href="edit.php?id=<?= $user->id ?>">編集</a></p>
     <p>
