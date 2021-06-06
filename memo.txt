@@ -3,10 +3,13 @@
 ・”edit_parking.php”で駐車場情報を編集し更新ボタンを押しても更新されない。
 　データベースも更新されない。
 ・テーブル設計の再考。
-　制約の付け方やemailや電話番号など個人にUniqueに紐づけられている特性はusersテーブルに保存する。
+　・制約の付け方やemailや電話番号など個人にUniqueに紐づけられている特性はusersテーブルに保存する。
+　・フィールドのカラム名の変更
+　  users :user_id->account, parking：adress->address
 ・”reserve_list.php”で削除ボタンを押した後に、"delete_reserve.php"を経由し、
 　”reserve_list.php”に戻ってきた際には、予約の一覧が消えてしまうのはなぜか？
 ・登録済みの予約を編集する際に”edit_reserve.php”にて駐車場の番号の選択が表示されなくなる。
+
 [済み]
 ・”show_reserve.php”で予約のIDをクリックし、予約情報の詳細を見ようとするときちんと表示されない。
 　データとしては飛んでいそうだが重複のデータもありおかしい。
@@ -49,6 +52,18 @@ create table users(
     created_at timestamp default CURRENT_TIMESTAMP
 );
 
+<"useres"テーブル修正[DB：rsv_sys]>
+create table users(
+    id int auto_increment primary key,
+    name varchar(255) not null,
+    room_no int not null;
+    account varchar(255) not null unique,
+    password varchar(255) not null,
+    email varchar(255),
+    tel varchar(255),
+    created_at timestamp default CURRENT_TIMESTAMP
+);
+
 <"parking"テーブル作成[DB：rsv_sys]>
 create table parking(
     id int auto_increment primary key,
@@ -56,6 +71,17 @@ create table parking(
     adress varchar(255) not null,
     size varchar(255) not null,
     price varchar(255),
+    remarks varchar(255),
+    created_at timestamp default CURRENT_TIMESTAMP
+);
+
+<"parkings"テーブルにて修正[DB：rsv_sys]>
+create table parkings(
+    id int auto_increment primary key,
+    parking_name varchar(255) not null unique,
+    price int not null,
+    address varchar(255),
+    size varchar(255),
     remarks varchar(255),
     created_at timestamp default CURRENT_TIMESTAMP
 );
@@ -83,13 +109,77 @@ create table reserves(
     on update cascade
 );
 
+<"reservations"テーブル作成[DB：rsv_sys]>
+create table reservations(
+    id int auto_increment primary key,
+    user_id int not null,
+    parking_id int not null,
+    start_date date not null,
+    start_time time not null,
+    end_date date not null,
+    end_time time not null,
+    email varchar(255),
+    tel varchar(255),
+    remarks varchar(255),
+    created_at timestamp default CURRENT_TIMESTAMP,
+    foreign key(user_id) references users(id)
+    on delete cascade
+    on update cascade,
+    foreign key(parking_id) references parkings(id)
+    on delete cascade
+    on update cascade
+);
+
 <Table"reserves"のデータ型の変更（日付:date,時間:timeに変更）>
-alter table テーブル名 modify カラム名　データ型;
+alter table [テーブル名] modify [カラム名]　[データ型];
 alter table reserves modify start_date date;
 alter table reserves modify start_time time;
 alter table reserves modify end_date date;
 alter table reserves modify end_time time;
 
+<Table"users"のデータ型,not nullの変更
+alter table [テーブル名] modify [カラム名] [データ型] [not null] [制約];
+alter table users modify password varchar(255) not null;
+alter table parking modify price int(11) not null;
+alter table users modify room_no int(11) not null;
+alter table users modify account varchar(255) not null unique;
+alter table users modify password varchar(255) not null;
+
 <Table"reserves"のemailのUNIQUE制約の削除＞
-alter table テーブル名 drop index Field名;
+alter table [テーブル名] drop index [カラム名];
 alter table reserves DROP INDEX email;
+alter table users DROP INDEX email;
+
+＜テーブルのフィールド変更作業＞
+[フィールドの順番入れ替え]
+alter table [テーブル名] modify [移動したいカラム名] text after [移動したいカラム名の上にくるカラム名];
+(例えばuser_idをidの下に持ってきたい場合は、alter table テーブル名 modify user_id text after id;)
+alter table users modify password text after user_id;
+alter table parking modify price text after parking_id;
+alter table users modify password text after account;
+
+[フィールドの追加]
+alter table [テーブル名] add [追加したいカラム名] [型名] [初期値] after [追加したいフィールドの場所]; 
+alter table users add tel varchar(255) after email;
+alter table users add room_no int(11) after tel;
+alter table users add account varchar(255) not null after room_no;
+
+[（未対応：うまくできてない）フィールドの名前の変更]
+alter table [テーブル名] rename column [列名] to [新しい列名];
+alter table users rename column user_id to account;
+ALTER TABLE テーブル名 CHANGE COLUMN 既存のカラム名 新カラム名 型名 制約(オプション);
+alter table users change column user_id account;
+alter table users change user_id account;
+
+[フィールドの削除]
+alter table [テーブル名] drop column [削除するカラム名];
+alter table users drop column user_id;
+
+[テーブルのデータの全削除]
+delete from [テーブル名];
+delete from users;
+delete from parking;
+
+[テーブル自体を全削除]
+drop table [テーブル名];
+drop table users;
