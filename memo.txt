@@ -4,6 +4,9 @@
 　データベースも更新されない。
 ・テーブル設計の再考。
 　制約の付け方やemailや電話番号など個人にUniqueに紐づけられている特性はusersテーブルに保存する。
+・”reserve_list.php”で削除ボタンを押した後に、"delete_reserve.php"を経由し、
+　”reserve_list.php”に戻ってきた際には、予約の一覧が消えてしまうのはなぜか？
+・登録済みの予約を編集する際に”edit_reserve.php”にて駐車場の番号の選択が表示されなくなる。
 [済み]
 ・”show_reserve.php”で予約のIDをクリックし、予約情報の詳細を見ようとするときちんと表示されない。
 　データとしては飛んでいそうだが重複のデータもありおかしい。
@@ -87,4 +90,6 @@ alter table reserves modify start_time time;
 alter table reserves modify end_date date;
 alter table reserves modify end_time time;
 
-
+<Table"reserves"のemailのUNIQUE制約の削除＞
+alter table テーブル名 drop index Field名;
+alter table reserves DROP INDEX email;
