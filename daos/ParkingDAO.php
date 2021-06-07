@@ -22,13 +22,13 @@
             $stmt = null;
         }
         //データベースから全ユーザー情報を取得するメソッド
-        public static function get_all_parking(){
+        public static function get_all_parkings(){
        // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行
-                $stmt = $pdo->query('SELECT * FROM parking');
+                $stmt = $pdo->query('SELECT * FROM parkings');
                 // Fetch ModeをUserクラスに設定。マッピング。PHPで使いやすい様に書き換える。
                 $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Parking');
                 // SELECT文の結果を Userクラスのインスタンス配列に格納。Fetch->抜き出せの意。
@@ -48,12 +48,12 @@
                 // データベースに接続して万能の神様誕生
                 $pdo = self::get_connection();
                 // 具体的な値はあいまいにしたまま INSERT文の実行準備
-                $stmt = $pdo->prepare('INSERT INTO parking(parking_id, adress, size, price, remarks) VALUES(:parking_id, :adress, :size, :price, :remarks)');
+                $stmt = $pdo->prepare('INSERT INTO parkings(parking_name, price, address, size, remarks) VALUES(:parking_name, :price, :address, :size, :remarks)');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':parking_id', $parking->parking_id, PDO::PARAM_STR);
-                $stmt->bindValue(':adress', $parking->adress, PDO::PARAM_STR);
+                $stmt->bindValue(':parking_name', $parking->parking_name, PDO::PARAM_STR);
+                $stmt->bindValue(':price', $parking->price, PDO::PARAM_INT);
+                $stmt->bindValue(':address', $parking->address, PDO::PARAM_STR);
                 $stmt->bindValue(':size', $parking->size, PDO::PARAM_STR);
-                $stmt->bindValue(':price', $parking->price, PDO::PARAM_STR);
                 $stmt->bindValue(':remarks', $parking->remarks, PDO::PARAM_STR);
                 
                 // INSERT文本番実行
@@ -73,7 +73,7 @@
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM parking WHERE id=:id');
+                $stmt = $pdo->prepare('SELECT * FROM parkings WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 // SELECT文本番実行
@@ -100,12 +100,12 @@
                 // データベースに接続して万能の神様誕生
                 $pdo = self::get_connection();
                 // 具体的な値はあいまいにしたまま UPDATE文の実行準備
-                $stmt = $pdo->prepare('UPDATE parking SET parking_id=:parking_id, adress=:adress, size=:size, price=:price, remarks=:remarks WHERE id=:id');
+                $stmt = $pdo->prepare('UPDATE parkings SET parking_name=:parking_name, price=:price, address=:address, size=:size, remarks=:remarks WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':parking_id', $parking->parking_id, PDO::PARAM_STR);
-                $stmt->bindValue(':adress', $parking->adress, PDO::PARAM_STR);
+                $stmt->bindValue(':parking_name', $parking->parking_name, PDO::PARAM_STR);
+                $stmt->bindValue(':price', $parking->price, PDO::PARAM_INT);
+                $stmt->bindValue(':address', $parking->address, PDO::PARAM_STR);
                 $stmt->bindValue(':size', $parking->size, PDO::PARAM_STR);
-                $stmt->bindValue(':price', $parking->price, PDO::PARAM_STR);
                 $stmt->bindValue(':remarks', $parking->remarks, PDO::PARAM_STR);
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 // UPDATE文本番実行
@@ -125,7 +125,7 @@
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // DELETE文実行準備
-                $stmt = $pdo->prepare('DELETE FROM parking WHERE id=:id');
+                $stmt = $pdo->prepare('DELETE FROM parkings WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 // DELETE文本番実行

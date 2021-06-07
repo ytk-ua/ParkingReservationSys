@@ -1,12 +1,14 @@
 ＜エラー状況＞
 [未対応]
-・”edit_parking.php”で駐車場情報を編集し更新ボタンを押しても更新されない。
-　データベースも更新されない。
-・”reserve_list.php”で削除ボタンを押した後に、"delete_reserve.php"を経由し、
-　”reserve_list.php”に戻ってきた際には、予約の一覧が消えてしまうのはなぜか？
-・登録済みの予約を編集する際に”edit_reserve.php”にて駐車場の番号の選択が表示されなくなる。
+・”reservation_list.php”で削除ボタンを押した後に、"delete_reservation.php"を経由し、
+　”reservation_list.php”に戻ってきた際には、予約の一覧が消えてしまうのはなぜか？
+・登録済みの予約を編集する際に”edit_reservation.php”にて駐車場の番号の選択が表示されなくなる。
+・登録済みの予約を編集する際に管理者側から入ると”edit_reservation.php”にてユーザーの情報が表示されなくなる。
 
 [済み]
+・”edit_parking.php”で駐車場情報を編集し更新ボタンを押しても更新されない。
+　データベースも更新されない。
+　->"require_once 'daos/ParkingDAO.php';"のスペルミス。"parkingDAO"と小文字になっていた。
 ・”show_reserve.php”で予約のIDをクリックし、予約情報の詳細を見ようとするときちんと表示されない。
 　データとしては飛んでいそうだが重複のデータもありおかしい。
 　->ReserveDAOのfindメソッドのreserveに以下のスペルミス。
@@ -183,3 +185,4 @@ delete from parking;
 [テーブル自体を全削除]
 drop table [テーブル名];
 drop table users;
+drop table parking;

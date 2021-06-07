@@ -1,8 +1,8 @@
 <?php
     //外部ファイルの読み込み
-    require_once 'models/Reserve.php';
+    require_once 'models/Reservation.php';
     //DAO(Database Access Object)
-    class ReserveDAO{
+    class ReservationDAO{
         //データベースに接続するメソッド
         private static function get_connection(){
         // 接続オプション設定
@@ -22,45 +22,43 @@
             $stmt = null;
         }
         //データベースから全予約登録情報を取得するメソッド
-        public static function get_all_reserves(){
+        public static function get_all_reservations(){
        // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行
-                $stmt = $pdo->query('SELECT * FROM reserves');
+                $stmt = $pdo->query('SELECT * FROM reservations');
                 // Fetch ModeをReserveクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reserve');
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reservation');
                 // SELECT文の結果を Reserveクラスのインスタンス配列に格納。Fetch->抜き出せの意。
-                $reserves = $stmt->fetchAll();
+                $reservations = $stmt->fetchAll();
             }catch(PDOException $e){
             }finally{
                 // 後処理
                 self::close_connection($pdo, $stmt);
             }
             // 完成したユーザー一覧、はいあげる
-            return $reserves;     
+            return $reservations;     
         }
        //データーベースに新しい予約情報を登録するメソッド
-        public static function insert($reserve){
+        public static function insert($reservation){
             // 例外処理
             try{
                 // データベースに接続して万能の神様誕生
                 $pdo = self::get_connection();
                 // 具体的な値はあいまいにしたまま INSERT文の実行準備
-                $stmt = $pdo->prepare('INSERT INTO reserves(user_mul, start_date, start_time, end_date, end_time, parking_mul, parking_id, room_no, email, tel, remarks) VALUES(:user_mul, :start_date, :start_time, :end_date, :end_time, :parking_mul, :parking_id, :room_no, :email, :tel, :remarks)');
+                $stmt = $pdo->prepare('INSERT INTO reservations(user_id, parking_id, start_date, start_time, end_date, end_time, email, tel, remarks) VALUES(:user_id, :parking_id, :start_date, :start_time, :end_date, :end_time, :email, :tel, :remarks)');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':user_mul', $reserve->user_mul, PDO::PARAM_INT);
-                $stmt->bindValue(':start_date', $reserve->start_date, PDO::PARAM_STR);
-                $stmt->bindValue(':start_time', $reserve->start_time, PDO::PARAM_STR);
-                $stmt->bindValue(':end_date', $reserve->end_date, PDO::PARAM_STR);
-                $stmt->bindValue(':end_time', $reserve->end_time, PDO::PARAM_STR);
-                $stmt->bindValue(':parking_mul', $reserve->parking_mul, PDO::PARAM_INT);
-                $stmt->bindValue(':parking_id', $reserve->parking_id, PDO::PARAM_STR);
-                $stmt->bindValue(':room_no', $reserve->room_no, PDO::PARAM_INT);
-                $stmt->bindValue(':email', $reserve->email, PDO::PARAM_STR);
-                $stmt->bindValue(':tel', $reserve->tel, PDO::PARAM_INT);
-                $stmt->bindValue(':remarks', $reserve->remarks, PDO::PARAM_STR);
+                $stmt->bindValue(':user_id', $reservation->user_id, PDO::PARAM_INT);
+                $stmt->bindValue(':parking_id', $reservation->parking_id, PDO::PARAM_STR);
+                $stmt->bindValue(':start_date', $reservation->start_date, PDO::PARAM_STR);
+                $stmt->bindValue(':start_time', $reservation->start_time, PDO::PARAM_STR);
+                $stmt->bindValue(':end_date', $reservation->end_date, PDO::PARAM_STR);
+                $stmt->bindValue(':end_time', $reservation->end_time, PDO::PARAM_STR);
+                $stmt->bindValue(':email', $reservation->email, PDO::PARAM_STR);
+                $stmt->bindValue(':tel', $reservation->tel, PDO::PARAM_STR);
+                $stmt->bindValue(':remarks', $reservation->remarks, PDO::PARAM_STR);
 
                 // INSERT文本番実行
                 $stmt->execute();
@@ -79,16 +77,16 @@
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM reserves WHERE id=:id');
+                $stmt = $pdo->prepare('SELECT * FROM reservations WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 // SELECT文本番実行
                 $stmt->execute();                
                 
                 // Fetch ModeをResereveクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reserve');
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reservation');
                 // SELECT文の結果を Userクラスのインスタンスに格納。Fetch->抜き出せの意。
-                $reserve = $stmt->fetch();
+                $reservation = $stmt->fetch();
                 
             }catch(PDOException $e){
             }finally{
@@ -96,26 +94,26 @@
                 self::close_connection($pdo, $stmt);
             }
             // 完成したユーザー、はいあげる
-            return $reserve;             
+            return $reservation;             
         }
 
         //user_mul番目のユーザーの予約登録情報を全て取得するメソッド
-        public static function find2($user_mul){
+        public static function find2($user_id){
           // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM reserves WHERE user_mul=:user_mul');
+                $stmt = $pdo->prepare('SELECT * FROM reservations WHERE user_id=:user_id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':user_mul', $user_mul, PDO::PARAM_INT);
+                $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
                 // SELECT文本番実行
                 $stmt->execute();                
                 
                 // Fetch ModeをResereveクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reserve');
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reservation');
                 // SELECT文の結果を Reserveクラスのインスタンスに格納。Fetch->抜き出せの意。
-                $reserves = $stmt->fetchAll();
+                $reservations = $stmt->fetchAll();
                 
             }catch(PDOException $e){
             }finally{
@@ -123,7 +121,7 @@
                 self::close_connection($pdo, $stmt);
             }
             // 完成した予約情報、はいあげる
-            return $reserves;             
+            return $reservations;             
         }
         
         //$id番目のユーザー情報を更新
@@ -158,7 +156,7 @@
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // DELETE文実行準備
-                $stmt = $pdo->prepare('DELETE FROM users WHERE id=:id');
+                $stmt = $pdo->prepare('DELETE FROM reservations WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 // DELETE文本番実行

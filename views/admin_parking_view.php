@@ -27,8 +27,9 @@
     <?php foreach($parkings as $parking): ?>
     <ul>
         <li>ID:<a href="show_parking.php?id=<?= $parking->id ?>"><?= $parking->id ?></a></li>
-        <li>駐車場No：<?= $parking->parking_id ?></li>
-        <li>場所：<?= $parking->adress ?></li>
+        <li>駐車場名：<?= $parking->parking_name ?></li>
+        <li>料金：<?= $parking->price ?>円/30分</li>
+        <li>場所：<?= $parking->address ?></li>
     </ul>
     <?php endforeach; ?>
     <?php endif; ?>

@@ -10,7 +10,7 @@
     <ul>
         <li><a href="admin_user.php">ユーザー管理</a></li>
         <li><a href="admin_parking.php">駐車場管理</a></li>
-        <li><a href="admin_reserve.php">予約管理</a></li>
+        <li><a href="admin_reservation.php">予約管理</a></li>
         <li><a href="admin_notice.php">お知らせ管理</a></li>
         <li><a href="admin_contact.php">問合せ管理</a></li>
     </ul>
