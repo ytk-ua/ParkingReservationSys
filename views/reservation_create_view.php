@@ -10,8 +10,8 @@
     <p><?= $login_user->name ?>さん、ご希望の予約を登録ください</p>
 
     <form action="reservation_store.php" method="POST">
-        開始日時： <input type="date" name="start_date"><input type="time" name="start_time"><br>
-        終了日時： <input type="date" name="end_date"><input type="time" name="end_time"><br>
+        開始日時： <input type="date" name="start_date"><input type="time" name="start_time" step="1800"><br>
+        終了日時： <input type="date" name="end_date"><input type="time" name="end_time" step="1800"><br>
         <!--利用駐車場番号： <select name= "parking_mul">-->
         <!--    <option value = "">選択してください</option>-->
         <!--    <option value = "park1">No.1</option>-->

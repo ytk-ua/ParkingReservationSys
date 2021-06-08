@@ -2,17 +2,22 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title><?= $login_user->name ?>さんの予約情報</title>
+    <title>駐車場空き状況確認</title>
 </head>
 <body>
-    <h1><?= $login_user->name ?>さんの予約情報</h1>
-    <h2>予約登録の一覧</h2>
+    <h1>駐車場空き状況確認</h1>
+    <h2>空き状況の一覧</h2>
     
     <?php if($flash_message !== null): ?>
     <p><?= $flash_message ?></p>
     <?php endif; ?>
+    
+    <?php $today = date("Y-m-d H:i:s"); ?>
+    <P>本日の日付：<?= $today ?></P>
+    <?php $today2 = date("Y-m-d", strtotime('+1 day')); ?>
+    <P>明日の日付：<?= $today2 ?></P>
 
-
+    
     <?php if(count($reservations) === 0): ?>
     <p>予約登録情報はありません</p>
     <?php else: ?>
@@ -25,9 +30,6 @@
         <li>予約開始時間：<?= $reservation->start_time ?></li>
         <li>予約終了日：<?= $reservation->end_date ?></li>
         <li>予約終了時間：<?= $reservation->end_time ?></li>
-        <li>メールアドレス：<?= $reservation->email ?></li>
-        <li>電話番号：<?= $reservation->tel ?></li>
-        <li>備考/連絡事項：<?= $reservation->remarks ?></li>
     </ul>
     
     

@@ -18,7 +18,7 @@
 
     <ul>
         <li><a href="reservation_create.php">予約登録</a></li>
-        <li><a href="searce_vacant.php">空き状況確認</a></li>
+        <li><a href="search_vacant.php">空き状況確認</a></li>
         <li><a href="reservation_list.php?id=<?= $login_user->id ?>">予約確認</a></li>
         <li><a href="use_list.php">利用実績確認</a></li>
     </ul>
