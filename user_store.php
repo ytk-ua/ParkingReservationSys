@@ -15,12 +15,12 @@
     $user = new User($name, $room_no, $account, $password, $email, $tel);
     // var_dump($user);
     
-    // $_SESSION['user'] = $user;
-    
     //UserDAOを使ってDBに保存
     UserDAO::insert($user);
     $_SESSION['flash_message'] = $name . 'さんが追加されました';
+
+    $_SESSION['login_user'] = $user;
     
     // 画面遷移（マイページトップへ）
-    header('location: top.php');
+    header('location: index.php');
     exit;

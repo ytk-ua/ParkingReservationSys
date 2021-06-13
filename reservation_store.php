@@ -29,7 +29,7 @@
 
     //ReserveDAOを使ってDBに保存
     ReservationDAO::insert($reservation);
-    $_SESSION['flash_message'] = $name . 'さんが追加されました';
+    $_SESSION['flash_message'] = $login_user->name . 'さんの新しい予約が追加されました';
     
     // 画面遷移（マイページトップへ）
     header('location: top.php');
