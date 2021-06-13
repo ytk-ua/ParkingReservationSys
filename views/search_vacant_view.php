@@ -22,11 +22,10 @@
     <?php endif; ?>
     
     <?php $today = date("Y-m-d H:i:s"); ?>
-    <P> <a href="search_vacant.php?start_date=<?= date("Y-m-d", strtotime($start_date . '-1 day')) ?>">前日</a> << 本日の日付：<?= $today ?> >> <a href="search_vacant.php?start_date=<?= date("Y-m-d", strtotime($start_date . '+1 day')) ?>">翌日</a></P>
-    <?php $today2 = date("Y-m-d", strtotime('+1 day')); ?>
-    <P>明日の日付：<?= $today2 ?></P>
+    <P>現在の日時：<?= $today ?></P>
 
-    
+    <P> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '-1 day')) ?>">前日</a> << <?= $date ?> >> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '+1 day')) ?>">翌日</a></P>
+
     <?php if(count($reservations) === 0): ?>
     <p>予約登録情報はありません</p>
     <?php else: ?>
@@ -38,7 +37,7 @@
     <?php for($hour = 0; $hour < 24; $hour++): ?>
         <tr>
             <td><?= $hour < 10  ? '0' . $hour . ':00' : $hour . ':00' ?> - <?= ($hour + 1) < 10  ? '0' . ($hour + 1) . ':00' : ($hour + 1) . ':00' ?></td>
-            <td><?= get_reserve_user_name($reservations, $hour)?></td>
+            <td><?= get_reserve_user_name($reservations, $date, $hour)?></td>
         </tr>
     <?php endfor; ?>    
     </table>
