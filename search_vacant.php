@@ -35,8 +35,9 @@
     // var_dump($start_date);
     
     //DAOを使って＄start_dateの日付の予約登録情報をDBから持ってくる
-    $reservations = ReservationDAO::find3($date, 1);
-    // $reservations_2 = ReservationDAO::find3($start_date, 2);
+    $reservations1 = ReservationDAO::find3($date, 1);
+    $reservations2 = ReservationDAO::find3($date, 4);
+    $reservations3 = ReservationDAO::find3($date, 5);   
     // var_dump($reservations);
 
     // //セッションからflash_messageを取得し、セッションから削除

@@ -26,22 +26,25 @@
 
     <P> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '-1 day')) ?>">前日</a> << <?= $date ?> >> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '+1 day')) ?>">翌日</a></P>
 
-    <?php if(count($reservations) === 0): ?>
-    <p>予約登録情報はありません</p>
-    <?php else: ?>
     <table>
         <tr>
-            <th>予約時間帯</th>
-            <th>予約状況</th>
+            <th rowspan="2">予約時間帯</th>
+            <th colspan="3">予約状況</th>
+        </tr>
+        <tr>
+            <th>Park1</th>
+            <th>Park2</th>
+            <th>Park3</th>
         </tr>
     <?php for($hour = 0; $hour < 24; $hour++): ?>
         <tr>
             <td><?= $hour < 10  ? '0' . $hour . ':00' : $hour . ':00' ?> - <?= ($hour + 1) < 10  ? '0' . ($hour + 1) . ':00' : ($hour + 1) . ':00' ?></td>
-            <td><?= get_reserve_user_name($reservations, $date, $hour)?></td>
+            <td><?= get_reserve_user_name($reservations1, $date, $hour)?></td>
+            <td><?= get_reserve_user_name($reservations2, $date, $hour)?></td>
+            <td><?= get_reserve_user_name($reservations3, $date, $hour)?></td>
         </tr>
     <?php endfor; ?>    
     </table>
-    <?php endif; ?>
 
     <p><a href="top.php">マイページトップに戻る</a></p>
     <p><a href="logout.php">ログアウト</a></p>
