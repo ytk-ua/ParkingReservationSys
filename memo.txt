@@ -14,6 +14,7 @@
 　”reservation_list.php”に戻ってきた際には、予約の一覧が消えてしまうのはなぜか？
 ・登録済みの予約を編集する際に”edit_reservation.php”にて駐車場の番号の選択が表示されなくなる。
 ・登録済みの予約を編集する際に管理者側から入ると”edit_reservation.php”にてユーザーの情報が表示されなくなる。
+・予約登録から最終的に利用実績につなぐために、どの状態で予約だけでなく利用したと定義するか検討必要。
 [済み]
 ・”edit_parking.php”で駐車場情報を編集し更新ボタンを押しても更新されない。
 　データベースも更新されない。
@@ -141,6 +142,16 @@ create table reservations(
     on update cascade
 );
 
+<"notices"テーブル作成[DB：rsv_sys]>
+create table notices(
+    id int auto_increment primary key,
+    regist_date date not null,
+    title varchar(255) not null,
+    overview varchar(255),
+    link_url varchar(255),
+    created_at timestamp default CURRENT_TIMESTAMP
+);
+
 <Table"reserves"のデータ型の変更（日付:date,時間:timeに変更）>
 alter table [テーブル名] modify [カラム名]　[データ型];
 alter table reserves modify start_date date;
@@ -174,6 +185,7 @@ alter table [テーブル名] add [追加したいカラム名] [型名] [初期
 alter table users add tel varchar(255) after email;
 alter table users add room_no int(11) after tel;
 alter table users add account varchar(255) not null after room_no;
+alter table notices add image varchar(255) after link_url;
 
 [（未対応：うまくできてない）フィールドの名前の変更]
 alter table [テーブル名] rename column [列名] to [新しい列名];

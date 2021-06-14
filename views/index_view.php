@@ -15,9 +15,15 @@
     </ul>
     
     <p>【お知らせ】</p>
-    <dt>2021/xx/xx</dt>
-    <dd>新着のお知らせ１</dd>
-    <dt>2021/xx/xx</dt>
-    <dd>新着のお知らせ２</dd>
+    
+    <?php if(count($notices) === 0): ?>
+    <p>登録されたお知らせはありません</p>
+    <?php else: ?>
+    <?php foreach($notices as $notice): ?>
+        <dt><?= $notice->regist_date ?></dt>
+        <dd><a href="<?= $notice->link_url ?>"><?= $notice->title ?></a></dd>
+    <?php endforeach; ?>
+    <?php endif; ?>
+
 </body>
 </html>
