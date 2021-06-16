@@ -1,5 +1,7 @@
-＜エラー状況＞
+＜エラー・対応予定内容＞
 [未対応]
+・問い合わせページの作成
+・システムズ概要とかのページの作成
 ・”ReservationDAO"の"find3"でなぜ”':end_date', $start_date,”ではなく、
 　"$stmt->bindValue(':end_date', $start_date, PDO::PARAM_STR);"なのか？
 ・予約の修正。

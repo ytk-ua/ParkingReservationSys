@@ -24,6 +24,8 @@
     <?php $parking = ParkingDAO::find($reservation->parking_id) ?>
     <?php endforeach; ?>
     <p>駐車場『<?= $parking->parking_name ?>』の利用実績</p>
+    <p>合計表示<?= $sum ?>です</p>
+
     <table>
         <tr>
             <th>駐車場ID</th>

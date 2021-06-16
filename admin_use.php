@@ -24,7 +24,10 @@
     $reservations2 = ReservationDAO::find4(4);
     $reservations3 = ReservationDAO::find4(5);   
     // var_dump($reservations3);
-
+    
+    $sum = array_sum(array_column($reservations1, 'user_id'));
+    // $time = array_column($reservations1, 'start_date');
+    
     //ReserveDAOを使ってデータベースから全予約登録情報を取得
     $reservations = ReservationDAO::get_all_reservations();
   
