@@ -1,26 +1,9 @@
 <?php
     //外部ファイルの読み込み
     require_once 'models/Notice.php';
+    require_once 'daos/DAO.php';
     //DAO(Database Access Object)
-    class NoticeDAO{
-        //データベースに接続するメソッド
-        private static function get_connection(){
-        // 接続オプション設定
-            $options = array(
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_CLASS,
-                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-            );
-            // データベース(rsv_sys)を操作する万能の神様誕生(PDO:PHP Database Object)
-            $pdo = new PDO('mysql:host=localhost;dbname=rsv_sys', 'root', '', $options);
-            // 神様、はいあげる
-            return $pdo;
-        }
-        //データベースを切断するメソッド
-        private static function close_connection($pdo, $stmt){
-            $pdo = null;
-            $stmt = null;
-        }
+    class NoticeDAO extends DAO{
         //データベースから全お知らせ情報を登録日の降順（新着順に並べる）で取得するメソッド
         public static function get_all_notices(){
        // 例外処理:tryブロック。try chatch最後はcatchで終わる。
