@@ -1,11 +1,22 @@
 ＜エラー・対応予定内容＞
 [未対応]
-・集計・合計の記載を作成（foreach or 関数）　
 ・予約登録の修正。島さん作成内容をまずは踏襲して学習（日またぎはできない）
-・問い合わせページの作成（メール送信試す）
-・システムズ概要とかのページの作成
+・API対応：Googleマップの地図、天気予報情報
+・決済機能付与の検討
+・ページのアクセスカウンターつける？
+・問い合わせページ（ユーザー：確認メール送信機能付与、管理者：返信機能付与）
+・予約完了時に予約確認メール自動送付機能
+・HTML/CSS/ハンバーガーメニュー
+
 ・管理者用のログインページ作成
+　->admin.phpでadmin_login_filterをONにするとうまく機能しない。
+・ユーザー/管理者の利用実績のページ作成
+　->ユーザー用にTotalと月ごとの金額を算出する表を作成
+　->管理者用に利用実績の集計とグラフ表示機能
+・お知らせ
+　->編集と削除の機能がまだ動かせていない。
 ・サイトマップとかデータベース設計を最新を反映して修正
+
 ・”ReservationDAO"の"find3"でなぜ”':end_date', $start_date,”ではなく、
 　"$stmt->bindValue(':end_date', $start_date, PDO::PARAM_STR);"なのか？
 ・予約の修正。
@@ -22,6 +33,7 @@
 ・登録済みの予約を編集する際に管理者側から入ると”edit_reservation.php”にてユーザーの情報が表示されなくなる。
 ・予約登録から最終的に利用実績につなぐために、どの状態で予約だけでなく利用したと定義するか検討必要。
 [済み]
+・集計・合計の記載を作成（foreach or 関数）　
 ・”edit_parking.php”で駐車場情報を編集し更新ボタンを押しても更新されない。
 　データベースも更新されない。
 　->"require_once 'daos/ParkingDAO.php';"のスペルミス。"parkingDAO"と小文字になっていた。
@@ -155,6 +167,28 @@ create table notices(
     title varchar(255) not null,
     overview varchar(255),
     link_url varchar(255),
+    created_at timestamp default CURRENT_TIMESTAMP
+);
+
+<"contacts"テーブル作成[DB：rsv_sys]>
+create table contacts(
+    id int auto_increment primary key,
+    user_id int,
+    name varchar(255) not null,
+    email varchar(255) not null,
+    tel varchar(255),
+    subject varchar(255) not null,
+    body varchar(255) not null,
+    created_at timestamp default CURRENT_TIMESTAMP
+);
+
+<"admins"テーブル[DB：rsv_sys]>
+create table admins(
+    id int auto_increment primary key,
+    name varchar(255) not null,
+    account varchar(255) not null unique,
+    password varchar(255) not null,
+    email varchar(255),
     created_at timestamp default CURRENT_TIMESTAMP
 );
 

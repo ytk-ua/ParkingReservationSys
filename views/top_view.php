@@ -24,9 +24,9 @@
     </ul>
 
     <ul>
-        <li>システム概要</li>
-        <li>利用方法/ルール</li>
-        <li>お問合せ</li>
+        <li><a href = about.php>システム概要</a></li>
+        <li><a href = guide.php>ご利用ガイド</a></li>
+        <li><a href = contact.php>お問合せ</a></li>
     </ul>
     
     <p>【お知らせ】</p>

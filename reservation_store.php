@@ -6,7 +6,7 @@
     session_start();
     //login_check.phpでSESSIONにいれたログインユーザー情報を引き出す
     $login_user = $_SESSION['login_user'];
-    var_dump($_POST);
+    // var_dump($_POST);
     
     $user_id = $_POST['id'];
     $parking_id = $_POST['parking_id'];

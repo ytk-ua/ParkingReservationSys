@@ -8,10 +8,12 @@
 <body>
     <h1>マンション駐車場利用予約システム</h1>
     <h2><a href="login.php">ログイン・新規ユーザー登録</a></h2>
+    <h2><a href="admin_login.php">管理者用ログイン</a></h2>
+
     <ul>
-        <li>システム概要</li>
-        <li>利用方法/ルール</li>
-        <li>お問合せ</li>
+        <li><a href = about.php>システム概要</a></li>
+        <li><a href = guide.php>ご利用ガイド</a></li>
+        <li><a href = contact.php>お問合せ</a></li>
     </ul>
     
     <p>【お知らせ】</p>

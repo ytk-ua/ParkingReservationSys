@@ -14,7 +14,10 @@
         <li><a href="admin_use.php">利用実績管理</a></li>        
         <li><a href="admin_notice.php">お知らせ管理</a></li>
         <li><a href="admin_contact.php">問合せ管理</a></li>
+        <li><a href="admin_list.php">管理者登録情報管理</a></li>
     </ul>
+
+    <p><a href="admin_create.php">新規管理者登録</a></p>
             
     <?php if($flash_message !== null): ?>
     <p><?= $flash_message ?></p>

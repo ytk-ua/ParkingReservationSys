@@ -10,6 +10,12 @@
         table{
             width: 80%;
         }
+        .total {
+            text-align: right;
+            color: purple;
+            font-weight: bold;
+            width: 80%;
+        }
     </style>    
 </head>
 <body>
@@ -20,12 +26,52 @@
     <p><?= $flash_message ?></p>
     <?php endif; ?>
 
+   <p>駐車場予約一覧</p>
+   <table>
+        <tr>
+            <th>駐車場ID</th>
+            <th>合計利用時間</th>
+            <th>駐車場料金</th>
+            <th>合計利用料金</th>
+        </tr>
+    <?php foreach($reservations1 as $reservation): ?>
+    <?php $parking = ParkingDAO::find($reservation->parking_id) ?>
+    <?php endforeach; ?>
+        <tr>
+            <td align="center"><?= $parking->parking_name ?></td>
+            <td align="right"><?= total_time($reservations1)?>時間</td>
+            <td align="right">¥<?= ($parking->price) ?>/1h</td>
+            <td align="right">¥<?= total_price($reservations1)?></td>
+            </tr>
+    <?php foreach($reservations2 as $reservation): ?>
+    <?php $parking = ParkingDAO::find($reservation->parking_id) ?>
+    <?php endforeach; ?>
+        <tr>
+            <td align="center"><?= $parking->parking_name ?></td>
+            <td align="right"><?= total_time($reservations2)?>時間</td>
+            <td align="right">¥<?= ($parking->price) ?>/1h</td>
+            <td align="right">¥<?= total_price($reservations2)?></td>
+            </tr>
+    <?php foreach($reservations3 as $reservation): ?>
+    <?php $parking = ParkingDAO::find($reservation->parking_id) ?>
+    <?php endforeach; ?>
+        <tr>
+            <td align="center"><?= $parking->parking_name ?></td>
+            <td align="right"><?= total_time($reservations3)?>時間</td>
+            <td align="right">¥<?= ($parking->price) ?>/1h</td>
+            <td align="right">¥<?= total_price($reservations3)?></td>
+            </tr>
+    </table>
+    <p class="total">駐車場予約一覧の合計金額：¥<?= total_price($reservations)?>、合計利用時間：<?= total_time($reservations)?>時間</p>
+
+
+
     <?php foreach($reservations1 as $reservation): ?>
     <?php $parking = ParkingDAO::find($reservation->parking_id) ?>
     <?php endforeach; ?>
     <p>駐車場『<?= $parking->parking_name ?>』の利用実績</p>
-    <p>合計表示<?= $sum ?>です</p>
-
+    <?php $total = 0; ?>
+    
     <table>
         <tr>
             <th>駐車場ID</th>
@@ -57,9 +103,11 @@
             <td align="right"><?= ($timestamp2 - $timestamp1)/60/60 ?>時間</td>
             <td align="right">¥<?= ($parking->price) ?>/1h</td>
             <td align="right">¥<?= number_format((($timestamp2 - $timestamp1)/60/60)*($parking->price)) ?></td>
+            <?php $total = $total + (($timestamp2 - $timestamp1)/60/60)*($parking->price); ?>
         </tr>
     <?php endforeach; ?>
     </table>
+        <p class="total">駐車場『<?= $parking->parking_name ?>』の合計金額：¥<?= number_format($total) ?>、合計利用時間：<?= total_time($reservations1)?>時間</p>
 
     <?php foreach($reservations2 as $reservation): ?>
     <?php $parking = ParkingDAO::find($reservation->parking_id) ?>
@@ -99,6 +147,7 @@
         </tr>
     <?php endforeach; ?>
     </table>
+    <p class="total">駐車場『<?= $parking->parking_name ?>』の合計金額：¥<?= total_price($reservations2)?>、合計利用時間：<?= total_time($reservations2)?>時間</p>
 
     <?php foreach($reservations3 as $reservation): ?>
     <?php $parking = ParkingDAO::find($reservation->parking_id) ?>
@@ -138,6 +187,7 @@
         </tr>
     <?php endforeach; ?>
     </table>
+    <p class="total">駐車場『<?= $parking->parking_name ?>』の合計金額：¥<?= total_price($reservations3)?>、合計利用時間：<?= total_time($reservations3)?>時間</p>
 
    <p>(確認用参考データ)駐車場予約一覧</p>
    <table>
@@ -174,6 +224,8 @@
         </tr>
     <?php endforeach; ?>
     </table>
+    <p class="total">駐車場予約一覧の合計金額：¥<?= total_price($reservations)?>、合計利用時間：<?= total_time($reservations)?>時間</p>
+
 
     <p><a href="top.php">マイページトップに戻る</a></p>
     <p><a href="logout.php">ログアウト</a></p>
