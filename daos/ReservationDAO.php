@@ -108,16 +108,17 @@
         }
 
         //$start_dateの日付の$parking_idの駐車場の予約登録情報を全て取得するメソッド
-        public static function find3($start_date, $parking_id){
+        public static function find3($date, $parking_id){
           // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM reservations WHERE (start_date=:start_date OR end_date=:end_date) AND parking_id=:parking_id');
+                $stmt = $pdo->prepare('SELECT * FROM reservations WHERE (start_date <= :date AND :date <= end_date) ANd parking_id=:parking_id');
+                // $stmt = $pdo->prepare('SELECT * FROM reservations WHERE (start_date=:start_date OR end_date=:end_date) AND parking_id=:parking_id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':start_date', $start_date, PDO::PARAM_STR);
-                $stmt->bindValue(':end_date', $start_date, PDO::PARAM_STR);
+                $stmt->bindValue(':date', $date, PDO::PARAM_STR);
+                // $stmt->bindValue(':end_date', $start_date, PDO::PARAM_STR);
                 
                 $stmt->bindValue(':parking_id', $parking_id, PDO::PARAM_INT);
                 // SELECT文本番実行
@@ -209,6 +210,35 @@
                 // SELECT文の結果を Reserveクラスのインスタンスに格納。Fetch->抜き出せの意。
                 $reservations = $stmt->fetchAll();
                 
+            }catch(PDOException $e){
+            }finally{
+                // 後処理
+                self::close_connection($pdo, $stmt);
+            }
+            // 完成した予約情報、はいあげる
+            return $reservations;             
+        }
+        
+        //20210615_by_shimaからコピーしたfind7。
+        public static function find7($start_date, $start_time, $parking_id){
+          // 例外処理:tryブロック。try chatch最後はcatchで終わる。
+            try{
+                // データベースに接続して万能の神様誕生。
+                $pdo = self::get_connection();
+                // SELECT文実行準備
+                $stmt = $pdo->prepare('SELECT * FROM reservations WHERE start_date=:start_date AND parking_id=:parking_id AND start_time >= :start_time');
+                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
+                $stmt->bindValue(':start_date', $start_date, PDO::PARAM_STR);
+                $stmt->bindValue(':start_time', $start_time, PDO::PARAM_STR);
+                $stmt->bindValue(':parking_id', $parking_id, PDO::PARAM_INT);
+                // SELECT文本番実行
+                $stmt->execute();                
+
+                // Fetch ModeをResereveクラスに設定。マッピング。PHPで使いやすい様に書き換える。
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reservation');
+                // SELECT文の結果を Reserveクラスのインスタンスに格納。Fetch->抜き出せの意。
+                $reservations = $stmt->fetchAll();
+
             }catch(PDOException $e){
             }finally{
                 // 後処理

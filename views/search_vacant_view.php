@@ -39,9 +39,9 @@
     <?php for($hour = 0; $hour < 24; $hour++): ?>
         <tr>
             <td><?= $hour < 10  ? '0' . $hour . ':00' : $hour . ':00' ?> - <?= ($hour + 1) < 10  ? '0' . ($hour + 1) . ':00' : ($hour + 1) . ':00' ?></td>
-            <td><?= get_reserve_user_name($reservations1, $date, $hour)?></td>
-            <td><?= get_reserve_user_name($reservations2, $date, $hour)?></td>
-            <td><?= get_reserve_user_name($reservations3, $date, $hour)?></td>
+            <td><?= get_reserve_user_name($reservations1, $date, $hour, 1)?></td>
+            <td><?= get_reserve_user_name($reservations2, $date, $hour, 4)?></td>
+            <td><?= get_reserve_user_name($reservations3, $date, $hour, 5)?></td>
         </tr>
     <?php endfor; ?>    
     </table>

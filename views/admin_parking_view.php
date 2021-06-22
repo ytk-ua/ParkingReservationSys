@@ -31,6 +31,7 @@
         <li>料金：<?= $parking->price ?>円/30分</li>
         <li>場所：<?= $parking->address ?></li>
     </ul>
+    <div id="map"></div>
     <?php endforeach; ?>
     <?php endif; ?>
     

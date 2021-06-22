@@ -4,6 +4,7 @@
     
     require_once 'models/User.php';
     require_once 'daos/ParkingDAO.php';
+    require_once 'daos/ReservationDAO.php';
     session_start();
     $login_user = $_SESSION['login_user'];
 
@@ -11,4 +12,21 @@
     //Parkingの選択肢用に駐車場情報を利用
     $parkings = ParkingDAO::get_all_parkings();
 
+    $start_date = $_GET['start_date'];
+    $start_time = $_GET['start_time'];
+    $parking_id = $_GET['parking_id'];
+    // var_dump($_GET);
+
+    $end_date_times = ReservationDAO::find7($start_date, $start_time, $parking_id);
+
+    // var_dump($end_date_times);
+
+    if(count($end_date_times) === 0){
+        $limit = 23;
+    }else{
+        $limit = (int)substr($end_date_times[0]->start_time, 0, 2) - 1;    
+    }
+
+    $start = (int)substr($start_time, 0, 2);
+    
     include_once 'views/reservation_create_view.php';

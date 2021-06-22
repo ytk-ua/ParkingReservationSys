@@ -1,6 +1,6 @@
 <?php
     //(C)
-    // require_once 'filters/admin_login_filter.php';
+    require_once 'filters/admin_login_filter.php';
     require_once 'models/User.php';
     require_once 'daos/AdminDAO.php';
     session_start();

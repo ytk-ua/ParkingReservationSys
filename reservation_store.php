@@ -32,5 +32,7 @@
     $_SESSION['flash_message'] = $login_user->name . 'さんの新しい予約が追加されました';
     
     // 画面遷移（マイページトップへ）
-    header('location: top.php');
+    // header('location: top.php');
+    header('Location: search_vacant.php?date=' . $start_date);
     exit;
+    

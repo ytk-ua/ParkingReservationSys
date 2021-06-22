@@ -36,6 +36,7 @@
     
     //DAOを使って＄start_dateの日付の予約登録情報をDBから持ってくる
     $reservations1 = ReservationDAO::find3($date, 1);
+    // var_dump($reservations1);
     $reservations2 = ReservationDAO::find3($date, 4);
     $reservations3 = ReservationDAO::find3($date, 5);   
     // var_dump($reservations);
@@ -45,7 +46,7 @@
     $_SESSION['flash_message'] = null;
     
     // 注目する予約一覧の中で注目する時間帯に予約している人の名前を取得
-    function get_reserve_user_name($reserves, $date, $hour){
+    function get_reserve_user_name($reserves, $date, $hour, $parking_id){
         // var_dump($reserves);
         foreach($reserves as $reserve){
             $start_time = (int)substr($reserve->start_time, 0, 2);
@@ -65,9 +66,14 @@
             else if(strtotime($end_date) == strtotime($date) && $hour < $end_time && strtotime($start_date) < strtotime($date) && strtotime($start_date) < strtotime($end_date)){
                 return $reserve->user_id;
                 // exit;
+            } // 開始日が本日より前、終了日が本日より後
+            else if(strtotime($start_date) < strtotime($date) && strtotime($date) < strtotime($end_date)){
+                return $reserve->user_id;
             }
         }
-        return '<a href="xx">予約可</a>';
+                $start_time = ($hour < 10 ? '0' . $hour : $hour) . ':00:00';
+                return '<a href="reservation_create.php?start_date=' . $date . '&start_time=' . $start_time . '&parking_id=' . $parking_id . '">予約可</a>';
+        // return '<a href="xx">予約可</a>';
     }
     
     // //HTML表示

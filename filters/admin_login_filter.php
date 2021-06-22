@@ -5,7 +5,7 @@
     session_start();
     $login_admin = $_SESSION['login_admin'];
     
-    if($login_user === null){
+    if($login_admin === null){
         header('Location: index.php');
         exit;
     }

@@ -56,16 +56,16 @@
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM users WHERE id=:id');
+                $stmt = $pdo->prepare('SELECT * FROM notices WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 // SELECT文本番実行
                 $stmt->execute();                
                 
                 // Fetch ModeをUserクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Notice');
                 // SELECT文の結果を Userクラスのインスタンスに格納。Fetch->抜き出せの意。
-                $user = $stmt->fetch();
+                $notice = $stmt->fetch();
                 
             }catch(PDOException $e){
             }finally{
@@ -73,7 +73,7 @@
                 self::close_connection($pdo, $stmt);
             }
             // 完成したユーザー、はいあげる
-            return $user;             
+            return $notice;             
         }
         
         //$id番目のユーザー情報を更新

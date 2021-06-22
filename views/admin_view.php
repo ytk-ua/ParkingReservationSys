@@ -6,7 +6,8 @@
 </head>
 <body>
     <h1>管理者ページトップ</h1>
-    
+    <p><?= $login_admin->name ?>さん、ようこそ！</p>
+
     <ul>
         <li><a href="admin_user.php">ユーザー管理</a></li>
         <li><a href="admin_parking.php">駐車場管理</a></li>

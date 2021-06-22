@@ -10,8 +10,16 @@
     <p><?= $login_user->name ?>さん、ご希望の予約を登録ください</p>
 
     <form action="reservation_store.php" method="POST">
-        開始日時： <input type="date" name="start_date"><input type="time" name="start_time" step="1800"><br>
-        終了日時： <input type="date" name="end_date"><input type="time" name="end_time" step="1800"><br>
+        開始日時： <input type="date" name="start_date"  value="<?= $start_date ?>" readonly><input type="time" name="start_time" step="1800" value="<?= $start_time ?>" readonly><br>
+        <!--開始日時： <?= $start_date ?> / <?= $start_time ?><br>-->
+        <!--終了日時： <input type="date" name="end_date" value="<?= $start_date ?>" readonly><input type="time" name="end_time" step="1800" min="<?= $start_time ?>" value="<?= $start_time ?>"><br>-->
+        <input type="hidden" name="end_date" value="<?= $start_date ?>">
+        終了時間: 
+        <select name="end_time">
+            <?php for($i = $start + 1; $i <= $limit + 1; $i++): ?>
+            <option value="<?= ($i < 10) ? ('0' . $i . ':00:00') : ($i . ':00:00') ?>"><?= ($i < 10) ? ('0' . $i . ':00') : ($i . ':00') ?></option>
+            <?php endfor; ?>
+        </select>
         <!--利用駐車場番号： <select name= "parking_mul">-->
         <!--    <option value = "">選択してください</option>-->
         <!--    <option value = "park1">No.1</option>-->
@@ -24,7 +32,9 @@
         <p>登録された駐車場はありません</p>
         <?php else: ?>
         <?php foreach($parkings as $parking): ?>
+        <?php if($parking_id === $parking->id): ?>
         <option value = "<?= $parking->id ?>"><?= $parking->parking_name ?></option>
+        <?php endif; ?>
         <?php endforeach; ?>
         <?php endif; ?>
         </select><br>
