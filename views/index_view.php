@@ -23,10 +23,9 @@
     <?php else: ?>
     <?php foreach($notices as $notice): ?>
         <dt><?= $notice->regist_date ?></dt>
-        <dd><a href="<?= $notice->link_url ?>"><?= $notice->title ?></a></dd>
+        <dd><a href="show_notice.php?id=<?= $notice->id ?>"><?= $notice->title ?></a></dd>
     <?php endforeach; ?>
     <?php endif; ?>
 
-    <!--<?= scre( )?>-->
 </body>
 </html>

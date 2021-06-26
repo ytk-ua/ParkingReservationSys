@@ -110,7 +110,7 @@
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // DELETE文実行準備
-                $stmt = $pdo->prepare('DELETE FROM users WHERE id=:id');
+                $stmt = $pdo->prepare('DELETE FROM notices WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 // DELETE文本番実行

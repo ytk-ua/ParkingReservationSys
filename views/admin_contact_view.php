@@ -15,6 +15,10 @@
     
     <p>問い合わせ一覧(新着順表示)</p>
  
+    <?php if($flash_message !== null): ?>
+    <p><?= $flash_message ?></p>
+    <?php endif; ?>
+    
     <!--<p>-->
     <!--    <form action="search_parking.php">-->
     <!--        <input type="search" name="parking_id">-->
@@ -27,7 +31,6 @@
     <?php else: ?>
     <table>
         <tr>
-            <th>返信</th>
             <th>ID</th>
             <th>ユーザーID</th>
             <th>名前</th>
@@ -35,10 +38,11 @@
             <th>電話番号</th>
             <th>件名</th>
             <th>本文</th>
+            <th>返信</th>
+            <th>削除</th>
         </tr>
     <?php foreach($contacts as $contact): ?>
         <tr>
-            <td><a href="xxx.php?id=<?= $contact->id ?>">返信</a></p>
             <td align="center"><?= $contact->id ?></td>
             <td align="center"><?= $contact->user_id ?></td>
             <td align="center"><?= $contact->name ?></td>
@@ -46,6 +50,8 @@
             <td align="center"><?= $contact->tel ?></td>
             <td align="left"><?= $contact->subject ?></td>
             <td align="left"><?= $contact->body ?></td>
+            <td><a href="xxx.php?id=<?= $contact->id ?>">返信</a></p>
+            <td><a href="delete_contact.php?id=<?= $contact->id ?>">削除</a></p>
         </tr>
     <?php endforeach; ?>
     </table>

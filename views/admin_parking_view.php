@@ -12,6 +12,7 @@
     
     <p>
         <form action="search_parking.php">
+        駐車場ID or 駐車場名を入力してください<br>
             <input type="search" name="parking_id">
             <button type="submit">検索</button>
         </form>

@@ -121,16 +121,17 @@
             }
         }
         
-        //データベースからキーワード検索するメソッド
+        //データベースから"id"か”parking_name”のどちらかのキーワード検索するメソッド
         public static function search($keyword){
        // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM parking WHERE parking_id LIKE :parking_id');
+                $stmt = $pdo->prepare('SELECT * FROM parkings WHERE parking_name LIKE :parking_name OR id LIKE :id ');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':parking_id', '%' . $keyword . '%', PDO::PARAM_STR);
+                $stmt->bindValue(':parking_name', '%' . $keyword . '%', PDO::PARAM_STR);
+                $stmt->bindValue(':id', '%' . $keyword . '%', PDO::PARAM_STR);
                 // SELECT文本番実行
                 $stmt->execute();                
                 // Fetch ModeをUserクラスに設定。マッピング。PHPで使いやすい様に書き換える。

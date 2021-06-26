@@ -104,14 +104,14 @@
             }
         }
         
-        //id番目のユーザーを削除
+        //id番目の問い合わせを削除
         public static function delete($id){
           // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // DELETE文実行準備
-                $stmt = $pdo->prepare('DELETE FROM users WHERE id=:id');
+                $stmt = $pdo->prepare('DELETE FROM contacts WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':id', $id, PDO::PARAM_INT);
                 // DELETE文本番実行

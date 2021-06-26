@@ -43,11 +43,11 @@
     <?php else: ?>
     <?php foreach($notices as $notice): ?>
     <ul>
-        <li>ID:<?= $notice->id ?></a></li>
+        <li>ID:<a href="show_notice.php?id=<?= $notice->id ?>"><?= $notice->id ?></a></li>
         <li>登録日：<?= $notice->regist_date ?></li>
-        <li>タイトル：<a href="<?= $notice->link_url ?>"><?= $notice->title ?></a></li>
+        <li>タイトル：<?= $notice->title ?></a></li>
         <li>概要：<?= $notice->overview ?></li>
-        <li>リンクURL：<?= $notice->link_url ?></li>
+        <li>リンクURL：<a href="<?= $notice->link_url ?>"><?= $notice->link_url ?></li>
         <li><img src="upload/<?= $notice->image ?>"></li>
     </ul>
     <p><a href="edit_notice.php?id=<?= $notice->id ?>">編集</a></p>

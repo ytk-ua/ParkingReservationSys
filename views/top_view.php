@@ -30,15 +30,15 @@
     </ul>
     
     <p>【お知らせ】</p>
+    
     <?php if(count($notices) === 0): ?>
     <p>登録されたお知らせはありません</p>
     <?php else: ?>
     <?php foreach($notices as $notice): ?>
         <dt><?= $notice->regist_date ?></dt>
-        <dd><a href="<?= $notice->link_url ?>"><?= $notice->title ?></a></dd>
+        <dd><a href="show_notice.php?id=<?= $notice->id ?>"><?= $notice->title ?></a></dd>
     <?php endforeach; ?>
     <?php endif; ?>
-
 
 </body>
 </html>

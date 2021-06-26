@@ -17,8 +17,8 @@
     AdminDAO::insert($admin);
     
     $_SESSION['flash_message'] = $name . 'さんが追加されました';
-    $_SESSION['login_admin'] = $admin;
+    // $_SESSION['login_admin'] = $admin;
     
-    // 画面遷移（管理者ページトップへ）
-    header('location: admin.php');
+    // 画面遷移（管理者登録情報ページへ）
+    header('location: admin_list.php');
     exit;

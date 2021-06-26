@@ -12,7 +12,7 @@
     
     <p>
         <form action="search_user.php">
-            <input type="search" name="name">
+            名前を入力：<input type="search" name="name">
             <button type="submit">検索</button>
         </form>
     </p>

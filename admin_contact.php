@@ -8,8 +8,8 @@
     $contacts = ContactDAO::get_all_contacts();
     // var_dump($contacts);
     
-    // $flash_message = $_SESSION['flash_message'];
-    // $_SESSION['flash_message'] = null;
+    $flash_message = $_SESSION['flash_message'];
+    $_SESSION['flash_message'] = null;
 
     include_once 'views/admin_contact_view.php';
     
