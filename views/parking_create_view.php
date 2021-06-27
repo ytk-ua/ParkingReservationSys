@@ -8,6 +8,14 @@
 <body>
     <h1>新規駐車場登録</h1>
  
+     <?php if($errors !== null): ?>
+    <ul>
+    <?php foreach($errors as $error ): ?>
+        <li><?= $error ?></li>
+    <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+    
     <form action="parking_store.php" method="POST">
         駐車場名： <input type="text" name="parking_name"><br>
         料金[30分]： <input type="number" name="price"><br>

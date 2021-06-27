@@ -17,4 +17,22 @@
             $this->link_url = $link_url;
             $this->image = $image;
         }
+        //入力チェックをするメソッド
+        public function validate(){
+            //エラー情報を格納する配列作成
+            $errors = array();
+            //登録日が入力されていなければ
+            if($this->regist_date === ''){
+                $errors[] = '登録日を入力してください';
+            }
+            //タイトルが入力されていなければ
+            if($this->title === ''){
+                $errors[] = 'タイトルを入力してください';
+            }
+            //概要が入力されていなければ
+            if($this->overview === ''){
+                $errors[] = '概要を入力してください';
+            }
+            return $errors;
+        }        
     }

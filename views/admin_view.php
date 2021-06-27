@@ -24,6 +24,6 @@
     <p><?= $flash_message ?></p>
     <?php endif; ?>
 
-    <p><a href="index.php">ログアウト</a></p>
+    <p><a href="logout_admin.php">ログアウト</a></p>
 </body>
 </html>

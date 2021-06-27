@@ -12,8 +12,16 @@
 <body>
     <h1>お問い合わせ内容登録</h1>
 
-    <?php if($flash_message !== null): ?>
+   <?php if($flash_message !== null): ?>
     <p><?= $flash_message ?></p>
+    <?php endif; ?>
+
+    <?php if($errors !== null): ?>
+    <ul>
+    <?php foreach($errors as $error ): ?>
+        <li><?= $error ?></li>
+    <?php endforeach; ?>
+    </ul>
     <?php endif; ?>
 
     <table>

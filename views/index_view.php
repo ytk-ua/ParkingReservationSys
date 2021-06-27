@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>マンション駐車場利用予約システム</h1>
+    
+    <?php if($flash_message !== null): ?>
+    <p><?= $flash_message ?></p>
+    <?php endif; ?>
+
     <h2><a href="login.php">ログイン・新規ユーザー登録</a></h2>
     <h2><a href="admin_login.php">管理者用ログイン</a></h2>
 

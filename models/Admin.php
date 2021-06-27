@@ -15,4 +15,22 @@
             $this->password = $password;
             $this->email = $email;
         }
+        //入力チェックをするメソッド
+        public function validate(){
+            //エラー情報を格納する配列作成
+            $errors = array();
+            //名前が入力されていなければ
+            if($this->name === ''){
+                $errors[] = '名前を入力してください';
+            }
+            //アカウント名が入力されていなければ
+            if($this->account === ''){
+                $errors[] = 'アカウント名を入力してください';
+            }
+            //パスワードが入力されていなければ
+            if($this->password === ''){
+                $errors[] = 'パスワードを入力してください';
+            }
+            return $errors;
+        }
     }

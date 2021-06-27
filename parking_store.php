@@ -11,13 +11,27 @@
     
     //Parkingクラスの新しいインスタンス生成
     $parking = new Parking($parking_name, $price, $address, $size, $remarks);
-    var_dump($parking);
+    // var_dump($parking);
+
+   //入力チェック(検証)
+    $errors = $parking->validate();
+    //エラーが一つもなければ
+    if(count($errors) === 0){
+        //ParkingDAOを使ってDBに保存
+        ParkingDAO::insert($parking);
+        $_SESSION['flash_message'] = $parking_name . 'の駐車場が追加されました';
+        header('location:admin_parking.php');
+        exit;
     
-    // // $_SESSION['user'] = $user;
-    //ParkingDAOを使ってDBに保存
-    ParkingDAO::insert($parking);
-    $_SESSION['flash_message'] = $parking_name . 'の駐車場が追加されました';
+    }else{ //エラーが一つでもあればセッションにエラー配列を保存
+        $_SESSION['errors'] = $errors;
+        //画面遷移
+        header('location: parking_create.php');
+        exit;
+    }
+
     
+
     // 画面遷移（マイページトップへ）
     header('location:admin_parking.php');
     exit;

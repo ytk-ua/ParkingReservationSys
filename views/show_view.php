@@ -12,6 +12,14 @@
     <p><?= $flash_message ?></p>
     <?php endif; ?>
 
+    <?php if($errors !== null): ?>
+    <ul>
+    <?php foreach($errors as $error ): ?>
+        <li><?= $error ?></li>
+    <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+    
     <ul>
         <li>ID:<?= $user->id ?></li>
         <li>名前：<?= $user->name ?></li>
@@ -29,8 +37,6 @@
         <button type="submit">削除</button>
         </form>
     </p>
-    
-    <h2>利用実績</h2>
 
     <p><a href="admin_user.php">ユーザー管理に戻る</a></p>
     <p><a href="admin.php">管理者ページトップに戻る</a></p>

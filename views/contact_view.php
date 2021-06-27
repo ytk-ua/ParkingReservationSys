@@ -24,9 +24,9 @@
             お名前（必須）<br>
             <input type="text" name="name" placeholder="氏名"><br>
             Email（必須）<br>
-            <input type="text" name="email" placeholder="Emailアドレス"><br>
+            <input type="email" name="email" placeholder="Emailアドレス"><br>
             Email（確認用必須）<br>
-            <input type="text" name="email_chedck" placeholder="Emailアドレス(確認のためもう一度後入力ください)"><br>
+            <input type="email" name="email_chedck" placeholder="Emailアドレス(確認のためもう一度後入力ください)"><br>
             お電話番号（半角英数字”-"(ハイフン)不要）<br>
             <input type="text" name="tel" placeholder="お電話番号（半角英数字でご入力ください）"><br>
         <?php endif; ?>

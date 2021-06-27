@@ -12,6 +12,14 @@
     <p><?= $flash_message ?></p>
     <?php endif; ?>
 
+    <?php if($errors !== null): ?>
+    <ul>
+    <?php foreach($errors as $error ): ?>
+        <li><?= $error ?></li>
+    <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+    
     <ul>
         <li>ID:<?= $parking->id ?></li>
         <li>駐車場名：<?= $parking->parking_name ?></li>

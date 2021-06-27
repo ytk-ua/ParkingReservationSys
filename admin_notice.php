@@ -12,6 +12,11 @@
     $flash_message = $_SESSION['flash_message'];
     $_SESSION['flash_message'] = null;
 
+    //発生したerror情報を$errorsでSESSIONから取り出し
+    $errors = $_SESSION['errors'];
+    //セッションに保存されたエラー情報を破棄
+    $_SESSION['errors'] = null;
+
     // $flash_message2 = $_SESSION['flash_message2'];
     // $_SESSION['flash_message2'] = null;
     

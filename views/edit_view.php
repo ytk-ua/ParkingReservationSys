@@ -16,8 +16,11 @@
         メールアドレス： <input type="email" name="email" value="<?= $user->email ?>"><br>
         電話番号： <input type="tel" name="tel" value="<?= $user->tel ?>"><br>
         <input type="hidden" name="id" value="<?= $user->id ?>">
+        <input type="reset" value="リセットする"><br>
         <input type="submit" value="更新">
     </form>
-    <p><a href="top.php">キャンセル</a></p>
+
+    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">前のページに戻る</a>
+    <!--<p><a href="top.php">キャンセル</a></p>-->
 </body>
 </html>

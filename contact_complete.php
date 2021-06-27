@@ -34,12 +34,31 @@
     //Contactクラスの新しいインスタンス生成
     $contact = new Contact($user_id, $name, $email, $tel, $subject, $body);
     // var_dump($contact);
-    
-    //ContactDAOを使ってDBに保存
-    ContactDAO::insert($contact);
 
-    $_SESSION['flash_message'] = '問い合わせが登録されました';
+   //入力チェック(検証)
+    $errors = $contact->validate();
+    //エラーが一つもなければ
+    if(count($errors) === 0){
+        //ContactDAOを使ってDBに保存
+        ContactDAO::insert($contact);
+        $_SESSION['flash_message'] = '問い合わせが登録されました';
+        include_once 'views/contact_complete_view.php';
+        // header('Location: index.php');
+        // exit;
+    }else{ //エラーが一つでもあればセッションにエラー配列を保存
+        $_SESSION['errors'] = $errors;
+        include_once 'views/contact_complete_view.php';
+        // header('location: user_create.php');
+        // exit;
+    }
+    
     $flash_message = $_SESSION['flash_message'];
     $_SESSION['flash_message'] = null;
+
+    //error情報を$errorsでSESSIONから取り出し
+    $errors = $_SESSION['errors'];
+    //セッションに保存されたエラー情報を破棄
+    $_SESSION['errors'] = null;
+
       
     include_once 'views/contact_complete_view.php';

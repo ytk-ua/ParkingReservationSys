@@ -20,4 +20,30 @@
             $this->subject = $subject;
             $this->body = $body;
         }
+        //入力チェックをするメソッド
+        public function validate(){
+            //エラー情報を格納する配列作成
+            $errors = array();
+            //名前が入力されていなければ
+            if($this->name === ''){
+                $errors[] = '名前を入力してください';
+            }
+            //emailが入力されていなければ
+            if($this->email === ''){
+                $errors[] = 'メールアドレスを入力してください';
+            }
+            //telが入力されていなければ
+            if($this->tel === ''){
+                $errors[] = '電話番号を入力してください';
+            }
+           //件名が入力されていなければ
+            if($this->subject === ''){
+                $errors[] = '件名を入力してください';
+            }
+           //本文が入力されていなければ
+            if($this->body === ''){
+                $errors[] = 'お問い合わせ内容を入力してください';
+            }
+            return $errors;
+        }        
     }

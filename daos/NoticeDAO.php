@@ -76,23 +76,21 @@
             return $notice;             
         }
         
-        //$id番目のユーザー情報を更新
-        public static function update($user, $id){
+        //$id番目のお知らせ情報を更新
+        public static function update($notice, $id){
             // 例外処理
             try{
                 // データベースに接続して万能の神様誕生
                 $pdo = self::get_connection();
                 // 具体的な値はあいまいにしたまま UPDATE文の実行準備
-                $stmt = $pdo->prepare('UPDATE users SET name=:name, room_no=:room_no, account=:account, password=:password, email=:email, tel=:tel WHERE id=:id');
+                $stmt = $pdo->prepare('UPDATE notices SET regist_date=:regist_date, title=:title, overview=:overview, link_url=:link_url, image=:image WHERE id=:id');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':name', $user->name, PDO::PARAM_STR);
-                $stmt->bindValue(':room_no', $user->room_no, PDO::PARAM_INT);
-                $stmt->bindValue(':account', $user->account, PDO::PARAM_STR);
-                $stmt->bindValue(':password', $user->password, PDO::PARAM_STR);
-                $stmt->bindValue(':email', $user->email, PDO::PARAM_STR);
-                $stmt->bindValue(':tel', $user->tel, PDO::PARAM_STR);
-                $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-                
+                $stmt->bindValue(':regist_date', $notice->regist_date, PDO::PARAM_STR);
+                $stmt->bindValue(':title', $notice->title, PDO::PARAM_STR);
+                $stmt->bindValue(':overview', $notice->overview, PDO::PARAM_STR);
+                $stmt->bindValue(':link_url', $notice->link_url, PDO::PARAM_STR);
+                $stmt->bindValue(':image', $notice->image, PDO::PARAM_STR);
+                $stmt->bindValue(':id', $id, PDO::PARAM_INT);                
                 // UPDATE文本番実行
                 $stmt->execute();
                 

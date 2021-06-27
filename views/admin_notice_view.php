@@ -16,6 +16,14 @@
     <?php if($flash_message !== null): ?>
     <p><?= $flash_message ?></p>
     <?php endif; ?>
+
+    <?php if($errors !== null): ?>
+    <ul>
+    <?php foreach($errors as $error ): ?>
+        <li><?= $error ?></li>
+    <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
     
     <p>新規お知らせ登録</p>
  
@@ -43,7 +51,7 @@
     <?php else: ?>
     <?php foreach($notices as $notice): ?>
     <ul>
-        <li>ID:<a href="show_notice.php?id=<?= $notice->id ?>"><?= $notice->id ?></a></li>
+        <li>ID:<?= $notice->id ?></li>
         <li>登録日：<?= $notice->regist_date ?></li>
         <li>タイトル：<?= $notice->title ?></a></li>
         <li>概要：<?= $notice->overview ?></li>

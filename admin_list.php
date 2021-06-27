@@ -7,7 +7,7 @@
     
     $flash_message = $_SESSION['flash_message'];
     $_SESSION['flash_message'] = null;
-
+    
     $flash_message2 = $_SESSION['flash_message2'];
     $_SESSION['flash_message2'] = null;
     

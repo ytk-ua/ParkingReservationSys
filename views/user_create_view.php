@@ -7,7 +7,15 @@
     </head>
 <body>
     <h1>新規ユーザー登録</h1>
- 
+
+    <?php if($errors !== null): ?>
+    <ul>
+    <?php foreach($errors as $error ): ?>
+        <li><?= $error ?></li>
+    <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+
     <form action="user_store.php" method="POST">
         名前： <input type="text" name="name"><br>
         部屋番号： <input type="number" name="room_no" min="101" max="3020" step="10"><br>

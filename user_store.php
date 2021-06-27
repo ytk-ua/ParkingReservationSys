@@ -15,9 +15,25 @@
     $user = new User($name, $room_no, $account, $password, $email, $tel);
     // var_dump($user);
     
-    //UserDAOを使ってDBに保存
-    UserDAO::insert($user);
-    $_SESSION['flash_message'] = $name . 'さんが追加されました';
+    //入力チェック(検証)
+    $errors = $user->validate();
+    
+    //エラーが一つもなければ
+    if(count($errors) === 0){
+        //UserDAOを使ってDBに保存
+        UserDAO::insert($user);
+        $_SESSION['flash_message'] = $name . 'さんが追加されました';
+        // index.phpへ移動(リダイレクト)
+        header('Location: index.php');
+        exit;
+    
+    }else{ //エラーが一つでもあればセッションにエラー配列を保存
+        $_SESSION['errors'] = $errors;
+
+        //画面遷移
+        header('location: user_create.php');
+        exit;
+    }
 
     $_SESSION['login_user'] = $user;
     

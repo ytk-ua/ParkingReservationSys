@@ -8,6 +8,14 @@
 <body>
     <h1><?= $admin->name ?>さんの登録情報編集</h1>
  
+    <?php if($errors !== null): ?>
+    <ul>
+    <?php foreach($errors as $error ): ?>
+        <li><?= $error ?></li>
+    <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+    
     <form action="update_admin.php" method="POST">
         名前： <input type="text" name="name" value="<?= $admin->name ?>"><br>
         アカウント名： <input type="text" name="account" value="<?= $admin->account ?>"><br>

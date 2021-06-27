@@ -12,11 +12,25 @@
     //Userクラスの新しいインスタンス生成
     $admin = new Admin($name, $account, $password, $email);
     // var_dump($admin);
+ 
+    //入力チェック(検証)
+    $errors = $admin->validate();
+    //エラーが一つもなければ
+    if(count($errors) === 0){
+        //UserDAOを使ってDBに保存
+        AdminDAO::insert($admin);
+        $_SESSION['flash_message'] = $name . 'さんが追加されました';
+        // index.phpへ移動(リダイレクト)
+        header('Location: admin_list.php');
+        exit;
     
-    //UserDAOを使ってDBに保存
-    AdminDAO::insert($admin);
-    
-    $_SESSION['flash_message'] = $name . 'さんが追加されました';
+    }else{ //エラーが一つでもあればセッションにエラー配列を保存
+        $_SESSION['errors'] = $errors;
+        //画面遷移
+        header('location: admin_create.php');
+        exit;
+    }
+
     // $_SESSION['login_admin'] = $admin;
     
     // 画面遷移（管理者登録情報ページへ）

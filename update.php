@@ -14,12 +14,30 @@
     //Userクラスの新しいインスタンス生成
     $user = new User($name, $room_no, $account, $password, $email, $tel);
     // var_dump($user);
+
+    //入力チェック(検証)
+    $errors = $user->validate();
     
-    // $_SESSION['user'] = $user;
-    //UserDAOを使ってDBに保存
-    UserDAO::update($user, $id);
+    //エラーが一つもなければ
+    if(count($errors) === 0){
+        //UserDAOを使ってDBに保存
+        UserDAO::update($user, $id);
+        $_SESSION['flash_message'] = $name . 'さんの情報を更新しました。';
+        header('location: show.php?id=' . $id);
+        exit;
     
-    $_SESSION['flash_message'] = $name . 'さんの情報を更新しました。';
+    }else{ //エラーが一つでもあればセッションにエラー配列を保存
+        $_SESSION['errors'] = $errors;
+
+        header('location: show.php?id=' . $id);
+        exit;
+    }
+
+    // // $_SESSION['user'] = $user;
+    // //UserDAOを使ってDBに保存
+    // UserDAO::update($user, $id);
+    
+    // $_SESSION['flash_message'] = $name . 'さんの情報を更新しました。';
     
     // 画面遷移（show.phpへ）
     header('location: show.php?id=' . $id);
