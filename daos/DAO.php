@@ -9,8 +9,8 @@
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
             );
             // データベース(rsv_sys)を操作する万能の神様誕生(PDO:PHP Database Object)
-            $pdo = new PDO('mysql:host=mysql1.php.xdomain.ne.jp;dbname=xd038993_rsv', 'xd038993_rsv', 'xfreeyuta0914', $options);
-            // $pdo = new PDO('mysql:host=localhost;dbname=rsv_sys', 'root', '', $options);
+            // $pdo = new PDO('mysql:host=mysql1.php.xdomain.ne.jp;dbname=xd038993_rsv', 'xd038993_rsv', 'xfreeyuta0914', $options);
+            $pdo = new PDO('mysql:host=localhost;dbname=rsv_sys', 'root', '', $options);
             // 神様、はいあげる
             return $pdo;
         }

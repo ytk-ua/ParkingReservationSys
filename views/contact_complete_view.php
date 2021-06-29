@@ -11,13 +11,13 @@
     </head>
 <body>
     <h1>お問い合わせ内容登録</h1>
-
-   <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    
+    <?php if($flash_message !== null): ?>
+        <p><?= $flash_message ?></p>
     <?php endif; ?>
-
-   <?php if($send_message !== null): ?>
-    <p><?= $send_message ?></p>
+    
+    <?php if($send_message !== null): ?>
+        <p><?= $send_message ?></p>
     <?php endif; ?>
     
     <?php if($errors !== null): ?>
@@ -47,7 +47,7 @@
         </tr>
     </table>
 
-    <p><a href="">確認用メールを送る</a></p>
-    <p><a href="top.php">マイページトップに戻る</a></p>
+    <!--<p><a href="">確認用メールを送る</a></p>-->
+    <p><a href="top.php">トップページに戻る</a></p>
 </body>
 </html>

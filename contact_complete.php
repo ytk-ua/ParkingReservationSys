@@ -104,7 +104,7 @@
     //mail 送信
     if(mb_send_mail($to, $subject2, $content2, $mailfrom)){
         mb_send_mail($mailto, $subject, $content, $mailfrom);
-        $_SESSION['send_message'] = 'メールの送信しました';
+        $_SESSION['send_message'] = 'メールを送信しました';
         // header('Location: form.php');
         exit;
     } else {
