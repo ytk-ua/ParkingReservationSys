@@ -2,6 +2,7 @@
     //(C)
     require_once 'daos/NoticeDAO.php';
     require_once 'daos/UserDAO.php';
+    // require_once 'filters/access_filter.php';
     session_start();
 
     //NoticeDAOを使ってデータベースから全お知らせ情報を取得

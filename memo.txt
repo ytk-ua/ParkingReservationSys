@@ -1,24 +1,20 @@
 ＜エラー・対応予定内容＞
 [未対応]
-・ユーザー/管理者の利用実績のページ作成
-　->ユーザー用にTotalと月ごとの金額を算出する表を作成
-　->管理者用に利用実績の集計とグラフ表示機能
-・ログイン画面で”次回からアカウント名の入力を省略する”の機能をまだつけていない。
-・予約の修正。
-　・日またぎできない。
-　・現在時刻以降の予約しかできない様に修正（過去の予約はできなくする）
-　・表示を30分単位に変える。
-　・重複して予約ができない様に予約済みを弾く方法を考える。
-	　→予約の表から予約を直接する？（この場合、長期の予約はいちいち登録手間）
-	　→予約した内容がDBでNGかどうかをチェックして、NGを返すとか。カーシェア予約的にやる感じ。
-・”reservation_list.php”で削除ボタンを押した後に、"delete_reservation.php"を経由し、
-　”reservation_list.php”に戻ってきた際には、予約の一覧が消えてしまうのはなぜか？
-・登録済みの予約を編集する際に”edit_reservation.php”にて駐車場の番号の選択が表示されなくなる。
-・登録済みの予約を編集する際に管理者側から入ると”edit_reservation.php”にてユーザーの情報が表示されなくなる。
-・問い合わせ画面でメールアドレス（確認用）があるが、違う内容を入れてもチェックされるように機能をまだつけていない。
 ・メール機能
 　->問い合わせページ（ユーザー：確認メール送信機能付与、管理者：返信機能付与）
   ->予約完了時に予約確認メール自動送付機能
+・ユーザー/管理者の利用実績のページ作成
+　->ユーザー用にTotalと月ごとの金額を算出する表を作成
+　  ReservationDAO find３とか以下を参照して、指定づきのデータを取得できないか。
+　  https://www.searchlight8.com/mysql-year-month-date_format/
+　->管理者用に利用実績の集計とグラフ表示機能
+・ログイン画面で”次回からアカウント名の入力を省略する”の機能をまだつけていない。
+・予約の修正。
+　・現在時刻以降の予約しかできない様に修正（過去の予約はできなくする）
+　・表示を30分単位に変える。
+・”reservation_list.php”で削除ボタンを押した後に、"delete_reservation.php"を経由し、
+　”reservation_list.php”に戻ってきた際には、予約の一覧が消えてしまうのはなぜか？
+・問い合わせ画面でメールアドレス（確認用）があるが、違う内容を入れてもチェックされるように機能をまだつけていない。
 
 ・登録情報のValidation
 　・"問い合わせ登録"が正常完了した時に、'問い合わせが登録されました'が表示されない。
@@ -29,7 +25,7 @@
     各ページにLogin-filterを入れる必要があるのか？
 ・お知らせ
 　・編集で画像の入れ替えと削除ができない。
-・ページのアクセスカウンターつける？
+・ページのアクセスカウンター途中まで作成したがinsertが上手くいかず保留。
 ・HTML/CSS/ハンバーガーメニュー
 ・サイトマップとかデータベース設計を最新を反映して修正
 ・”ReservationDAO"の"find3"でなぜ”':end_date', $start_date,”ではなく、
@@ -179,6 +175,15 @@ create table admins(
     account varchar(255) not null unique,
     password varchar(255) not null,
     email varchar(255),
+    created_at timestamp default CURRENT_TIMESTAMP
+);
+
+<"accesses"テーブル[DB：rsv_sys]>
+create table accesses(
+    id int auto_increment primary key,
+    name varchar(255),
+    visited_time varchar(255),
+    url varchar(255),
     created_at timestamp default CURRENT_TIMESTAMP
 );
 

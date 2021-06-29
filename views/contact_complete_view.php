@@ -16,6 +16,10 @@
     <p><?= $flash_message ?></p>
     <?php endif; ?>
 
+   <?php if($send_message !== null): ?>
+    <p><?= $send_message ?></p>
+    <?php endif; ?>
+    
     <?php if($errors !== null): ?>
     <ul>
     <?php foreach($errors as $error ): ?>

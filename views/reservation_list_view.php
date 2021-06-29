@@ -30,8 +30,8 @@
         <li>備考/連絡事項：<?= $reservation->remarks ?></li>
     </ul>
     
-    
-        <p><a href="edit_reservation.php?id=<?= $reservation->id ?>">編集</a></p>
+        <!--編集しなくても一度予約削除でも可能なので、今回は編集機能をOFFにしておく。-->
+        <!--<p><a href="edit_reservation.php?id=<?= $reservation->id ?>">編集</a></p>-->
     <p>
         <form action="delete_reservation.php" method="POST">
         <input type="hidden" name="id" value="<?= $reservation->id ?>">

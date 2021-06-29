@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `accesses`
+--
+
+DROP TABLE IF EXISTS `accesses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accesses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `visited_time` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accesses`
+--
+
+LOCK TABLES `accesses` WRITE;
+/*!40000 ALTER TABLE `accesses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `accesses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `admins`
 --
 
@@ -31,7 +57,7 @@ CREATE TABLE `admins` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +66,7 @@ CREATE TABLE `admins` (
 
 LOCK TABLES `admins` WRITE;
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (1,'admin0','admin0','admin0','admin0@gmail.com','2021-06-20 13:37:04'),(2,'admin1','admin1','admin1','admin1@gmail.com','2021-06-20 13:47:17'),(4,'admin2','admin2','admin2','admin2@gmail.com','2021-06-20 14:41:13');
+INSERT INTO `admins` VALUES (1,'admin0','admin0','admin0','admin0@gmail.com','2021-06-20 13:37:04'),(2,'admin1','admin1','admin1','admin1@gmail.com','2021-06-20 13:47:17'),(5,'admin2','admin2','admin2','admin2@gmail.com','2021-06-26 15:47:10'),(6,'admin3','admin3','admin3','admin3@gmail.com','2021-06-26 15:49:40'),(7,'admin4','admin4','admin4','admin4@gmail.com','2021-06-27 07:47:31');
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +87,7 @@ CREATE TABLE `contacts` (
   `body` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +96,7 @@ CREATE TABLE `contacts` (
 
 LOCK TABLES `contacts` WRITE;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-INSERT INTO `contacts` VALUES (19,21,'akashiya sanma','akashiya@gmail.com','09033244224','駐車場料金について','料金の確認方法をおしえてください。','2021-06-19 08:10:11'),(21,21,'tokunaga yutaka','tokunaga@gmail.com','09012345433','ユーザー登録について','新規にユーザー登録する方法を教えてください。','2021-06-19 08:11:40'),(23,0,'','','','','','2021-06-20 16:08:21'),(24,0,'tokunaga yutaka','ytk-ua@docomo.ne.jp','00000','TEST','そうしんテスト','2021-06-20 16:15:41'),(25,0,'tokunaga yutaka','ytk-ua@docomo.ne.jp','09000000','TEST','そうしんテスト','2021-06-20 16:22:59'),(26,0,'tokunaga yutaka','ytk-ua@docomo.ne.jp','0900000','TEST','そうしんテスト','2021-06-20 16:35:22'),(27,0,'tokunaga yutaka','ytk-ua@docomo.ne.jp','090111111','TEST','そうしんテスト','2021-06-20 16:42:52'),(28,0,'','ytk-ua@docomo.ne.jp','','TEST','そうしんテスト','2021-06-20 16:46:18'),(29,0,'','ytk-ua@docomo.ne.jp','','TEST','そうしんテスト','2021-06-20 16:48:13');
+INSERT INTO `contacts` VALUES (19,21,'akashiya sanma','akashiya@gmail.com','09033244224','駐車場料金について','料金の確認方法をおしえてください。','2021-06-19 08:10:11'),(21,21,'tokunaga yutaka','tokunaga@gmail.com','09012345433','ユーザー登録について','新規にユーザー登録する方法を教えてください。','2021-06-19 08:11:40'),(25,0,'tokunaga yutaka','ytk-ua@docomo.ne.jp','09000000','TEST','そうしんテスト','2021-06-20 16:22:59'),(30,0,'tanaka','tanaka@gmail.com','090000000','未登録ユーザーからのと合わせ','登録していなくても問い合わせ可能なのか？','2021-06-26 16:46:40'),(31,0,'tanaka2','tanaka2@gmail.com','09031131','未登録ユーザーからのと合わせ2','ユーザーとううろくしてない人からの質問です。','2021-06-26 16:49:48'),(32,19,'tokunaga yutaka','tokunaga@gmail.com','090-1234-5678','登録済みユーザーからの質問','登録されていると登録情報やIDはきちんと表示されるのでしょうか？','2021-06-26 16:51:45');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +116,7 @@ CREATE TABLE `notices` (
   `image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +125,7 @@ CREATE TABLE `notices` (
 
 LOCK TABLES `notices` WRITE;
 /*!40000 ALTER TABLE `notices` DISABLE KEYS */;
-INSERT INTO `notices` VALUES (7,'2021-06-14','駐車場料金確定のお知らせ','5月分の料金が確定しました。料金詳細はメールでご案内しました。','index.php','item07.jpg','2021-06-13 15:54:34'),(8,'2021-06-15','駐車場Park1の料金改定のお知らせ','駐車場Park１の料金が7月から変更になります。','admin_parking.php','item03.jpg','2021-06-13 15:55:36'),(9,'2021-06-13','ユーザー情報登録のお願い','マイページにてユーザー情報の登録をお願いします。','index.php','item01.jpg','2021-06-13 15:57:24'),(11,'2021-06-21','初めまして','TEST','TSE','','2021-06-20 14:43:42');
+INSERT INTO `notices` VALUES (7,'2021-06-14','駐車場料金確定のお知らせ','5月分の料金が確定しました。料金詳細はメールでご案内しました。','index.php','item07.jpg','2021-06-13 15:54:34'),(8,'2021-06-15','駐車場Park1の料金改定のお知らせ','駐車場Park１の料金が7月から変更になります。','admin_parking.php','item03.jpg','2021-06-13 15:55:36'),(9,'2021-06-13','ユーザー情報登録のお願い','マイページにてユーザー情報の登録をお願いします。','index.php','item01.jpg','2021-06-13 15:57:24'),(12,'2021-06-28','連絡事項','こんにちは','index.php',NULL,'2021-06-26 17:31:37'),(13,'2021-06-28','追加連絡','追加の連絡の詳細かくにん','index.php','','2021-06-27 08:58:57');
 /*!40000 ALTER TABLE `notices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +146,7 @@ CREATE TABLE `parkings` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `parking_name` (`parking_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +155,7 @@ CREATE TABLE `parkings` (
 
 LOCK TABLES `parkings` WRITE;
 /*!40000 ALTER TABLE `parkings` DISABLE KEYS */;
-INSERT INTO `parkings` VALUES (1,'Park1',600,'toshima1-1-1','2m×4m','終日利用可能','2021-06-07 13:41:12'),(4,'Park2',500,'toshima1-1-1','2m×4m','途中で入出庫あります','2021-06-07 13:44:01'),(5,'Park3',400,'toshima1-1-1','３m×６m','なし','2021-06-07 14:01:11');
+INSERT INTO `parkings` VALUES (1,'Park1',600,'toshima1-1-1','2m×4m','終日利用可能','2021-06-07 13:41:12'),(4,'Park2',500,'toshima1-1-1','2m×4m','途中で入出庫あります','2021-06-07 13:44:01'),(5,'Park3',400,'toshima1-1-1','３m×６m','なし','2021-06-07 14:01:11'),(6,'Park4',500,'toshima1-1-1','2m×3m','障がい者対応','2021-06-27 07:31:55');
 /*!40000 ALTER TABLE `parkings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +192,7 @@ CREATE TABLE `reservations` (
 
 LOCK TABLES `reservations` WRITE;
 /*!40000 ALTER TABLE `reservations` DISABLE KEYS */;
-INSERT INTO `reservations` VALUES (15,19,1,'2021-06-13','10:00:00','2021-06-13','17:00:00','tokunaga@gmail.com','090-1234-5678','なし','2021-06-13 01:26:40'),(16,19,1,'2021-06-14','07:30:00','2021-06-15','08:30:00','tokunaga@gmail.com','090-1234-5678','終日利用可能','2021-06-13 01:28:59'),(17,19,4,'2021-06-13','10:00:00','2021-06-13','15:00:00','tokunaga@gmail.com','090-1234-5678','なし','2021-06-13 01:33:30'),(18,19,5,'2021-06-13','14:30:00','2021-06-13','17:30:00','tokunaga@gmail.com','090-1234-5678','なし','2021-06-13 02:19:54'),(19,21,5,'2021-06-14','12:00:00','2021-06-15','12:00:00','akashiya@gmail.com','03-3242-4342','終日利用','2021-06-13 02:33:45'),(21,20,4,'2021-06-16','04:00:00','2021-06-16','10:30:00','yamada@gmail.com','090-2222-2222','なし','2021-06-14 13:52:04'),(22,19,1,'2021-06-13','11:30:00','2021-06-13','22:00:00','tokunaga@gmail.com','090-1234-5678','終日利用可能','2021-06-14 14:46:01'),(23,24,1,'2021-06-16','21:00:00','2021-06-17','20:00:00','shima@gmail.com','090000','終日利用','2021-06-16 10:22:15'),(24,19,4,'2021-06-19','17:00:00','2021-06-19','22:30:00','tokunaga@gmail.com','090-1234-5678','終日利用可能','2021-06-19 07:29:07'),(25,19,1,'2021-06-21','00:00:00','2021-06-21','10:00:00','tokunaga@gmail.com','090-1234-5678','','2021-06-21 14:55:50'),(26,19,4,'2021-06-21','04:00:00','2021-06-21','10:00:00','tokunaga@gmail.com','090-1234-5678','','2021-06-21 15:00:35'),(27,19,4,'2021-06-20','01:00:00','2021-06-20','02:00:00','tokunaga@gmail.com','090-1234-5678','','2021-06-21 15:01:09'),(28,21,4,'2021-06-22','01:00:00','2021-06-22','10:00:00','akashiya@gmail.com','03-3242-4342','','2021-06-21 15:05:15');
+INSERT INTO `reservations` VALUES (19,21,5,'2021-06-14','12:00:00','2021-06-15','12:00:00','akashiya@gmail.com','03-3242-4342','終日利用','2021-06-13 02:33:45'),(21,20,4,'2021-06-16','04:00:00','2021-06-16','10:30:00','yamada@gmail.com','090-2222-2222','なし','2021-06-14 13:52:04'),(23,24,1,'2021-06-16','21:00:00','2021-06-17','20:00:00','shima@gmail.com','090000','終日利用','2021-06-16 10:22:15'),(24,19,4,'2021-06-19','17:00:00','2021-06-19','22:30:00','tokunaga@gmail.com','090-1234-5678','終日利用可能','2021-06-19 07:29:07'),(25,19,1,'2021-06-21','00:00:00','2021-06-21','10:00:00','tokunaga@gmail.com','090-1234-5678','','2021-06-21 14:55:50'),(26,19,4,'2021-06-21','04:00:00','2021-06-21','10:00:00','tokunaga@gmail.com','090-1234-5678','','2021-06-21 15:00:35'),(27,19,4,'2021-06-20','01:00:00','2021-06-20','02:00:00','tokunaga@gmail.com','090-1234-5678','','2021-06-21 15:01:09'),(28,21,4,'2021-06-22','01:00:00','2021-06-22','10:00:00','akashiya@gmail.com','03-3242-4342','','2021-06-21 15:05:15');
 /*!40000 ALTER TABLE `reservations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,7 +214,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,7 +223,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (19,'tokunaga yutaka',335,'Y.tokunaga','tokunaga','tokunaga@gmail.com','090-1234-5678','2021-06-06 15:30:49'),(20,'yamada tarou',444,'T.yamada','yamada','yamada@gmail.com','090-2222-2222','2021-06-06 15:32:06'),(21,'akashiya sanma',521,'S.akashiya','akashiya','akashiya@gmail.com','03-3242-4342','2021-06-11 16:22:26'),(22,'suzuki ichiro',501,'I.suzuki','suzuki','suzuki@gmail.com','090-1232-3442','2021-06-11 16:35:04'),(23,'yoshioka mei',101,'M.yoshioka','yoshioka','yoshioka@gmail.com','090-3434-5656','2021-06-11 16:46:53'),(24,'shima',101,'Y.shima','shima','shima@gmail.com','090000','2021-06-16 10:21:30');
+INSERT INTO `users` VALUES (19,'tokunaga yutaka',335,'Y.tokunaga','tokunaga','tokunaga@gmail.com','090-1234-5678','2021-06-06 15:30:49'),(20,'yamada tarou',444,'T.yamada','yamada','yamada@gmail.com','090-2222-2222','2021-06-06 15:32:06'),(21,'akashiya sanma',521,'S.akashiya','akashiya','akashiya@gmail.com','03-3242-4342','2021-06-11 16:22:26'),(22,'suzuki ichiro',501,'I.suzuki','suzuki','suzuki@gmail.com','090-1232-3442','2021-06-11 16:35:04'),(23,'yoshioka mei',101,'M.yoshioka','yoshioka','yoshioka@gmail.com','090-3434-5656','2021-06-11 16:46:53'),(24,'shima',101,'Y.shima','shima','shima@gmail.com','090000','2021-06-16 10:21:30'),(25,'kato cha',101,'C.kato','kato','kato@gmail.com','09001111','2021-06-27 03:34:47');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -210,4 +236,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-22 15:31:35
+-- Dump completed on 2021-06-28 12:59:47

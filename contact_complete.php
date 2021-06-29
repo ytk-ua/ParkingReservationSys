@@ -5,6 +5,8 @@
     require_once 'daos/ParkingDAO.php';
     require_once 'daos/ContactDAO.php';
     require_once 'models/User.php';
+    //メールアドレスの読み込み
+    require_once 'contact_address.php';
     session_start();
     //login_check.phpでSESSIONにいれたログインユーザー情報を引き出す
     $login_user = $_SESSION['login_user'];
@@ -30,6 +32,9 @@
     // $tel = $login_user->tel;
     $subject = $_POST['subject'];
     $body = $_POST['body'];
+    
+    // お問い合わせ日時
+    $request_datetime = date("Y年m月d日 H時i分s秒");
     
     //Contactクラスの新しいインスタンス生成
     $contact = new Contact($user_id, $name, $email, $tel, $subject, $body);
@@ -60,5 +65,54 @@
     //セッションに保存されたエラー情報を破棄
     $_SESSION['errors'] = null;
 
-      
+    //自動返信メール
+    $mailto = $_POST['email'];
+    $to = AdminMailAddress; 
+    $mailfrom = "From:" . AdminMailAddress; 
+    $subject = "お問い合わせ有難うございます。";
+ 
+    $content = "";
+    $content .= $name . " 様\r\n";
+    $content .= "お問い合わせ有難うございます。\r\n";
+    $content .= "お問い合わせ内容は下記通りでございます。\r\n";
+    $content .= "=================================\r\n";
+    $content .= "お名前	      " . htmlspecialchars($name) . "\r\n";
+    $content .= "メールアドレス   " . htmlspecialchars($email) . "\r\n";
+    $content .= "電話番号   " . htmlspecialchars($tel) . "\r\n";
+    $content .= "タイトル   " . htmlspecialchars($subject) . "\r\n";
+    $content .= "お問い合わせ内容   " . htmlspecialchars($body) . "\r\n";
+    $content .= "お問い合わせ日時   " . $request_datetime . "\r\n";
+    $content .= "=================================\r\n";
+ 
+    //管理者確認用メール
+    $subject2 = $name . " 様よりお問い合わせがありました。";
+    $content2 = "";
+    $content2 .= $name . " 様よりお問い合わせがありました。\r\n";
+    $content2 .= "お問い合わせ内容は下記通りです。\r\n";
+    $content2 .= "=================================\r\n";
+    $content2 .= "お名前	      " . htmlspecialchars($name) . "\r\n";
+    $content2 .= "メールアドレス   " . htmlspecialchars($email) . "\r\n";
+    $content2 .= "電話番号   " . htmlspecialchars($tel) . "\r\n";
+    $content2 .= "タイトル   " . htmlspecialchars($subject) . "\r\n";
+    $content2 .= "内容   " . htmlspecialchars($body) . "\r\n";
+    $content2 .= "お問い合わせ日時   " . $request_datetime . "\r\n";
+    $content2 .= "================================="."\r\n";
+     
+    mb_language("ja");
+    mb_internal_encoding("UTF-8");
+    
+    //mail 送信
+    if(mb_send_mail($to, $subject2, $content2, $mailfrom)){
+        mb_send_mail($mailto, $subject, $content, $mailfrom);
+        $_SESSION['send_message'] = 'メールの送信しました';
+        // header('Location: form.php');
+        exit;
+    } else {
+        header('Content-Type: text/html; charset=UTF-8');
+        echo "メールの送信に失敗しました";
+    };
+
+    $send_message = $_SESSION['send_message'];
+    $_SESSION['send_message'] = null;
+
     include_once 'views/contact_complete_view.php';

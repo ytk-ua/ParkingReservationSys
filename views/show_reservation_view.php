@@ -14,7 +14,7 @@
 
     <ul>
         <li>ID:<?= $reservation->id ?></a></li>
-        <li>ユーザーID：<?= $reservation->user_mul ?></li>
+        <li>ユーザーID：<?= $reservation->user_id ?></li>
         <li>駐車場ID：<?= $reservation->parking_id ?></li>
         <li>予約開始日：<?= $reservation->start_date ?></li>
         <li>予約開始時間：<?= $reservation->start_time ?></li>
@@ -24,20 +24,21 @@
         <li>電話番号：<?= $reservation->tel ?></li>
         <li>備考/連絡事項：<?= $reservation->remarks ?></li>
     </ul>
-    
-        <p><a href="edit_reservation.php?id=<?= $reservation->id ?>">編集</a></p>
+ 
+         <!--編集しなくても一度予約削除でも可能なので、今回は編集機能をOFFにしておく。-->
+        <!--<p><a href="edit_reservation.php?id=<?= $reservation->id ?>">編集</a></p>-->
     <p>
-        <form action="delete_reserve.php" method="POST">
-        <input type="hidden" name="id" value="<?= $reserve->id ?>">
-        <input type="hidden" name="user_mul" value="<?= $reserve->user_mul ?>">
-        <input type="hidden" name="parking_mul" value="<?= $reserve->parking_mul ?>">
+        <form action="delete_reservation.php" method="POST">
+        <input type="hidden" name="id" value="<?= $reservation->id ?>">
+        <input type="hidden" name="user_id" value="<?= $reservation->user_id ?>">
+        <input type="hidden" name="parking_id" value="<?= $reservation->parking_id ?>">
         <button type="submit">削除</button>
         </form>
-    </p>
+    </p>    
     
-    <h2>利用実績</h2>
+    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">前のページに戻る</a>
 
-    <p><a href="admin_user.php">ユーザー管理に戻る</a></p>
-    <p><a href="admin.php">管理者ページトップに戻る</a></p>
+    <!--<p><a href="admin_user.php">ユーザー管理に戻る</a></p>-->
+    <!--<p><a href="admin.php">管理者ページトップに戻る</a></p>-->
 </body>
 </html>
