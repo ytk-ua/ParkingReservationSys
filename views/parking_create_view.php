@@ -17,8 +17,8 @@
     <?php endif; ?>
     
     <form action="parking_store.php" method="POST">
-        駐車場名： <input type="text" name="parking_name"><br>
-        料金[30分]： <input type="number" name="price"><br>
+        駐車場名(必須)： <input type="text" name="parking_name"><br>
+        料金[30分](必須)： <input type="number" name="price"><br>
         場所： <input type="text" name="address"><br>
         サイズ： <input type="text" name="size"><br>
         備考/連絡事項： <input type="text" name="remarks"><br>

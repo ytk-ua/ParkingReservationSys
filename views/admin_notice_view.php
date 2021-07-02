@@ -28,8 +28,8 @@
     <p>新規お知らせ登録</p>
  
     <form action="admin_notice_store.php" method="POST" enctype="multipart/form-data">
-        登録日： <input type="date" name="regist_date"><br>
-        タイトル： <input type="text" name="title"><br>
+        登録日(必須)： <input type="date" name="regist_date"><br>
+        タイトル(必須)： <input type="text" name="title"><br>
         概要： <input type="text" name="overview"><br>
         リンクURL： <input type="text" name="link_url"><br>
         画像： <input type="file" name="image"><br>

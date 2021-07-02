@@ -18,8 +18,8 @@
  
     <form action="update_notice.php" method="POST" enctype="multipart/form-data">
         ID:<?= $notice->id ?><br>
-        登録日： <input type="date" name="regist_date" value="<?= $notice->regist_date ?>"><br>
-        タイトル： <input type="text" name="title" value="<?= $notice->title ?>"><br>
+        登録日(必須)： <input type="date" name="regist_date" value="<?= $notice->regist_date ?>"><br>
+        タイトル(必須)： <input type="text" name="title" value="<?= $notice->title ?>"><br>
         概要： <input type="text" name="overview" value="<?= $notice->overview ?>"><br>
         リンクURL： <input type="text" name="link_url" value="<?= $notice->link_url ?>"><br>
         画像： <input type="file" name="image" value="<?= $notice->image ?>"><br>

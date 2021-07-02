@@ -4,7 +4,7 @@
     require_once 'daos/ReservationDAO.php';
     session_start();
     $login_user = $_SESSION['login_user'];
-    var_dump($_POST);
+    // var_dump($_POST);
     $id = $_POST['id'];
     // print $id;
     // $parking_id = $_POST['parking_id'];
