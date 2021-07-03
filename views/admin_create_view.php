@@ -23,8 +23,8 @@
     <form action="admin_store.php" method="POST">
         名前(必須)： <input type="text" name="name"><br>
         アカウント名(必須)： <input type="text" name="account"><br>
-        パスワード(必須)： <input type="password" name="password"><br>
-        メールアドレス： <input type="email" name="email"><br>
+        パスワード(必須)： <input type="password" name="password" required><br>
+        メールアドレス： <input type="email" name="email" required><br>
         <input type="reset" value="リセットする"><br>
         <input type="submit" value="登録">
     </form>

@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>駐車場予約システム</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!--ヘッダー-->
+<header>
+    <a href="index.php"><img src="images/logo.png" alt="Parking Reservation System" class="logo"></a>
+    <h2><a href="login.php" class="login_link">ログイン・新規ユーザー登録</a></h2>
+    <h2><a href="admin_login.php" class="login_link">管理者用<br>ログイン</a></h2>
+    <nav id="global_navi">
+        <ul>
+            <li class="current"><a href="index.php">HOME</a></li>
+            <li><a href = about.php>システム概要</a></li>
+            <li><a href = guide.php>ご利用ガイド</a></li>
+            <li><a href = contact.php>お問合せ</a></li>
+        </ul>
+    </nav>
+</header>
+<!--/ヘッダー-->
+
+<!--メインビジュアル画像-->
+<div id="main visual">
+    <p><img src="images/main_visual.png" alt="マンション駐車場利用予約システム"></p>
+</div>
+<!--/メインビジュアル画像-->
     <h1>マンション駐車場利用予約システム</h1>
     
     <?php if($flash_message !== null): ?>
@@ -21,8 +43,7 @@
         <li><a href = contact.php>お問合せ</a></li>
     </ul>
     
-    <p>【お知らせ】</p>
-    
+    <h2>お知らせ</h2>
     <?php if(count($notices) === 0): ?>
     <p>登録されたお知らせはありません</p>
     <?php else: ?>
@@ -31,6 +52,20 @@
         <dd><a href="show_notice.php?id=<?= $notice->id ?>"><?= $notice->title ?></a></dd>
     <?php endforeach; ?>
     <?php endif; ?>
+
+<!--フッター-->
+<footer>
+    <div id="footer_nav">
+        <ul>
+            <li class="current"><a href="index.php">HOME</a></li>
+            <li><a href = about.php>システム概要</a></li>
+            <li><a href = guide.php>ご利用ガイド</a></li>
+            <li><a href = contact.php>お問合せ</a></li>
+        </ul>
+    </div>
+    <small>&copy; 2021 ParkingReservationSystem</small>
+</footer>
+<!--/フッター-->
 
 </body>
 </html>

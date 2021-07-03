@@ -29,8 +29,7 @@
         <li><a href = contact.php>お問合せ</a></li>
     </ul>
     
-    <p>【お知らせ】</p>
-    
+    <h2>お知らせ</h2>
     <?php if(count($notices) === 0): ?>
     <p>登録されたお知らせはありません</p>
     <?php else: ?>

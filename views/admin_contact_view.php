@@ -7,6 +7,7 @@
 <body>
     <h1>問い合わせ管理</h1>
 
+    <!--<link rel="stylesheet" href="css/style.css">-->
     <style>
         table, tr, th, td {
             border: solid 2px;
