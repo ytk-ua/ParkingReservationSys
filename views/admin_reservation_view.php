@@ -36,7 +36,7 @@
     </ul>
     <?php endforeach; ?>
     <?php endif; ?>
-    <p><a href="reservation_create.php">新規予約登録</a></p>
+    <!--<p><a href="reservation_create.php">新規予約登録</a></p>-->
     
     <p><a href="admin.php">管理者ページトップ</a></p>
     <p><a href="index.php">ログアウト</a></p>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?= $admin->name ?>さんの登録情報編集</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     </head>
 <body>
     <h1><?= $admin->name ?>さんの登録情報編集</h1>
@@ -17,12 +17,19 @@
     <?php endif; ?>
     
     <form action="update_admin.php" method="POST">
-        名前(必須)： <input type="text" name="name" value="<?= $admin->name ?>"><br>
-        アカウント名(必須)： <input type="text" name="account" value="<?= $admin->account ?>"><br>
-        パスワード(必須)： <input type="password" name="password" value="<?= $admin->password ?>"><br>
-        メールアドレス： <input type="email" name="email" value="<?= $admin->email ?>"><br>
-        <input type="hidden" name="id" value="<?= $admin->id ?>">
-        <input type="submit" value="更新">
+        <dl>
+            <dt>名前<span class="must">※必須</span></dt>
+            <dd><input type="text" name="name" value="<?= $admin->name ?>"></dd>
+            <dt>アカウント名<span class="must">※必須</span></dt>
+            <dd><input type="text" name="account" value="<?= $admin->account ?>"></dd>
+            <dt>パスワード<span class="must">※必須</span></dt>
+            <dd><input type="password" name="password" value="<?= $admin->password ?>"></dd>
+            <dt>メールアドレス</dt>
+            <dd><input type="email" name="email" value="<?= $admin->email ?>"></dd>
+        </dl>
+            <input type="hidden" name="id" value="<?= $admin->id ?>">
+            <input type="reset" value="リセットする"><br>
+            <input type="submit" value="更新">
     </form>
     <p><a href="admin.php">キャンセル</a></p>
 </body>

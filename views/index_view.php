@@ -9,9 +9,13 @@
 
 <!--ヘッダー-->
 <header>
-    <a href="index.php"><img src="images/logo.png" alt="Parking Reservation System" class="logo"></a>
-    <h2><a href="login.php" class="login_link">ログイン・新規ユーザー登録</a></h2>
-    <h2><a href="admin_login.php" class="login_link">管理者用<br>ログイン</a></h2>
+    <a href="index.php"><img src="images/logo.png" alt="Parking Reservation System" id="logo"></a>
+    <div id="header_button">
+    <ul>
+        <li><a href="admin_login.php" class="login_admin">管理者用<br>ログイン</a></li>
+        <li><a href="login.php" class="login_user">ログイン・新規ユーザー登録</a></li>
+    </ul>
+    </div>
     <nav id="global_navi">
         <ul>
             <li class="current"><a href="index.php">HOME</a></li>
@@ -23,8 +27,10 @@
 </header>
 <!--/ヘッダー-->
 
+<!--メイン-->
+<div id="main">
 <!--メインビジュアル画像-->
-<div id="main visual">
+<div id="main_visual">
     <p><img src="images/main_visual.png" alt="マンション駐車場利用予約システム"></p>
 </div>
 <!--/メインビジュアル画像-->
@@ -43,15 +49,22 @@
         <li><a href = contact.php>お問合せ</a></li>
     </ul>
     
-    <h2>お知らせ</h2>
-    <?php if(count($notices) === 0): ?>
-    <p>登録されたお知らせはありません</p>
-    <?php else: ?>
-    <?php foreach($notices as $notice): ?>
-        <dt><?= $notice->regist_date ?></dt>
-        <dd><a href="show_notice.php?id=<?= $notice->id ?>"><?= $notice->title ?></a></dd>
-    <?php endforeach; ?>
-    <?php endif; ?>
+    <section id="notices">
+        <h2>お知らせ</h2>
+        <?php if(count($notices) === 0): ?>
+        <p>登録されたお知らせはありません</p>
+        <?php else: ?>
+        <dl>
+        <?php foreach($notices as $notice): ?>
+            <dt><?= $notice->regist_date ?></dt>
+            <dd><a href="show_notice.php?id=<?= $notice->id ?>"><?= $notice->title ?></a></dd>
+        <?php endforeach; ?>
+        <?php endif; ?>
+        </dl>    
+    </section>
+
+</div>
+<!--/メイン-->
 
 <!--フッター-->
 <footer>

@@ -16,9 +16,9 @@
     $this_year = date("Y");
     $this_month = date("m");
     $last_month = date("m", strtotime('-1 month'));
-    print $this_year;    
-    print $this_month;
-    print $last_month;    
+    // print $this_year;    
+    // print $this_month;
+    // print $last_month;    
 
     //DAOを使って＄user_id番のユーザーの予約登録情報を降順に並び替えてDBから持ってくる
     $reservations = ReservationDAO::find5($user_id);

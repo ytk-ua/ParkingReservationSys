@@ -227,7 +227,7 @@
     <p class="total">駐車場予約一覧の合計金額：¥<?= total_price($reservations)?>、合計利用時間：<?= total_time($reservations)?>時間</p>
 
 
-    <p><a href="top.php">マイページトップに戻る</a></p>
+    <p><a href="admin.php">管理者ページトップ</a></p>
     <p><a href="logout.php">ログアウト</a></p>
 </body>
 </html>

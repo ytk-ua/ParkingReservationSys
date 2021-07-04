@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>お知らせ管理</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <h1>お知らせ管理</h1>
@@ -28,13 +29,20 @@
     <p>新規お知らせ登録</p>
  
     <form action="admin_notice_store.php" method="POST" enctype="multipart/form-data">
-        登録日(必須)： <input type="date" name="regist_date"><br>
-        タイトル(必須)： <input type="text" name="title"><br>
-        概要： <input type="text" name="overview"><br>
-        リンクURL： <input type="text" name="link_url"><br>
-        画像： <input type="file" name="image"><br>
-        <input type="reset" value="リセットする"><br>
-        <input type="submit" value="登録">
+        <dl>
+            <dt>登録日<span class="must">※必須</span></dt>
+            <dd><input type="date" name="regist_date"></dd>
+            <dt>タイトル<span class="must">※必須</span></dt>
+            <dd><input type="text" name="title"></dd>
+            <dt>概要<span class="must">※必須</span></dt>
+            <dd><input type="text" name="overview"></dd>
+            <dt>リンクURL</dt>
+            <dd><input type="text" name="link_url"></dd>
+            <dt>画像</dt>
+            <dd><input type="file" name="image"></dd>
+        </dl>
+            <input type="reset" value="リセットする"><br>
+            <input type="submit" value="登録">
     </form>
 
     <p>お知らせ一覧</p>

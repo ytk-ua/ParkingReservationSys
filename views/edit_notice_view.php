@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ID<?= $notice->id ?>番目の登録情報編集</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     </head>
 <body>
     <h1>ID<?= $notice->id ?>番目の登録情報編集</h1>
@@ -17,16 +17,24 @@
     <?php endif; ?>
  
     <form action="update_notice.php" method="POST" enctype="multipart/form-data">
-        ID:<?= $notice->id ?><br>
-        登録日(必須)： <input type="date" name="regist_date" value="<?= $notice->regist_date ?>"><br>
-        タイトル(必須)： <input type="text" name="title" value="<?= $notice->title ?>"><br>
-        概要： <input type="text" name="overview" value="<?= $notice->overview ?>"><br>
-        リンクURL： <input type="text" name="link_url" value="<?= $notice->link_url ?>"><br>
-        画像： <input type="file" name="image" value="<?= $notice->image ?>"><br>
-        <li><img src="upload/<?= $notice->image ?>"></li>
-        <input type="hidden" name="id" value="<?= $notice->id ?>">
-        <input type="reset" value="リセットする"><br>
-        <input type="submit" value="登録">
+         <dl>
+            <dt>ID</dt>
+            <dd><?= $notice->id ?></dd>
+            <dt>登録日<span class="must">※必須</span></dt>
+            <dd><input type="date" name="regist_date" value="<?= $notice->regist_date ?>"></dd>
+            <dt>タイトル<span class="must">※必須</span></dt>
+            <dd><input type="text" name="title" value="<?= $notice->title ?>"></dd>
+            <dt>概要<span class="must">※必須</span></dt>
+            <dd><input type="text" name="overview" value="<?= $notice->overview ?>"></dd>
+            <dt>リンクURL</dt>
+            <dd><input type="text" name="link_url" value="<?= $notice->link_url ?>"></dd>
+            <dt>画像</dt>
+            <dd><input type="file" name="image" value="<?= $notice->image ?>"></dd>
+            <li><img src="upload/<?= $notice->image ?>"></li>
+            <input type="hidden" name="id" value="<?= $notice->id ?>">
+        </dl>
+            <input type="reset" value="リセットする"><br>
+            <input type="submit" value="登録">
     </form>
     
     <p><a href="admin_notice.php">キャンセル</a></p>

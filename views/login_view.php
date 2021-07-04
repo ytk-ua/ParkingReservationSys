@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン・新規ユーザー登録</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!--ヘッダー-->
+<header>
+    <a href="index.php"><img src="images/logo.png" alt="Parking Reservation System" id="logo"></a>
+    <div id="header_button">
+    <ul>
+        <li><a href="admin_login.php" class="login_admin">管理者用<br>ログイン</a></li>
+        <li><a href="login.php" class="login_user">ログイン・新規ユーザー登録</a></li>
+    </ul>
+    </div>
+    <nav id="global_navi">
+        <ul>
+            <li class="current"><a href="index.php">HOME</a></li>
+            <li><a href = about.php>システム概要</a></li>
+            <li><a href = guide.php>ご利用ガイド</a></li>
+            <li><a href = contact.php>お問合せ</a></li>
+        </ul>
+    </nav>
+</header>
+<!--/ヘッダー-->
+
+<!--メイン-->
+<div id="main">
+
     <h1>ログイン・新規ユーザー登録</h1>
+    <h2>ログイン</h2>
     <p>ログインするには以下のアカウント名、パスワードを入力してください。<br>
         初めての方は「新規ユーザー登録」をクリックしてください</p>
     <form action="login_check.php" method="POST">
@@ -21,8 +46,30 @@
     </form>
         
     <p>パスワードをお忘れの方</p>
+
+    <h2>新規ユーザー登録</h2>
+    <p>初めての方は「新規ユーザー登録」をクリックしてください</p>
+
     <p><a href="user_create.php">新規ユーザー登録</a></p>
     
     <p><a href="index.php">キャンセル</a></p>
+
+</div>
+<!--/メイン-->
+
+<!--フッター-->
+<footer>
+    <div id="footer_nav">
+        <ul>
+            <li class="current"><a href="index.php">HOME</a></li>
+            <li><a href = about.php>システム概要</a></li>
+            <li><a href = guide.php>ご利用ガイド</a></li>
+            <li><a href = contact.php>お問合せ</a></li>
+        </ul>
+    </div>
+    <small>&copy; 2021 ParkingReservationSystem</small>
+</footer>
+<!--/フッター-->
+
 </body>
 </html>

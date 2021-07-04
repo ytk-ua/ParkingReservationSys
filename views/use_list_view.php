@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>利用実績管理</title>
+    <link rel="stylesheet" href="css/style.css">
     <style>
         table, tr, th, td {
             border: solid 2px;
@@ -13,6 +14,29 @@
     </style>    
 </head>
 <body>
+<!--ヘッダー-->
+<header>
+    <a href="index.php"><img src="images/logo.png" alt="Parking Reservation System" id="logo"></a>
+    <div id="header_button">
+    <ul>
+        <li><a href="logout.php" class="user_logout">ログアウト</a></li>
+        <li><a href="edit.php?id=<?= $login_user->id ?>" class="user_edit">登録情報編集</a></li>
+    </ul>
+    </div>
+    <nav id="global_navi">
+        <ul>
+            <li><a href="top.php">HOME</a></li>
+            <li><a href="search_vacant.php">空き状況確認</a></li>
+            <li><a href="reservation_list.php?id=<?= $login_user->id ?>">予約確認</a></li>
+            <li class="current"><a href="use_list.php?id=<?= $login_user->id ?>">利用実績確認</a></li>
+        </ul>
+    </nav>
+</header>
+<!--/ヘッダー-->
+
+<!--メイン-->
+<div id="main">    
+
     <h1>利用実績管理</h1>
     <h2>利用実績の一覧</h2>
     
@@ -128,7 +152,25 @@
     <?php endforeach; ?>
     </table>
  
-    <p><a href="top.php">マイページトップに戻る</a></p>
-    <p><a href="logout.php">ログアウト</a></p>
+    <!--<p><a href="top.php">マイページトップに戻る</a></p>-->
+    <!--<p><a href="logout.php">ログアウト</a></p>-->
+    
+</div>
+<!--/メイン-->
+
+<!--フッター-->
+<footer>
+    <div id="footer_nav">
+        <ul>
+            <li class="current"><a href="index.php">HOME</a></li>
+            <li><a href = about.php>システム概要</a></li>
+            <li><a href = guide.php>ご利用ガイド</a></li>
+            <li><a href = contact.php>お問合せ</a></li>
+        </ul>
+    </div>
+    <small>&copy; 2021 ParkingReservationSystem</small>
+</footer>
+<!--/フッター-->
+    
 </body>
 </html>
