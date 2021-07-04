@@ -40,31 +40,47 @@
     <?php if(count($reservations) === 0): ?>
     <p>予約登録情報はありません</p>
     <?php else: ?>
+       <table>
+            <tr>
+                <th>ID</th>
+                <th>ユーザーID</th>
+                <th>駐車場名</th>
+                <th>予約開始日</th>
+                <th>予約開始時間</th>
+                <th>予約終了日</th>
+                <th>予約終了時間</th>
+                <th>メールアドレス</th>
+                <th>電話番号</th>
+                <th>備考/連絡事項</th>
+                <th>削除</th>
+            </tr>
     <?php foreach($reservations as $reservation): ?>
-    <ul>
-        <li>ID:<a href="show_reservation.php?id=<?= $reservation->id ?>"><?= $reservation->id ?></a></li>
-        <li>ユーザーID：<?= $reservation->user_id ?></li>
-        <li>駐車場ID：<?= $reservation->parking_id ?></li>
-        <li>予約開始日：<?= $reservation->start_date ?></li>
-        <li>予約開始時間：<?= $reservation->start_time ?></li>
-        <li>予約終了日：<?= $reservation->end_date ?></li>
-        <li>予約終了時間：<?= $reservation->end_time ?></li>
-        <li>メールアドレス：<?= $reservation->email ?></li>
-        <li>電話番号：<?= $reservation->tel ?></li>
-        <li>備考/連絡事項：<?= $reservation->remarks ?></li>
-    </ul>
-    
+    <?php $parking = ParkingDAO::find($reservation->parking_id) ?>
+
+            <tr>
+                <td><a href="show_reservation.php?id=<?= $reservation->id ?>"><?= $reservation->id ?></a></td>
+                <td><?= $reservation->user_id ?></td>
+                <td><?= $parking->parking_name ?></td>
+                <td><?= $reservation->start_date ?></td>
+                <td><?= $reservation->start_time ?></td>
+                <td><?= $reservation->end_date ?></td>
+                <td><?= $reservation->end_time ?></td>
+                <td><?= $reservation->email ?></td>
+                <td><?= $reservation->tel ?></td>
+                <td><?= $reservation->remarks ?></td>
+                <td>
+                    <form action="delete_reservation.php" method="POST">
+                    <input type="hidden" name="id" value="<?= $reservation->id ?>">
+                    <input type="hidden" name="user_id" value="<?= $reservation->user_id ?>">
+                    <input type="hidden" name="parking_id" value="<?= $reservation->parking_id ?>">
+                    <button type="submit">削除</button>
+                    </form>
+                </td>
+            </tr>
         <!--編集しなくても一度予約削除でも可能なので、今回は編集機能をOFFにしておく。-->
         <!--<p><a href="edit_reservation.php?id=<?= $reservation->id ?>">編集</a></p>-->
-    <p>
-        <form action="delete_reservation.php" method="POST">
-        <input type="hidden" name="id" value="<?= $reservation->id ?>">
-        <input type="hidden" name="user_id" value="<?= $reservation->user_id ?>">
-        <input type="hidden" name="parking_id" value="<?= $reservation->parking_id ?>">
-        <button type="submit">削除</button>
-        </form>
-    </p>
     <?php endforeach; ?>
+    </table>    
     <?php endif; ?>
 
 <!--    <p><a href="top.php">マイページトップに戻る</a></p>-->
@@ -77,7 +93,7 @@
 <footer>
     <div id="footer_nav">
         <ul>
-            <li class="current"><a href="index.php">HOME</a></li>
+            <li><a href = top.php>HOME</a></li>
             <li><a href = about.php>システム概要</a></li>
             <li><a href = guide.php>ご利用ガイド</a></li>
             <li><a href = contact.php>お問合せ</a></li>

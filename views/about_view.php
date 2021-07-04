@@ -18,7 +18,7 @@
     </div>
     <nav id="global_navi">
         <ul>
-            <li><a href="index.php">HOME</a></li>
+            <li><a href="top.php">HOME</a></li>
             <li class="current"><a href = about.php>システム概要</a></li>
             <li><a href = guide.php>ご利用ガイド</a></li>
             <li><a href = contact.php>お問合せ</a></li>
@@ -48,7 +48,7 @@
     <!--    <li><a href = contact.php>お問合せ</a></li>-->
     <!--</ul>-->
     
-    <p><a href="top.php">トップページに戻る</a></p>
+    <!--<p><a href="top.php">トップページに戻る</a></p>-->
 </div>
 <!--/メイン-->
 
@@ -56,7 +56,7 @@
 <footer>
     <div id="footer_nav">
         <ul>
-            <li class="current"><a href="index.php">HOME</a></li>
+            <li><a href = top.php>HOME</a></li>
             <li><a href = about.php>システム概要</a></li>
             <li><a href = guide.php>ご利用ガイド</a></li>
             <li><a href = contact.php>お問合せ</a></li>

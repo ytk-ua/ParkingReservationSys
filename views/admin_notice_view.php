@@ -4,15 +4,40 @@
     <meta charset="UTF-8">
     <title>お知らせ管理</title>
     <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <h1>お知らせ管理</h1>
-
     <style>
     img{
         width:  100px;
     }
     </style>
+</head>
+<body>
+
+<!--ヘッダー-->
+<header>
+    <a href="index.php"><img src="images/logo.png" alt="Parking Reservation System" id="logo"></a>
+    <div id="header_button">
+    <ul>
+        <li><a href="logout_admin.php" class="admin_logout">ログアウト</a></li>
+        <li><a href="admin_list.php" class="admin_list">管理者情報管理</a></li>
+    </ul>
+    </div>
+    <nav id="global_navi_admin">
+        <ul>
+            <li><a href="admin.php">HOME</a></li>
+            <li><a href="admin_user.php">ユーザー管理</a></li>
+            <li><a href="admin_parking.php">駐車場管理</a></li>
+            <li><a href="admin_reservation.php">予約管理</a></li>
+            <li><a href="admin_use.php">利用実績管理</a></li>        
+            <li class="current"><a href="admin_notice.php">お知らせ管理</a></li>
+            <li><a href="admin_contact.php">問合せ管理</a></li>
+        </ul>
+    </nav>
+</header>
+<!--/ヘッダー-->
+
+<!--メイン-->
+<div id="main">    
+    <h1>お知らせ管理</h1>
     
     <?php if($flash_message !== null): ?>
     <p><?= $flash_message ?></p>
@@ -26,7 +51,7 @@
     </ul>
     <?php endif; ?>
     
-    <p>新規お知らせ登録</p>
+    <h2>新規お知らせ登録</h2>
  
     <form action="admin_notice_store.php" method="POST" enctype="multipart/form-data">
         <dl>
@@ -44,8 +69,10 @@
             <input type="reset" value="リセットする"><br>
             <input type="submit" value="登録">
     </form>
+    <br>
 
-    <p>お知らせ一覧</p>
+    <h2>お知らせ一覧</h2>
+    <p>現在登録されているお知らせの一覧です</p>
     
     <!--<p>-->
     <!--    <form action="search_parking.php">-->
@@ -76,7 +103,24 @@
     <?php endforeach; ?>
     <?php endif; ?>
     
-    <p><a href="admin.php">管理者ページトップ</a></p>
-    <p><a href="index.php">ログアウト</a></p>
+    <!--<p><a href="admin.php">管理者ページトップ</a></p>-->
+    <!--<p><a href="index.php">ログアウト</a></p>-->
+    
+</div>
+<!--/メイン-->
+
+<!--フッター-->
+<footer>
+    <div id="footer_nav">
+        <ul>
+            <li><a href = admin.php>HOME</a></li>
+            <li><a href = about.php>システム概要</a></li>
+            <li><a href = guide.php>ご利用ガイド</a></li>
+            <li><a href = contact.php>お問合せ</a></li>
+        </ul>
+    </div>
+    <small>&copy; 2021 ParkingReservationSystem</small>
+</footer>
+<!--/フッター-->    
 </body>
 </html>

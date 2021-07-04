@@ -40,14 +40,19 @@
     <p><?= $flash_message ?></p>
     <?php endif; ?>
 
-    <h2><a href="login.php">ログイン・新規ユーザー登録</a></h2>
-    <h2><a href="admin_login.php">管理者用ログイン</a></h2>
+    <h2>ログイン・新規ユーザー登録</h2>
+    <p>ご利用の方は以下より、ログイン・新規ユーザー登録をお願いします</p>
+    <p><a href="login.php">ログイン・新規ユーザー登録</a></p><br>
+    
+    <h2>管理者用ログイン</a></h2>
+    <p>管理者専用ページです。管理者の方は以下よりお願いします</p>
+    <p><a href="admin_login.php">管理者用ログイン</a></p><br>
 
-    <ul>
-        <li><a href = about.php>システム概要</a></li>
-        <li><a href = guide.php>ご利用ガイド</a></li>
-        <li><a href = contact.php>お問合せ</a></li>
-    </ul>
+    <!--<ul>-->
+    <!--    <li><a href = about.php>システム概要</a></li>-->
+    <!--    <li><a href = guide.php>ご利用ガイド</a></li>-->
+    <!--    <li><a href = contact.php>お問合せ</a></li>-->
+    <!--</ul>-->
     
     <section id="notices">
         <h2>お知らせ</h2>
