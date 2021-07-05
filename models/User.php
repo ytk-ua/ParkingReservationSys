@@ -1,4 +1,5 @@
 <?php
+    require_once 'daos/UserDAO.php';
     //モデル（M）
     class User{
         //プロパティ
@@ -36,6 +37,8 @@
             //アカウント名が入力されていなければ
             if($this->account === ''){
                 $errors[] = 'アカウント名を入力してください';
+            }else if(UserDAO::check_duplicate_account($this->account) === true){
+                $errors[] = 'このアカウント名はすでに使用されています<br>別のアカウント名を入力してください';
             }
             // if(empty($this->account)){
             //     $errors[] = 'アカウント名を入力してください';

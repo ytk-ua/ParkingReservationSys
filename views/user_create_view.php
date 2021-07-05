@@ -41,17 +41,17 @@
     <form action="user_store.php" method="POST">
         <dl>
             <dt>名前<span class="must">※必須</span></dt>
-            <dd><input type="text" name="name" style="width: 80%;"></dd>
+            <dd><input type="text" name="name" value="<?= $user->name ?>" style="width: 80%;"></dd>
             <dt>部屋番号<span class="must">※必須</span></dt>
-            <dd><input type="number" name="room_no" min="101" max="3020" step="10" style="width: 30%;"></dd>
+            <dd><input type="number" name="room_no" min="101" max="3020" step="10"value="<?= $user->room_no ?>" style="width: 30%;"></dd>
             <dt>アカウント名<span class="must">※必須</span></dt>
-            <dd><input type="text" name="account" style="width: 80%;"></dd>
+            <dd><input type="text" name="account" value="<?= $user->account ?>" style="width: 80%;"></dd>
             <dt>パスワード<span class="must">※必須</span></dt>
-            <dd><input type="password" name="password" style="width: 80%;"></dd>
+            <dd><input type="password" name="password" value="<?= $user->password ?>" style="width: 80%;"></dd>
             <dt>メールアドレス</dt>
-            <dd><input type="email" name="email" style="width: 80%;"></dd>
+            <dd><input type="email" name="email" value="<?= $user->email ?>" style="width: 80%;"></dd>
             <dt>電話番号</dt>
-            <dd><input type="text" name="tel" style="width: 80%;"></dd>
+            <dd><input type="text" name="tel" value="<?= $user->tel ?>" style="width: 80%;"></dd>
         </dl>
             <input type="reset" value="リセットする"><br>
             <input type="submit" value="登録">

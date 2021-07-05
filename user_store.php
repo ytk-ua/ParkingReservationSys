@@ -17,6 +17,7 @@
     
     //入力チェック(検証)
     $errors = $user->validate();
+    // var_dump($errors);
     
     //エラーが一つもなければ
     if(count($errors) === 0){
@@ -26,17 +27,18 @@
         // index.phpへ移動(リダイレクト)
         header('Location: index.php');
         exit;
-    
     }else{ //エラーが一つでもあればセッションにエラー配列を保存
         $_SESSION['errors'] = $errors;
+        //入力項目に入力した内容を保持するためにPOSTで受け取った内容で構成した＄userをSessionで共有する
+        $_SESSION['user'] = $user;
 
         //画面遷移
         header('location: user_create.php');
         exit;
     }
 
-    $_SESSION['login_user'] = $user;
+    // $_SESSION['login_user'] = $user;
     
     // 画面遷移（マイページトップへ）
-    header('location: index.php');
-    exit;
+    // header('location: index.php');
+    // exit;
