@@ -39,6 +39,7 @@
 <div id="main">    
     <h1>問い合わせ管理</h1>
     <h2>問い合わせ一覧(新着順表示)</h2>
+    <p>＜備考＞ユーザーIDの表記 『０：未ログインユーザーからの問合せ』、『−９９９：管理者からの返信』</p>
  
     <?php if($flash_message !== null): ?>
     <p><?= $flash_message ?></p>
@@ -75,7 +76,7 @@
             <td align="center"><?= $contact->tel ?></td>
             <td align="left"><?= $contact->subject ?></td>
             <td align="left"><?= $contact->body ?></td>
-            <td><a href="xxx.php?id=<?= $contact->id ?>">返信</a></p>
+            <td><a href="admin_contact_res.php?id=<?= $contact->id ?>">返信</a></p>
             <td><a href="delete_contact.php?id=<?= $contact->id ?>">削除</a></p>
         </tr>
     <?php endforeach; ?>

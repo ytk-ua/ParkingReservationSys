@@ -33,6 +33,15 @@
     <h2>ログイン</h2>
     <p>管理者専用のページです<br>
         ログインするには以下のアカウント名、パスワードを入力してください<br>
+        
+        <?php if($errors !== null): ?>
+        <ul>
+        <?php foreach($errors as $error ): ?>
+            <li><?= $error ?></li>
+        <?php endforeach; ?>
+        </ul>
+        <?php endif; ?> 
+        
         <form action="admin_login_check.php" method="POST">
         アカウント名<br>
         <input type="text" name="account"><br>

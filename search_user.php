@@ -14,7 +14,7 @@
     if($keyword === ''){
         $flash_message = '';
     }else{
-    $flash_message =$keyword . 'で検索しました';
+    $flash_message ='検索キーワード『' . $keyword . '』で検索しました';
     }
     
     //HTML表示

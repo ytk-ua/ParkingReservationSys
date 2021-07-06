@@ -26,6 +26,8 @@
     
     }else{ //エラーが一つでもあればセッションにエラー配列を保存
         $_SESSION['errors'] = $errors;
+        //入力項目に入力した内容を保持するためにPOSTで受け取った内容で構成した＄userをSessionで共有する
+        $_SESSION['admin'] = $admin;
         //画面遷移
         header('location: admin_create.php');
         exit;

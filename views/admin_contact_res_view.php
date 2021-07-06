@@ -6,31 +6,35 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!--ヘッダー-->
+
+<!--ヘッダー-->
 <header>
     <a href="index.php"><img src="images/logo.png" alt="Parking Reservation System" id="logo"></a>
     <div id="header_button">
     <ul>
-        <li><a href="admin_login.php" class="login_admin">管理者用<br>ログイン</a></li>
-        <li><a href="login.php" class="login_user">ログイン・新規ユーザー登録</a></li>
+        <li><a href="logout_admin.php" class="admin_logout">ログアウト</a></li>
+        <li><a href="admin_list.php" class="admin_list">管理者情報管理</a></li>
     </ul>
     </div>
-    <nav id="global_navi">
+    <nav id="global_navi_admin">
         <ul>
-            <li><a href="top.php">HOME</a></li>
-            <li><a href = about.php>システム概要</a></li>
-            <li><a href = guide.php>ご利用ガイド</a></li>
-            <li class="current"><a href = contact.php>お問合せ</a></li>
+            <li><a href="admin.php">HOME</a></li>
+            <li><a href="admin_user.php">ユーザー管理</a></li>
+            <li><a href="admin_parking.php">駐車場管理</a></li>
+            <li><a href="admin_reservation.php">予約管理</a></li>
+            <li><a href="admin_use.php">利用実績管理</a></li>        
+            <li><a href="admin_notice.php">お知らせ管理</a></li>
+            <li><a href="admin_contact.php">問合せ管理</a></li>
         </ul>
     </nav>
 </header>
 <!--/ヘッダー-->
 
 <!--メイン-->
-<div id="main">
-    <h1>お問い合わせ</h1>
-    <h2>お問い合わせ入力フォーム</h2>
-    <p>以下のフォームからお問い合わせください。</p>
+<div id="main">    
+    <h1>問い合わせ返信</h1>
+    <h2>返信入力フォーム</h2>
+    <p>以下のフォームから問い合わせへの返信を入力ください。</p>
 
         <?php if($errors !== null): ?>
         <ul>
@@ -42,38 +46,36 @@
     
         <p><?= $flash_message ?></p>
         
-        <form action="contact_complete.php" method="POST">
-        <?php if($login_user !== null): ?>
+        <form action="admin_contact_res_complete.php" method="POST">
         <dl>
-            <dt>お名前</dt>
-            <dd><?= $login_user->name ?></dd>
-            <dt>Email</dt>
-            <dd><?= $login_user->email ?></dd>
-            <dt>お電話番号</dt>
-            <dd><?= $login_user->tel ?></dd>
+            <!--<dt>お名前<span class="must">※必須</span></dt>-->
+            <!--<dd><input type="text" name="name" value="<?= $contact2->name ?>" placeholder="氏名" style="width: 80%;"></dd>-->
+            <!--<dt>Email<span class="must">※必須</span></dt>-->
+            <!--<dd><input type="email" name="email" value="<?= $contact2->email ?>" placeholder="Emailアドレス" style="width: 80%;"></dd>-->
+            <!--<dt>お電話番号<span class="must">※必須</span></dt>-->
+            <!--<dd><input type="text" name="tel" value="<?= $contact->tel ?>" placeholder="お電話番号（半角英数字-(ハイフン)不要)" style="width: 80%;"></dd>-->
             <dt>件名<span class="must">※必須</span></dt>
-            <dd><input type="text" name="subject" value="<?= $contact->subject ?>" placeholder="件名" style="width: 80%;"></dd>
-            <dt>お問い合わせ内容<span class="must">※必須</span></dt>
-            <dd><input type="text" name="body" value="<?= $contact->body ?>" placeholder="お問い合わせ内容をお書きください" style="width: 80%;"></dd>
-        </dl>            
-        <?php else: ?>
-        <dl>
-            <dt>お名前<span class="must">※必須</span></dt>
-            <dd><input type="text" name="name" value="<?= $contact->name ?>" placeholder="氏名" style="width: 80%;"></dd>
-            <dt>Email<span class="must">※必須</span></dt>
-            <dd><input type="email" name="email" value="<?= $contact->email ?>" placeholder="Emailアドレス" style="width: 80%;"></dd>
-            <dt>お電話番号<span class="must">※必須</span></dt>
-            <dd><input type="text" name="tel" value="<?= $contact->tel ?>" placeholder="お電話番号（半角英数字-(ハイフン)不要)" style="width: 80%;"></dd>
-            <dt>件名<span class="must">※必須</span></dt>
-            <dd><input type="text" name="subject" value="<?= $contact->subject ?>" placeholder="件名" style="width: 80%;"></dd>
-            <dt>お問い合わせ内容<span class="must">※必須</span></dt>
-            <dd><input type="text" name="body" value="<?= $contact->body ?>" placeholder="お問い合わせ内容をお書きください" style="width: 80%;"></dd>
+            <dd><input type="text" name="subject" value="【ご回答】<?= $contact2->subject ?>" placeholder="件名" style="width: 80%;"></dd>
+            <dt>返信内容<span class="must">※必須</span></dt>
+            <dd><input type="text" name="body" value="<?= $contact->body ?>" placeholder="返信内容をお書きください" style="width: 80%;"></dd>
         </dl>
-        <?php endif; ?>
-            <input type="hidden" name="id" value="<?= $login_user->id ?>">
+            <input type="hidden" name="id" value="admin">
             <input type="reset" value="リセット"><br>
             <button type="submit" class="btn btn-primary">送信</button>
         </form>
+    <p>お問い合わせの内容は以下を参照ください。</p>
+        <dl>
+            <dt>お名前</dt>
+            <dd><?= $contact2->name ?></dd>
+            <dt>Email</dt>
+            <dd><?= $contact2->email ?></dd>
+            <dt>お電話番号</dt>
+            <dd><?= $contact2->tel ?></dd>
+            <dt>件名</dt>
+            <dd><?= $contact2->subject ?></dd>
+            <dt>お問い合わせ内容</dt>
+            <dd><?= $contact2->body ?></dd>
+        </dl>            
 
     <!--<h1>お問い合わせフォーム</h1>-->
     <!--<p>以下のフォームからお問い合わせください。</p>-->
@@ -102,7 +104,9 @@
     <!--        <input type="submit" value="送信">-->
     <!--</form>-->
     <br>
-    <p><a href="top.php">トップページに戻る</a></p>
+
+    <p><a href="admin_contact.php">問い合わせ管理に戻る</a></p>
+    <p><a href="admin.php">トップページに戻る</a></p>
 
 </div>
 <!--/メイン-->
@@ -111,7 +115,7 @@
 <footer>
     <div id="footer_nav">
         <ul>
-            <li><a href = top.php>HOME</a></li>
+            <li><a href = admin.php>HOME</a></li>
             <li><a href = about.php>システム概要</a></li>
             <li><a href = guide.php>ご利用ガイド</a></li>
             <li><a href = contact.php>お問合せ</a></li>
@@ -120,5 +124,6 @@
     <small>&copy; 2021 ParkingReservationSystem</small>
 </footer>
 <!--/フッター-->
+</body>
 </body>
 </html>

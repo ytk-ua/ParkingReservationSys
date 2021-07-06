@@ -173,4 +173,52 @@
             return $admin;             
         }
         
+        // 重複するアカウントがデータベースにあるか判定するメソッド
+        public static function check_duplicate_account($account){
+            // 例外処理
+            try{
+                // データベースに接続して万能の神様誕生
+                $pdo = self::get_connection();
+                // 具体的な値はあいまいにしたまま UPDATE文の実行準備
+                $stmt = $pdo->prepare('SELECT * FROM admins WHERE account=:account');
+                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
+                $stmt->bindValue(':account', $account, PDO::PARAM_STR);
+
+                // SELECT文本番実行
+                $stmt->execute();
+
+                // Fetch ModeをUserクラスに設定。マッピング。PHPで使いやすい様に書き換える。
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Admin');
+                // SELECT文の結果を Userクラスのインスタンスに格納。Fetch->抜き出せの意。
+                $admin = $stmt->fetch();
+
+                // そんなユーザーいなければ
+                if($admin === false){
+                    return false;
+                }else{
+                    return true;
+                }
+
+            }catch(PDOException $e){
+            }finally{
+                // 後処理
+                self::close_connection($pdo, $stmt);
+            }
+        }
+
+        //入力チェックをするメソッド
+        public static function login_validate($account, $password){
+            //エラー情報を格納する配列作成
+            $errors = array();
+
+            if($account === ''){
+                $errors[] = 'アカウント名を入力してください';
+            }
+            //パスワードが入力されていなければ
+            if($password === ''){
+                $errors[] = 'パスワードを入力してください';
+            }
+
+            return $errors;
+        }        
     }

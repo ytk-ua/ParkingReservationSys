@@ -11,25 +11,14 @@
     //login_check.phpでSESSIONにいれたログインユーザー情報を引き出す
     $login_user = $_SESSION['login_user'];
     // var_dump($_POST);
+
+    // 問い合わせ内容を＄contact２としてSESSIONから引き出し
+    $contact2 = $_SESSION['contact2'];
     
-    if($login_user !== null){
-        $user_id = $_POST['id'];
-        $name = $login_user->name;
-        $email = $login_user->email;
-        $tel = $login_user->tel;
-    }else{
-        $user_id = '-';
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $tel = $_POST['tel'];
-    }
-    // $name = $_POST['name'];
-    // $name = $login_user->name;
-    // $email = $_POST['email'];
-    // $email = $login_user->email;
-    // $email_check = $_POST['email_check'];
-    // $tel = $_POST['tel'];
-    // $tel = $login_user->tel;
+    $user_id = '-999';
+    $name = $contact2->name;
+    $email = $contact2->email;
+    $tel = $contact2->tel;
     $subject = $_POST['subject'];
     $body = $_POST['body'];
     
@@ -49,7 +38,7 @@
         $_SESSION['flash_message'] = 'お問い合わせが登録されました';
         $flash_message = $_SESSION['flash_message'];
         $_SESSION['flash_message'] = null;  
-        include_once 'views/contact_complete_view.php';
+        include_once 'views/admin_contact_res_complete_view.php';
         // header('Location: index.php');
         // exit;
     }else{ //エラーが一つでもあればセッションにエラー配列を保存
@@ -58,7 +47,7 @@
         $errors = $_SESSION['errors'];
         //セッションに保存されたエラー情報を破棄
         $_SESSION['errors'] = null;
-        include_once 'views/contact_view.php';
+        include_once 'views/admin_contact_res_view.php';
         // header('location: user_create.php');
         // exit;
     }
@@ -67,33 +56,31 @@
     $mailto = $_POST['email'];
     $to = AdminMailAddress; 
     $mailfrom = "From:" . AdminMailAddress; 
-    $subject = "お問い合わせ有難うございます。";
+    $subject = $subject;
  
     $content = "";
     $content .= $name . " 様\r\n";
-    $content .= "お問い合わせ有難うございます。\r\n";
-    $content .= "お問い合わせ内容は下記通りでございます。\r\n";
+    $content .= "お問い合わせ有難うございました。\r\n";
+    $content .= "お問い合わせへのご回答をお送りいたします。\r\n";
     $content .= "=================================\r\n";
-    $content .= "お名前	      " . htmlspecialchars($name) . "\r\n";
-    $content .= "メールアドレス   " . htmlspecialchars($email) . "\r\n";
-    $content .= "電話番号   " . htmlspecialchars($tel) . "\r\n";
     $content .= "タイトル   " . htmlspecialchars($subject) . "\r\n";
-    $content .= "お問い合わせ内容   " . htmlspecialchars($body) . "\r\n";
-    $content .= "お問い合わせ日時   " . $request_datetime . "\r\n";
+    $content .= "ご回答   " . htmlspecialchars($body) . "\r\n";
+    $content .= "ご回答日時   " . $request_datetime . "\r\n";
     $content .= "=================================\r\n";
  
     //管理者確認用メール
-    $subject2 = $name . " 様よりお問い合わせがありました。";
+    $subject2 = $name . " 様へ返信を送付しました。";
     $content2 = "";
-    $content2 .= $name . " 様よりお問い合わせがありました。\r\n";
-    $content2 .= "お問い合わせ内容は下記通りです。\r\n";
+    $content2 .= $name . " 様へ返信を送付しました。\r\n";
+    $content2 .= "返信内容は下記通りです。\r\n";
+    $content2 .= "=================================\r\n";
+    $content2 .= "タイトル   " . htmlspecialchars($subject) . "\r\n";
+    $content2 .= "返信内容   " . htmlspecialchars($body) . "\r\n";
+    $content2 .= "返信日時   " . $request_datetime . "\r\n";
     $content2 .= "=================================\r\n";
     $content2 .= "お名前	      " . htmlspecialchars($name) . "\r\n";
     $content2 .= "メールアドレス   " . htmlspecialchars($email) . "\r\n";
     $content2 .= "電話番号   " . htmlspecialchars($tel) . "\r\n";
-    $content2 .= "タイトル   " . htmlspecialchars($subject) . "\r\n";
-    $content2 .= "内容   " . htmlspecialchars($body) . "\r\n";
-    $content2 .= "お問い合わせ日時   " . $request_datetime . "\r\n";
     $content2 .= "================================="."\r\n";
      
     mb_language("ja");

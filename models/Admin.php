@@ -26,6 +26,8 @@
             //アカウント名が入力されていなければ
             if($this->account === ''){
                 $errors[] = 'アカウント名を入力してください';
+            }else if(AdminDAO::check_duplicate_account($this->account) === true){
+                $errors[] = 'このアカウント名はすでに使用されています<br>別のアカウント名を入力してください';
             }
             //パスワードが入力されていなければ
             if($this->password === ''){

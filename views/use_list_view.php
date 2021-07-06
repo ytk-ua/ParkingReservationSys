@@ -80,7 +80,7 @@
     <?php endforeach; ?>
     </table>
 
-  <p><?= $this_year ?>年<?= $this_month ?>月の利用実績</p>
+  <p>（※修正中）<?= $this_year ?>年<?= $this_month ?>月の利用実績</p>
    <table>
         <tr>
             <th>ユーザーID</th>
@@ -93,7 +93,7 @@
             <th>駐車場料金</th>
             <th>利用料金</th>
         </tr>
-    <?php foreach($reservations1 as $reservation): ?>
+    <?php foreach($reservations as $reservation): ?>
     <?php $start_time = substr($reservation->start_time, 0, 5) ?>
     <?php $end_time = substr($reservation->end_time, 0, 5) ?>
     <?php $timestamp1 = strtotime("$reservation->start_date $reservation->start_time" ) ?>
@@ -116,7 +116,7 @@
     <?php endforeach; ?>
     </table>
 
-  <p><?= $this_year ?>年<?= $last_month ?>月の利用実績</p>
+  <p>（※修正中）<?= $this_year ?>年<?= $last_month ?>月の利用実績</p>
    <table>
         <tr>
             <th>ユーザーID</th>
@@ -129,7 +129,7 @@
             <th>駐車場料金</th>
             <th>利用料金</th>
         </tr>
-    <?php foreach($reservations1 as $reservation): ?>
+    <?php foreach($reservations as $reservation): ?>
     <?php $start_time = substr($reservation->start_time, 0, 5) ?>
     <?php $end_time = substr($reservation->end_time, 0, 5) ?>
     <?php $timestamp1 = strtotime("$reservation->start_date $reservation->start_time" ) ?>
