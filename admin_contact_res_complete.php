@@ -53,7 +53,8 @@
     }
     
     //自動返信メール
-    $mailto = $_POST['email'];
+    // $mailto = $_POST['email'];
+    $mailto = $email;
     $to = AdminMailAddress; 
     $mailfrom = "From:" . AdminMailAddress; 
     $subject = $subject;
