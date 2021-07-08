@@ -72,6 +72,7 @@
             }
         }
                 $start_time = ($hour < 10 ? '0' . $hour : $hour) . ':00:00';
+
                 return '<a href="reservation_create.php?start_date=' . $date . '&start_time=' . $start_time . '&parking_id=' . $parking_id . '">予約可</a>';
         // return '<a href="xx">予約可</a>';
     }

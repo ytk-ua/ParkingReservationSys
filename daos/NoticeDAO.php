@@ -76,8 +76,8 @@
             return $notice;             
         }
         
-        //$id番目のお知らせ情報を更新
-        public static function update($notice, $id){
+        //既存の$noticeのお知らせ情報を更新
+        public static function update($notice){
             // 例外処理
             try{
                 // データベースに接続して万能の神様誕生
@@ -90,7 +90,7 @@
                 $stmt->bindValue(':overview', $notice->overview, PDO::PARAM_STR);
                 $stmt->bindValue(':link_url', $notice->link_url, PDO::PARAM_STR);
                 $stmt->bindValue(':image', $notice->image, PDO::PARAM_STR);
-                $stmt->bindValue(':id', $id, PDO::PARAM_INT);                
+                $stmt->bindValue(':id', $notice->id, PDO::PARAM_INT);
                 // UPDATE文本番実行
                 $stmt->execute();
                 

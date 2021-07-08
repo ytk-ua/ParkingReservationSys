@@ -247,6 +247,44 @@
             // 完成した予約情報、はいあげる
             return $reservations;             
         }
+
+     //parking_id番目の指定した月の駐車場の予約登録情報を全て取得して降順で表示するメソッド
+        public static function find100($user_id, $now, $next){
+          // 例外処理:tryブロック。try chatch最後はcatchで終わる。
+            try{
+
+                // print $user_id  . '<br>';
+                // print $now  . '<br>';
+                // print $next  . '<br>';
+                // データベースに接続して万能の神様誕生。
+                $pdo = self::get_connection();
+                // SELECT文実行準備
+                $stmt = $pdo->prepare('SELECT * FROM reservations WHERE user_id=:user_id AND :now <= start_date AND start_date <= :next order by start_date desc, start_time desc');
+                // print 1 . '<br>';
+                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
+                $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+                // print 2 . '<br>';
+                $stmt->bindValue(':now', $now, PDO::PARAM_STR);
+                // print 3 . '<br>';
+                $stmt->bindValue(':next', $next, PDO::PARAM_STR);
+                // SELECT文本番実行
+                // print 4 . '<br>';
+                $stmt->execute();                
+                // print 5 . '<br>';
+                // Fetch ModeをResereveクラスに設定。マッピング。PHPで使いやすい様に書き換える。
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reservation');
+                // SELECT文の結果を Reserveクラスのインスタンスに格納。Fetch->抜き出せの意。
+                // print 6;
+                $reservations = $stmt->fetchAll();
+                // var_dump($reservations);
+            }catch(PDOException $e){
+            }finally{
+                // 後処理
+                self::close_connection($pdo, $stmt);
+            }
+            // 完成した予約情報、はいあげる
+            return $reservations;             
+        }
         
         //$id番目のユーザー情報を更新
         public static function update($user, $id){
