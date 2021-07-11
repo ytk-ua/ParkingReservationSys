@@ -44,7 +44,7 @@
     <p>＜備考＞ユーザーIDの表記 『０：未ログインユーザーからの問合せ』、『−９９９：管理者からの返信』</p>
  
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
     
     <!--<p>-->

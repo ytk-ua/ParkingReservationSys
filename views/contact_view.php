@@ -35,12 +35,12 @@
         <?php if($errors !== null): ?>
         <ul>
         <?php foreach($errors as $error ): ?>
-        <li><?= $error ?></li>
+        <li class="error"><?= $error ?></li>
         <?php endforeach; ?>
         </ul>
         <?php endif; ?>
     
-        <p><?= $flash_message ?></p>
+        <p class="flash"><?= $flash_message ?></p>
         
         <form action="contact_complete.php" method="POST">
         <?php if($login_user !== null): ?>

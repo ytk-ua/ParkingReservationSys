@@ -37,7 +37,7 @@
     <h1>マンション駐車場利用予約システム</h1>
     
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
     <h2>ログイン・新規ユーザー登録</h2>

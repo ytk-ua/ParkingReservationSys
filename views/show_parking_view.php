@@ -37,13 +37,13 @@
     <h2>登録情報の詳細</h2>
     
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
     <?php if($errors !== null): ?>
     <ul>
     <?php foreach($errors as $error ): ?>
-        <li><?= $error ?></li>
+        <li class="error"><?= $error ?></li>
     <?php endforeach; ?>
     </ul>
     <?php endif; ?>
@@ -54,7 +54,7 @@
         <dt>駐車場名</dt>
         <dd><?= $parking->parking_name ?></dd>
         <dt>料金</dt>
-        <dd><?= $parking->price ?>円/30分</dd>
+        <dd><?= $parking->price ?>円/60分</dd>
         <dt>場所</dt>
         <dd><?= $parking->address ?></dd>
         <dt>サイズ</dt>

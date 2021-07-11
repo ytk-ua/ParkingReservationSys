@@ -6,7 +6,6 @@
     session_start();
     //login_check.phpでSESSIONにいれたログインユーザー情報を引き出す
     $login_user = $_SESSION['login_user'];
-    // var_dump($_POST);
     
     $user_id = $_POST['id'];
     $parking_id = $_POST['parking_id'];
@@ -17,6 +16,8 @@
     $email = $_POST['email'];
     $tel = $_POST['tel'];
     $remarks = $_POST['remarks'];    
+
+    var_dump($_POST);
     
     $id = $_POST['parking_id'];    
     // //DAOを使って＄id番の駐車場情報をDBから持ってくる

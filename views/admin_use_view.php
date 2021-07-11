@@ -51,7 +51,7 @@
     <h2>利用実績の一覧</h2>
     
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
    <p>駐車場予約一覧</p>

@@ -34,7 +34,7 @@
 <div id="main">    
 
     <h1>管理者ページトップ</h1>
-    <p><?= $login_admin->name ?>さん、ようこそ！</p>
+    <p class="session"><?= $login_admin->name ?>さん、ようこそ！</p>
     <h2>管理者専用メニュー</h2>
     <p>管理者専用メニューで各種管理機能が利用可能です<br>
         以下よりご希望のメニューをご利用ください</p>
@@ -49,7 +49,7 @@
     </ul>
 
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
     <!--<p><a href="admin_create.php">新規管理者登録</a></p>-->

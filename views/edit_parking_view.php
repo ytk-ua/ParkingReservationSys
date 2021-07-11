@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title><?= $parking->parking_name ?>の駐車場登録情報編集</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -40,7 +39,7 @@
     <?php if($errors !== null): ?>
     <ul>
     <?php foreach($errors as $error ): ?>
-        <li><?= $error ?></li>
+        <li class="error"><?= $error ?></li>
     <?php endforeach; ?>
     </ul>
     <?php endif; ?>

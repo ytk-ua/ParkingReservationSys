@@ -36,7 +36,7 @@
     <h1>駐車場管理</h1>
 
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
     
     <h2>新規駐車場登録</h2>
@@ -72,7 +72,7 @@
     <tr>
         <td><a href="show_parking.php?id=<?= $parking->id ?>"><?= $parking->id ?></td>
         <td><?= $parking->parking_name ?></td>
-        <td><?= $parking->price ?>円/30分</td>
+        <td><?= $parking->price ?>円/60分</td>
         <td><?= $parking->address ?></td>
         <td><?= $parking->size ?></td>
         <td><?= $parking->remarks ?></td>

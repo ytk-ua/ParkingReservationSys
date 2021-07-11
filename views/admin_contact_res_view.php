@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>お問い合わせ</title>
+    <title>問い合わせ返信</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -39,12 +39,12 @@
         <?php if($errors !== null): ?>
         <ul>
         <?php foreach($errors as $error ): ?>
-        <li><?= $error ?></li>
+        <li class="error"><?= $error ?></li>
         <?php endforeach; ?>
         </ul>
         <?php endif; ?>
     
-        <p><?= $flash_message ?></p>
+        <p class="flash"><?= $flash_message ?></p>
         
         <form action="admin_contact_res_complete.php" method="POST">
         <dl>
@@ -57,7 +57,7 @@
             <dt>件名<span class="must">※必須</span></dt>
             <dd><input type="text" name="subject" value="【ご回答】<?= $contact2->subject ?>" placeholder="件名" style="width: 80%;"></dd>
             <dt>返信内容<span class="must">※必須</span></dt>
-            <dd><textarea id="body" name="body" value="<?= $contact->body ?>" placeholder="お問い合わせ内容をお書きください" style="width: 80%;"></textarea></dd> 
+            <dd><textarea id="body" name="body" value="<?= $contact->body ?>" placeholder="返信内容をお書きください" style="width: 80%;"></textarea></dd> 
         </dl>
             <input type="hidden" name="id" value="admin">
             <input type="reset" value="リセット"><br>
@@ -124,6 +124,5 @@
     <small>&copy; 2021 ParkingReservationSystem</small>
 </footer>
 <!--/フッター-->
-</body>
 </body>
 </html>

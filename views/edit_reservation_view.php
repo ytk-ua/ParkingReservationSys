@@ -7,7 +7,7 @@
     </head>
 <body>
     <h1>予約編集</h1>
-    <p><?= $login_user->name ?>さん、予約の編集が可能です</p>
+    <p class="session"><?= $login_user->name ?>さん、予約の編集が可能です</p>
 
     <form action="update_reserve.php" method="POST">
         開始日時： <input type="date" name="start_date" value="<?= $reservation->start_date ?>"><input type="time" name="start_time" value="<?= $reservation->start_time ?>"><br>

@@ -35,7 +35,7 @@
     if(count($errors) === 0){
         //ContactDAOを使ってDBに保存
         ContactDAO::insert($contact);
-        $_SESSION['flash_message'] = 'お問い合わせが登録されました';
+        $_SESSION['flash_message'] = '返信が登録されました';
         $flash_message = $_SESSION['flash_message'];
         $_SESSION['flash_message'] = null;  
         include_once 'views/admin_contact_res_complete_view.php';

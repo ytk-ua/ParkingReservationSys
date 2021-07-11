@@ -53,7 +53,7 @@
     <!--</p>-->
         
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
     
     <?php if(count($admins) === 0): ?>

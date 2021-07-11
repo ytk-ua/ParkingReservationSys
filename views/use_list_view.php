@@ -41,10 +41,10 @@
     <h2>利用実績の一覧</h2>
     
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
-   <p><?= $login_user->name ?>さんの駐車場利用実績</p>
+   <p class="session"><?= $login_user->name ?>さんの駐車場利用実績</p>
    <table>
         <tr>
             <th>ユーザーID</th>

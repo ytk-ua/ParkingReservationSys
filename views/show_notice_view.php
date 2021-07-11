@@ -38,7 +38,7 @@
     <h2>お知らせ詳細情報</h2>
     
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
          <dl>
@@ -51,10 +51,10 @@
             <dd><?= $notice->title ?></dd>
             <dt>概要</dt>
             <dd><?= $notice->overview ?></dd>
-            <dt>リンクURL</dt>
-            <dd><a href="<?= $notice->link_url ?>"><?= $notice->link_url ?></dd>
             <dt>画像</dt>
             <dd><img src="upload/<?= $notice->image ?>"></dd>
+            <dt>リンクURL</dt>
+            <dd><a href="<?= $notice->link_url ?>"><?= $notice->link_url ?></dd>
         </dl>
         <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">前のページに戻る</a>
 

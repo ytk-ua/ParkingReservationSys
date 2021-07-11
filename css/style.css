@@ -18,6 +18,21 @@ h2 {
     border-left: solid 3px #C09933;
     padding: 4px 9px 4px 14px;
 }
+.error{
+    color: #AA0000;
+    font-style: italic;
+    font-weight:  bolder;
+}
+.flash{
+    color: #C09933;
+    font-style: italic;
+    font-weight:  bolder;
+}
+.session{
+    color: #6f3f1e;
+    font-style: italic;
+    font-weight:  bolder;
+}
 /**/
 
 /*リンクの挙動*/

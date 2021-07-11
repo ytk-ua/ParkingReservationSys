@@ -87,7 +87,7 @@
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM reservations WHERE user_id=:user_id');
+                $stmt = $pdo->prepare('SELECT * FROM reservations WHERE user_id=:user_id order by start_date desc, start_time desc');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
                 // SELECT文本番実行

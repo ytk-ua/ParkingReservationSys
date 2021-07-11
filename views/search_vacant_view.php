@@ -42,13 +42,22 @@
     <h2>空き状況の一覧</h2>
     
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
     
     <?php $today = date("Y年m月d日 H:i"); ?>
-    <P>現在の日時：<?= $today ?></P>
+    <?php $today2 = date("Y-m-d"); ?>
+    <P class="session">現在の日時：<?= $today ?></P>
 
-    <P> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '-1 day')) ?>">前日</a> << <?= $date ?> >> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '+1 day')) ?>">翌日</a></P>
+    <?php if(strtotime($date . '-1 day') < strtotime($today2)): ?>
+    <p><?= $date ?> >> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '+1 day')) ?>">翌日</a></P>
+    <?php else: ?>
+    <P><a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '-1 day')) ?>">前日</a> << 
+    <?= $date ?> >> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '+1 day')) ?>">翌日</a></P>
+    <?php endif; ?>
+
+    <P> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '-1 day')) ?>">前日</a> << <?= $date ?> >> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '+1 day')) ?>">翌日</a>
+    [※デモ用のため過去の予約可能（削除予定）]</p>
 
     <table>
         <tr>

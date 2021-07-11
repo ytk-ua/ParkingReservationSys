@@ -31,10 +31,10 @@
 <div id="main">    
 
 <h1>マイページトップ</h1>
-    <p><?= $login_user->name ?>さん、ようこそ！</p>
+    <p class="session"><?= $login_user->name ?>さん、ようこそ！</p>
     
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
     <h2>駐車場予約利用メニュー</h2>

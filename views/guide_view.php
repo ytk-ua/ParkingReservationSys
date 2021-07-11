@@ -61,7 +61,7 @@
     <?php foreach($parkings as $parking): ?>
         <tr>
             <td><?= $parking->parking_name ?></td>
-            <td><?= $parking->price ?>円/30分</td>
+            <td><?= $parking->price ?>円/60分</td>
             <td><?= $parking->address ?></td>
             <td><?= $parking->size ?></td>
             <td><?= $parking->remarks ?></td>

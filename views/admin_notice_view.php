@@ -48,13 +48,13 @@
     <h1>お知らせ管理</h1>
     
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
     <?php if($errors !== null): ?>
     <ul>
     <?php foreach($errors as $error ): ?>
-        <li><?= $error ?></li>
+        <li class="error"><?= $error ?></li>
     <?php endforeach; ?>
     </ul>
     <?php endif; ?>

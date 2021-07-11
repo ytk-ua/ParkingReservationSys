@@ -53,22 +53,29 @@
             $end_time = (int)substr($reserve->end_time, 0, 2);
             $start_date = $reserve->start_date;
             $end_date = $reserve->end_date;
+            // 予約のユーザー情報表示のためにユーザー情報取得
+            $user = UserDAO::find($reserve->user_id);
+   
             // var_dump($end);
             // 開始と終了が同じ日
             if($start_time <= $hour && ($hour + 1) <= $end_time && strtotime($start_date) == strtotime($end_date)){
-                return $reserve->user_id;
+                return "予約済:" . $user->room_no . "号室";
+                // return $reserve->user_id;
                 // exit;
             } // 開始日が本日、終了日が翌日
             else if(strtotime($start_date) < strtotime($end_date) && $start_time <= $hour && strtotime($start_date) == strtotime($date)){
-                return $reserve->user_id;
+                return "予約済:" . $user->room_no . "号室";
+                // return $reserve->user_id;
                 // exit;
             } // 終了日が本日
             else if(strtotime($end_date) == strtotime($date) && $hour < $end_time && strtotime($start_date) < strtotime($date) && strtotime($start_date) < strtotime($end_date)){
-                return $reserve->user_id;
+                return "予約済:" . $user->room_no . "号室";
+                // return $reserve->user_id;
                 // exit;
             } // 開始日が本日より前、終了日が本日より後
             else if(strtotime($start_date) < strtotime($date) && strtotime($date) < strtotime($end_date)){
-                return $reserve->user_id;
+                return "予約済:" . $user->room_no . "号室";
+                // return $reserve->user_id;
             }
         }
                 $start_time = ($hour < 10 ? '0' . $hour : $hour) . ':00:00';
@@ -76,7 +83,7 @@
                 return '<a href="reservation_create.php?start_date=' . $date . '&start_time=' . $start_time . '&parking_id=' . $parking_id . '">予約可</a>';
         // return '<a href="xx">予約可</a>';
     }
-    
+
     // //HTML表示
     // include_once 'views/search_vacant_view.php';    
     include_once 'views/search_vacant_view.php';

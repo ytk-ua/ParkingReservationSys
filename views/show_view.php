@@ -37,13 +37,13 @@
     <h2>登録情報の詳細</h2>
     
     <?php if($flash_message !== null): ?>
-    <p><?= $flash_message ?></p>
+    <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
     <?php if($errors !== null): ?>
     <ul>
     <?php foreach($errors as $error ): ?>
-        <li><?= $error ?></li>
+        <li class="error"><?= $error ?></li>
     <?php endforeach; ?>
     </ul>
     <?php endif; ?>

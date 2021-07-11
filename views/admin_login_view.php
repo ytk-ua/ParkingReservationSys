@@ -37,7 +37,7 @@
         <?php if($errors !== null): ?>
         <ul>
         <?php foreach($errors as $error ): ?>
-            <li><?= $error ?></li>
+            <li class="error"><?= $error ?></li>
         <?php endforeach; ?>
         </ul>
         <?php endif; ?> 

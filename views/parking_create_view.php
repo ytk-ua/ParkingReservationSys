@@ -39,7 +39,7 @@
      <?php if($errors !== null): ?>
     <ul>
     <?php foreach($errors as $error ): ?>
-        <li><?= $error ?></li>
+        <li class="error"><?= $error ?></li>
     <?php endforeach; ?>
     </ul>
     <?php endif; ?>
@@ -48,7 +48,7 @@
         <dl>
             <dt>駐車場名<span class="must">※必須</span></dt>
             <dd><input type="text" id="parking_name" name="parking_name" placeholder="駐車場名"></dd>
-            <dt>料金[30分]<span class="must">※必須</span></dt>
+            <dt>料金[60分]<span class="must">※必須</span></dt>
             <dd><input type="number" id="price" name="price" placeholder="駐車場料金(30分毎の利用料金)"></dd>
             <dt>場所</dt>
             <dd><input type="text" id="address" name="address" placeholder="駐車場所在地"></dd>
