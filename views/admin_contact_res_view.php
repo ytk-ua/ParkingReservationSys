@@ -57,7 +57,7 @@
             <dt>件名<span class="must">※必須</span></dt>
             <dd><input type="text" name="subject" value="【ご回答】<?= $contact2->subject ?>" placeholder="件名" style="width: 80%;"></dd>
             <dt>返信内容<span class="must">※必須</span></dt>
-            <dd><input type="text" name="body" value="<?= $contact->body ?>" placeholder="返信内容をお書きください" style="width: 80%;"></dd>
+            <dd><textarea id="body" name="body" value="<?= $contact->body ?>" placeholder="お問い合わせ内容をお書きください" style="width: 80%;"></textarea></dd> 
         </dl>
             <input type="hidden" name="id" value="admin">
             <input type="reset" value="リセット"><br>

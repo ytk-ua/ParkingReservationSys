@@ -62,9 +62,9 @@
                 <td><?= $reservation->user_id ?></td>
                 <td><?= $parking->parking_name ?></td>
                 <td><?= $reservation->start_date ?></td>
-                <td><?= $reservation->start_time ?></td>
+                <td><?= substr($reservation->start_time, 0, 5) ?></td>
                 <td><?= $reservation->end_date ?></td>
-                <td><?= $reservation->end_time ?></td>
+                <td><?= substr($reservation->end_time, 0, 5) ?></td>
                 <td><?= $reservation->email ?></td>
                 <td><?= $reservation->tel ?></td>
                 <td><?= $reservation->remarks ?></td>

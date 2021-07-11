@@ -52,18 +52,58 @@
     <?php if(count($reservations) === 0): ?>
     <p>予約登録情報はありません</p>
     <?php else: ?>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>ユーザーID</th>
+            <th>駐車場ID</th>
+            <th>予約開始日</th>
+            <th>予約開始時間</th>
+            <th>予約終了日</th>
+            <th>予約終了時間</th>
+            <th>メールアドレス</th>
+            <th>電話番号</dt>
+            <th>備考/連絡事項</dt>
+            <th>削除</dt>
+        </tr>
     <?php foreach($reservations as $reservation): ?>
-    <ul>
-        <li>ID:<a href="show_reservation.php?id=<?= $reservation->id ?>"><?= $reservation->id ?></a></li>
-        <li>ユーザーID：<?= $reservation->user_id ?></li>
-        <li>駐車場ID：<?= $reservation->parking_id ?></li>
-        <li>予約開始日：<?= $reservation->start_date ?></li>
-        <li>予約開始時間：<?= $reservation->start_time ?></li>
-        <li>予約終了日：<?= $reservation->end_date ?></li>
-        <li>予約終了時間：<?= $reservation->end_time ?></li>
-    </ul>
+    <!--<?php $start_date = $reservation->start_date ?>-->
+
+        <tr>
+            <td><?= $reservation->id ?></td>
+            <!--<td><a href="show_reservation.php?id=<?= $reservation->id ?>"><?= $reservation->id ?></td>-->
+            <td><?= $reservation->user_id ?></td>
+            <td><?= $reservation->parking_id ?></td>
+            <td><?= $reservation->start_date ?></td>
+            <td><?= substr($reservation->start_time, 0, 5) ?></td>
+            <td><?= $reservation->end_date ?></td>
+            <td><?= substr($reservation->end_time, 0, 5) ?></td>
+            <td><?= $reservation->email ?></td>
+            <td><?= $reservation->tel ?></td>
+            <td><?= $reservation->remarks ?></td>
+            <td>
+                <form action="delete_reservation_admin.php" method="POST">
+                <input type="hidden" name="id" value="<?= $reservation->id ?>">
+                <input type="hidden" name="user_id" value="<?= $reservation->user_id ?>">
+                <input type="hidden" name="parking_id" value="<?= $reservation->parking_id ?>">
+                <button type="submit">削除</button>
+                </form>
+            </td>
+            <!--<td><a href="delete_reservation.php?id=<?= $reservation->id ?>">削除</a></p>-->
+        </tr>
     <?php endforeach; ?>
+    </table>
     <?php endif; ?>
+
+    <!--<ul>-->
+    <!--    <li>ID:<a href="show_reservation.php?id=<?= $reservation->id ?>"><?= $reservation->id ?></a></li>-->
+    <!--    <li>ユーザーID：<?= $reservation->user_id ?></li>-->
+    <!--    <li>駐車場ID：<?= $reservation->parking_id ?></li>-->
+    <!--    <li>予約開始日：<?= $reservation->start_date ?></li>-->
+    <!--    <li>予約開始時間：<?= $reservation->start_time ?></li>-->
+    <!--    <li>予約終了日：<?= $reservation->end_date ?></li>-->
+    <!--    <li>予約終了時間：<?= $reservation->end_time ?></li>-->
+    <!--</ul>-->
     <!--<p><a href="reservation_create.php">新規予約登録</a></p>-->
     
     <!--<p><a href="admin.php">管理者ページトップ</a></p>-->

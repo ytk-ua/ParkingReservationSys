@@ -44,19 +44,20 @@
     
     <form action="login_check.php" method="POST">
         アカウント名<br>
-        <input type="text" name="account"><br>
+        <input type="text" name="account" placeholder="アカウント名(半角英数字)" style="width: 30%;"><br>
         <!--<input type="text" name="account" required><br>-->
         パスワード<br>
-        <input type="password" name="password"><br>
+        <input type="password" name="password" placeholder="パスワード(半角英数字)" style="width: 30%;"><br>
         <!--<input type="password" name="password" required><br>-->
         <input type="checkbox" name="login_keep">次回からアカウント名の入力を省略する<br>
 
-        <input type ="submit" value="ログイン">
+        <p id="submit_button"><input type="submit" value="ログイン"></p>
+        
     <!--<p><a href="admin.php">（仮設：管理者ページトップ）</a></p>        -->
         
     </form>
         
-    <p>パスワードをお忘れの方</p>
+    <!--<p>パスワードをお忘れの方</p>-->
 
     <h2>新規ユーザー登録</h2>
     <p>初めての方は「新規ユーザー登録」をクリックしてください</p>

@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         /*table, tr, th, td {*/
-        /*    border: solid 2px;*/
-        /*} */
+        .contact_body, .contact_subject{
+            text-align: left;
+            /*border: solid 2px;*/
+        } 
     </style>    
     </head>
 <body>
@@ -69,13 +71,13 @@
         </tr>
     <?php foreach($contacts as $contact): ?>
         <tr>
-            <td align="center"><?= $contact->id ?></td>
-            <td align="center"><?= $contact->user_id ?></td>
-            <td align="center"><?= $contact->name ?></td>
-            <td align="center"><?= $contact->email ?></td>
-            <td align="center"><?= $contact->tel ?></td>
-            <td align="left"><?= $contact->subject ?></td>
-            <td align="left"><?= $contact->body ?></td>
+            <td><?= $contact->id ?></td>
+            <td><?= $contact->user_id ?></td>
+            <td><?= $contact->name ?></td>
+            <td><?= $contact->email ?></td>
+            <td><?= $contact->tel ?></td>
+            <td class="contact_subject"><?= $contact->subject ?></td>
+            <td class="contact_body"><?= $contact->body ?></td>
             <td><a href="admin_contact_res.php?id=<?= $contact->id ?>">返信</a></p>
             <td><a href="delete_contact.php?id=<?= $contact->id ?>">削除</a></p>
         </tr>

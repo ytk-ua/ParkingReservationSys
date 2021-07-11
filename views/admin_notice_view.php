@@ -8,6 +8,14 @@
     img{
         width:  100px;
     }
+    .notice_title, .notice_overview, .notice_url{
+        text-align: left;
+        } 
+    .notice_date{
+        font-size: 0.7em;
+        } 
+    </style>    
+
     </style>
 </head>
 <body>
@@ -56,15 +64,15 @@
     <form action="admin_notice_store.php" method="POST" enctype="multipart/form-data">
         <dl>
             <dt>登録日<span class="must">※必須</span></dt>
-            <dd><input type="date" name="regist_date"></dd>
+            <dd><input type="date" id="regist_date" name="regist_date"></dd>
             <dt>タイトル<span class="must">※必須</span></dt>
-            <dd><input type="text" name="title"></dd>
+            <dd><input type="text" id="title" name="title" placeholder="お知らせタイトル"></dd>
             <dt>概要<span class="must">※必須</span></dt>
-            <dd><input type="text" name="overview"></dd>
+            <dd><input type="text" id="overview" name="overview" placeholder="お知らせ概要"></dd>
             <dt>リンクURL</dt>
-            <dd><input type="text" name="link_url"></dd>
+            <dd><input type="text" id="link_url" name="link_url" placeholder="リンク先URL"></dd>
             <dt>画像</dt>
-            <dd><input type="file" name="image"></dd>
+            <dd><input type="file" id="image" name="image"></dd>
         </dl>
             <input type="reset" value="リセットする"><br>
             <input type="submit" value="登録">
@@ -84,25 +92,54 @@
     <?php if(count($notices) === 0): ?>
     <p>登録されたお知らせはありません</p>
     <?php else: ?>
+    <table>
+    <tr>
+        <th>ID</th>
+        <th>登録日</th>
+        <th>タイトル</th>
+        <th>概要</th>
+        <th>リンクURL</th>
+        <th>画像</th>
+        <th>編集</th>
+        <th>削除</th>
+    </tr>    
     <?php foreach($notices as $notice): ?>
-    <ul>
-        <li>ID:<?= $notice->id ?></li>
-        <li>登録日：<?= $notice->regist_date ?></li>
-        <li>タイトル：<?= $notice->title ?></a></li>
-        <li>概要：<?= $notice->overview ?></li>
-        <li>リンクURL：<a href="<?= $notice->link_url ?>"><?= $notice->link_url ?></li>
-        <li><img src="upload/<?= $notice->image ?>"></li>
-    </ul>
-    <p><a href="edit_notice.php?id=<?= $notice->id ?>">編集</a></p>
-    <p>
+    <?php $date = $notice->regist_date ?>
+    <tr>
+        <td><?= $notice->id ?></td>
+        <td class="notice_date"><?= date('Y年m月d日', strtotime($date)) ?></td>
+        <!--<td><?= $notice->regist_date ?></td>-->
+        <td class="notice_title"><?= $notice->title ?></td>
+        <td class="notice_overview"><?= $notice->overview ?></td>
+        <td class="notice_url"><a href="<?= $notice->link_url ?>"><?= $notice->link_url ?></td>
+        <td><img src="upload/<?= $notice->image ?>"></td>
+        <td><a href="edit_notice.php?id=<?= $notice->id ?>">編集</a></td>
+        <td>
         <form action="delete_notice.php" method="POST">
         <input type="hidden" name="id" value="<?= $notice->id ?>">
         <button type="submit">削除</button>
         </form>
-    </p>
+        </td>
+    </tr>    
+    <!--<ul>-->
+    <!--    <li>ID:<?= $notice->id ?></li>-->
+    <!--    <li>登録日：<?= $notice->regist_date ?></li>-->
+    <!--    <li>タイトル：<?= $notice->title ?></a></li>-->
+    <!--    <li>概要：<?= $notice->overview ?></li>-->
+    <!--    <li>リンクURL：<a href="<?= $notice->link_url ?>"><?= $notice->link_url ?></li>-->
+    <!--    <li><img src="upload/<?= $notice->image ?>"></li>-->
+    <!--</ul>-->
+    <!--<p><a href="edit_notice.php?id=<?= $notice->id ?>">編集</a></p>-->
+    <!--<p>-->
+    <!--    <form action="delete_notice.php" method="POST">-->
+    <!--    <input type="hidden" name="id" value="<?= $notice->id ?>">-->
+    <!--    <button type="submit">削除</button>-->
+    <!--    </form>-->
+    <!--</p>-->
     <?php endforeach; ?>
+    </table>
     <?php endif; ?>
-    
+
     <!--<p><a href="admin.php">管理者ページトップ</a></p>-->
     <!--<p><a href="index.php">ログアウト</a></p>-->
     

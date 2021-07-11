@@ -96,7 +96,7 @@ CREATE TABLE `contacts` (
 
 LOCK TABLES `contacts` WRITE;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-INSERT INTO `contacts` VALUES (19,21,'akashiya sanma','akashiya@gmail.com','09033244224','駐車場料金について','料金の確認方法をおしえてください。','2021-06-19 08:10:11'),(21,21,'tokunaga yutaka','tokunaga@gmail.com','09012345433','ユーザー登録について','新規にユーザー登録する方法を教えてください。','2021-06-19 08:11:40'),(30,0,'tanaka','tanaka@gmail.com','090000000','未登録ユーザーからのと合わせ','登録していなくても問い合わせ可能なのか？','2021-06-26 16:46:40'),(31,0,'tanaka2','tanaka2@gmail.com','09031131','未登録ユーザーからのと合わせ2','ユーザーとううろくしてない人からの質問です。','2021-06-26 16:49:48'),(32,19,'tokunaga yutaka','tokunaga@gmail.com','090-1234-5678','登録済みユーザーからの質問','登録されていると登録情報やIDはきちんと表示されるのでしょうか？','2021-06-26 16:51:45'),(41,19,'tokunaga yutaka','tokunaga@gmail.com','090-1234-5678','駐車場料金について','テストです','2021-07-06 11:21:46'),(42,0,'yamada','yamada@gmail.com','090---1313','入力エラーチェック','エラー表示チェック','2021-07-06 11:50:46'),(43,0,'yamada tarou','yamada@gmail.com','0901111333','変更後の送信テスト','入力チェック','2021-07-06 12:03:50'),(44,0,'kato cha','kato@gmail.com','09000000','修正確認','exit削除','2021-07-06 12:10:21'),(45,0,'kato cha','kato@gmail.com','09000000','修正確認','exit削除','2021-07-06 12:11:54'),(46,0,'kato chata','kato@gmail.com','00000','chata','chata2','2021-07-06 12:13:52'),(53,0,'kato chata','kato@gmail.com','00000','chata','管理者返信','2021-07-06 14:13:45'),(54,0,'kato chata','kato@gmail.com','00000','chata','管理者返信','2021-07-06 14:15:00'),(55,0,'kato chata','kato@gmail.com','00000','【ご回答】chata','そうしんテスト','2021-07-06 15:04:58'),(56,0,'kato cha','kato@gmail.com','09000000','【ご回答】修正確認','旅行の奇跡','2021-07-06 15:11:21'),(58,-999,'yamada tarou','yamada@gmail.com','0901111333','【ご回答】変更後の送信テスト','444','2021-07-06 15:19:13'),(59,-999,'kato chata','kato@gmail.com','00000','【ご回答】chata','11','2021-07-06 15:19:46');
+INSERT INTO `contacts` VALUES (19,21,'akashiya sanma','akashiya@gmail.com','09033244224','駐車場料金について','料金の確認方法をおしえてください。','2021-06-19 08:10:11'),(21,21,'tokunaga yutaka','tokunaga@gmail.com','09012345433','ユーザー登録について','新規にユーザー登録する方法を教えてください。','2021-06-19 08:11:40'),(30,0,'tanaka','tanaka@gmail.com','090000000','未登録ユーザーからのと合わせ','登録していなくても問い合わせ可能なのか？','2021-06-26 16:46:40'),(31,0,'tanaka2','tanaka2@gmail.com','09031131','未登録ユーザーからのと合わせ2','ユーザーとううろくしてない人からの質問です。','2021-06-26 16:49:48'),(32,19,'tokunaga yutaka','tokunaga@gmail.com','090-1234-5678','登録済みユーザーからの質問','登録されていると登録情報やIDはきちんと表示されるのでしょうか？','2021-06-26 16:51:45'),(41,19,'tokunaga yutaka','tokunaga@gmail.com','090-1234-5678','駐車場料金について','テストです','2021-07-06 11:21:46'),(42,0,'yamada','yamada@gmail.com','090---1313','入力エラーチェック','エラー表示チェック','2021-07-06 11:50:46'),(43,0,'yamada tarou','yamada@gmail.com','0901111333','変更後の送信テスト','入力チェック','2021-07-06 12:03:50'),(44,0,'kato cha','kato@gmail.com','09000000','修正確認','exit削除','2021-07-06 12:10:21'),(46,0,'kato chata','kato@gmail.com','00000','chata','chata2','2021-07-06 12:13:52'),(53,0,'kato chata','kato@gmail.com','00000','chata','管理者返信','2021-07-06 14:13:45'),(54,0,'kato chata','kato@gmail.com','00000','chata','管理者返信','2021-07-06 14:15:00'),(55,0,'kato chata','kato@gmail.com','00000','【ご回答】chata','そうしんテスト','2021-07-06 15:04:58'),(56,0,'kato cha','kato@gmail.com','09000000','【ご回答】修正確認','旅行の奇跡','2021-07-06 15:11:21'),(59,-999,'kato chata','kato@gmail.com','00000','【ご回答】chata','11','2021-07-06 15:19:46');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +116,7 @@ CREATE TABLE `notices` (
   `image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `notices` (
 
 LOCK TABLES `notices` WRITE;
 /*!40000 ALTER TABLE `notices` DISABLE KEYS */;
-INSERT INTO `notices` VALUES (7,'2021-06-14','駐車場料金確定のお知らせ','5月分の料金が確定しました。料金詳細はメールでご案内しました。','index.php','item07.jpg','2021-06-13 15:54:34'),(8,'2021-06-15','駐車場Park1の料金改定のお知らせ','駐車場Park１の料金が7月から変更になります。','admin_parking.php','item03.jpg','2021-06-13 15:55:36'),(9,'2021-06-13','ユーザー情報登録のお願い','マイページにてユーザー情報の登録をお願いします。','index.php','item01.jpg','2021-06-13 15:57:24'),(13,'2021-06-28','追加連絡','追加の連絡の詳細かくにん','index.php',NULL,'2021-06-27 08:58:57');
+INSERT INTO `notices` VALUES (8,'2021-06-15','駐車場Park1の料金改定のお知らせ','駐車場Park１の料金が7月から変更になります。','admin_parking.php','photo02.jpg','2021-06-13 15:55:36'),(9,'2021-06-13','ユーザー情報登録のお願い','マイページにてユーザー情報の登録をお願いします。','index.php','item01.jpg','2021-06-13 15:57:24'),(13,'2021-06-28','追加連絡','追加の連絡の詳細かくにん','index.php','Glassキャプチャー２.png','2021-06-27 08:58:57'),(16,'2021-07-08','追加投稿','こんにちは2','TSE','Glassキャプチャー.png','2021-07-08 13:24:14');
 /*!40000 ALTER TABLE `notices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +146,7 @@ CREATE TABLE `parkings` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `parking_name` (`parking_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,7 +155,7 @@ CREATE TABLE `parkings` (
 
 LOCK TABLES `parkings` WRITE;
 /*!40000 ALTER TABLE `parkings` DISABLE KEYS */;
-INSERT INTO `parkings` VALUES (1,'Park1',600,'toshima1-1-1','2m×4m','終日利用可能','2021-06-07 13:41:12'),(4,'Park2',500,'toshima1-1-1','2m×4m','途中で入出庫あります','2021-06-07 13:44:01'),(5,'Park3',400,'toshima1-1-1','３m×６m','なし','2021-06-07 14:01:11'),(6,'Park4',500,'toshima1-1-1','2m×4m','障がい者対応','2021-06-27 07:31:55');
+INSERT INTO `parkings` VALUES (1,'Park1',600,'toshima1-1-1','2m×4m','終日利用可能','2021-06-07 13:41:12'),(4,'Park2',500,'toshima1-1-1','2m×4m','途中で入出庫あります','2021-06-07 13:44:01'),(5,'Park3',400,'toshima1-1-1','３m×６m','なし','2021-06-07 14:01:11'),(6,'Park4',500,'toshima1-1-1','2m×4m','障がい者対応','2021-06-27 07:31:55'),(8,'Park5',2000,'toshima1-1-1','2m×4m','終日利用','2021-07-10 04:19:15'),(9,'Park6',500,'toshima1-1-1','３m×６m','障がい者対応','2021-07-10 09:42:37');
 /*!40000 ALTER TABLE `parkings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +183,7 @@ CREATE TABLE `reservations` (
   KEY `parking_id` (`parking_id`),
   CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`parking_id`) REFERENCES `parkings` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +192,7 @@ CREATE TABLE `reservations` (
 
 LOCK TABLES `reservations` WRITE;
 /*!40000 ALTER TABLE `reservations` DISABLE KEYS */;
-INSERT INTO `reservations` VALUES (19,21,5,'2021-06-14','12:00:00','2021-06-15','12:00:00','akashiya@gmail.com','03-3242-4342','終日利用','2021-06-13 02:33:45'),(21,20,4,'2021-06-16','04:00:00','2021-06-16','10:30:00','yamada@gmail.com','090-2222-2222','なし','2021-06-14 13:52:04'),(24,19,4,'2021-06-19','17:00:00','2021-06-19','22:30:00','tokunaga@gmail.com','090-1234-5678','終日利用可能','2021-06-19 07:29:07'),(25,19,1,'2021-06-21','00:00:00','2021-06-21','10:00:00','tokunaga@gmail.com','090-1234-5678','','2021-06-21 14:55:50'),(26,19,4,'2021-06-21','04:00:00','2021-06-21','10:00:00','tokunaga@gmail.com','090-1234-5678','','2021-06-21 15:00:35'),(27,19,4,'2021-06-20','01:00:00','2021-06-20','02:00:00','tokunaga@gmail.com','090-1234-5678','','2021-06-21 15:01:09'),(28,21,4,'2021-06-22','01:00:00','2021-06-22','10:00:00','akashiya@gmail.com','03-3242-4342','','2021-06-21 15:05:15');
+INSERT INTO `reservations` VALUES (19,21,5,'2021-06-14','12:00:00','2021-06-15','12:00:00','akashiya@gmail.com','03-3242-4342','終日利用','2021-06-13 02:33:45'),(24,19,4,'2021-06-19','17:00:00','2021-06-19','22:30:00','tokunaga@gmail.com','090-1234-5678','終日利用可能','2021-06-19 07:29:07'),(33,19,1,'2021-07-08','00:00:00','2021-07-08','01:00:00','tokunaga@gmail.com','090-1234-5678','','2021-07-08 14:36:31'),(48,19,1,'2021-07-11','04:00:00','2021-07-11','05:00:00','tokunaga@gmail.com','090-1234-5678','','2021-07-11 00:37:41');
 /*!40000 ALTER TABLE `reservations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,4 +236,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-07-06 16:54:56
+-- Dump completed on 2021-07-11  4:22:53

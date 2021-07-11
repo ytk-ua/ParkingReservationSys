@@ -30,25 +30,27 @@
 <div id="main">    
 
     <h1><?= $user->name ?>さんの登録情報編集</h1>
- 
+    <h2>登録情報編集フォーム</h2>
+     
     <form action="update.php" method="POST">
         <dl>
             <dt>名前<span class="must">※必須</span></dt>
-            <dd><input type="text" name="name" value="<?= $user->name ?>"></dd>
+            <dd><input type="text" id="name" name="name" value="<?= $user->name ?>"></dd>
             <dt>部屋番号<span class="must">※必須</span></dt>
-            <dd><input type="number" name="room_no" min="101" max="3020" step="10" value="<?= $user->room_no ?>"></dd>
+            <dd><input type="number" id="room_no" name="room_no" min="101" max="3020" step="10" value="<?= $user->room_no ?>"></dd>
             <dt>アカウント名<span class="must">※必須</span></dt>
-            <dd><input type="text" name="account" value="<?= $user->account ?>"></dd>
+            <dd><input type="text" id="account" name="account" value="<?= $user->account ?>"></dd>
             <dt>パスワード<span class="must">※必須</span></dt>
-            <dd><input type="password" name="password" value="<?= $user->password ?>"></dd>
+            <dd><input type="password" id="password" name="password" value="<?= $user->password ?>"></dd>
             <dt>メールアドレス</dt>
-            <dd><input type="email" name="email" value="<?= $user->email ?>"></dd>
+            <dd><input type="email" id="email" name="email" value="<?= $user->email ?>"></dd>
             <dt>電話番号</dt>
-            <dd><input type="text" name="tel" value="<?= $user->tel ?>"></dd>
+            <dd><input type="text" id="tel" name="tel" value="<?= $user->tel ?>"></dd>
         </dl>
             <input type="hidden" name="id" value="<?= $user->id ?>">
-            <input type="reset" value="リセットする"><br>
-            <input type="submit" value="更新">
+            <p id="reset_button"><input type="reset" value="リセット"></p>
+            <p id="submit_button"><input type="submit" value="更新"></p>
+        </ul>
     </form>
 
     <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">前のページに戻る</a>

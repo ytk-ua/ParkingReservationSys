@@ -49,7 +49,7 @@
     <p>
         <form action="search_parking.php">
         駐車場ID or 駐車場名を入力し検索してください<br>
-            <input type="search" name="parking_id">
+            <input type="search" name="parking_id" placeholder="検索項目入力" style="width: 20%;">
             <button type="submit">検索</button>
         </form>
     </p>
@@ -59,16 +59,35 @@
     <?php if(count($parkings) === 0): ?>
     <p>登録された駐車場はありません</p>
     <?php else: ?>
+    <table>
+    <tr>
+        <th>ID</th>
+        <th>駐車場名</th>
+        <th>料金</th>
+        <th>場所</th>
+        <th>サイズ</th>
+        <th>備考/連絡事項</th>
+    </tr>
     <?php foreach($parkings as $parking): ?>
-    <ul>
-        <li>ID:<a href="show_parking.php?id=<?= $parking->id ?>"><?= $parking->id ?></a></li>
-        <li>駐車場名：<?= $parking->parking_name ?></li>
-        <li>料金：<?= $parking->price ?>円/30分</li>
-        <li>場所：<?= $parking->address ?></li>
-    </ul>
-    <div id="map"></div>
+    <tr>
+        <td><a href="show_parking.php?id=<?= $parking->id ?>"><?= $parking->id ?></td>
+        <td><?= $parking->parking_name ?></td>
+        <td><?= $parking->price ?>円/30分</td>
+        <td><?= $parking->address ?></td>
+        <td><?= $parking->size ?></td>
+        <td><?= $parking->remarks ?></td>
+    </tr>
     <?php endforeach; ?>
+    </table>
     <?php endif; ?>
+
+    <!--<ul>-->
+    <!--    <li>ID:<a href="show_parking.php?id=<?= $parking->id ?>"><?= $parking->id ?></a></li>-->
+    <!--    <li>駐車場名：<?= $parking->parking_name ?></li>-->
+    <!--    <li>料金：<?= $parking->price ?>円/30分</li>-->
+    <!--    <li>場所：<?= $parking->address ?></li>-->
+    <!--</ul>-->
+    <!--<div id="map"></div>-->
 
     <!--<p><a href="admin.php">管理者ページトップ</a></p>-->
     <!--<p><a href="index.php">ログアウト</a></p>-->

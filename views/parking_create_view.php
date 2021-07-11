@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>新規駐車場登録</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -35,6 +34,7 @@
 <div id="main">    
 
     <h1>新規駐車場登録</h1>
+    <h2>新規駐車場登録フォーム</h2>
  
      <?php if($errors !== null): ?>
     <ul>
@@ -47,15 +47,15 @@
     <form action="parking_store.php" method="POST">
         <dl>
             <dt>駐車場名<span class="must">※必須</span></dt>
-            <dd><input type="text" name="parking_name"></dd>
+            <dd><input type="text" id="parking_name" name="parking_name" placeholder="駐車場名"></dd>
             <dt>料金[30分]<span class="must">※必須</span></dt>
-            <dd><input type="number" name="price"></dd>
+            <dd><input type="number" id="price" name="price" placeholder="駐車場料金(30分毎の利用料金)"></dd>
             <dt>場所</dt>
-            <dd><input type="text" name="address"></dd>
+            <dd><input type="text" id="address" name="address" placeholder="駐車場所在地"></dd>
             <dt>サイズ</dt>
-            <dd><input type="text" name="size"></dd>
+            <dd><input type="text" id="size" name="size" placeholder="駐車場サイズ"></dd>
             <dt>備考/連絡事項</dt>
-            <dd><input type="text" name="remarks"></dd>
+            <dd><input type="text" id="remarks" name="remarks" placeholder="備考/連絡事項があればご記入ください"></dd>
         </dl>
             <input type="reset" value="リセットする"><br>
             <input type="submit" value="登録">

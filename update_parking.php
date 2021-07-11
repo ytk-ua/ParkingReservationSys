@@ -28,7 +28,7 @@
     }else{ //エラーが一つでもあればセッションにエラー配列を保存
         $_SESSION['errors'] = $errors;
         //画面遷移
-        header('location: show_parking.php?id=' . $id);
+        header('location: edit_parking.php?id=' . $id);
         exit;
     }
 

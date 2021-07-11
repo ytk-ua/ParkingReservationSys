@@ -54,7 +54,7 @@
             <dt>件名<span class="must">※必須</span></dt>
             <dd><input type="text" name="subject" value="<?= $contact->subject ?>" placeholder="件名" style="width: 80%;"></dd>
             <dt>お問い合わせ内容<span class="must">※必須</span></dt>
-            <dd><input type="text" name="body" value="<?= $contact->body ?>" placeholder="お問い合わせ内容をお書きください" style="width: 80%;"></dd>
+            <dd><textarea id="body" name="body" value="<?= $contact->body ?>" placeholder="お問い合わせ内容をお書きください" style="width: 80%;"></textarea></dd> 
         </dl>            
         <?php else: ?>
         <dl>
@@ -67,7 +67,7 @@
             <dt>件名<span class="must">※必須</span></dt>
             <dd><input type="text" name="subject" value="<?= $contact->subject ?>" placeholder="件名" style="width: 80%;"></dd>
             <dt>お問い合わせ内容<span class="must">※必須</span></dt>
-            <dd><input type="text" name="body" value="<?= $contact->body ?>" placeholder="お問い合わせ内容をお書きください" style="width: 80%;"></dd>
+            <dd><textarea id="body" name="body" value="<?= $contact->body ?>" placeholder="お問い合わせ内容をお書きください" style="width: 80%;"></textarea></dd> 
         </dl>
         <?php endif; ?>
             <input type="hidden" name="id" value="<?= $login_user->id ?>">

@@ -61,7 +61,9 @@
         <?php else: ?>
         <dl>
         <?php foreach($notices as $notice): ?>
-            <dt><?= $notice->regist_date ?></dt>
+        <?php $date = $notice->regist_date ?>
+            <dt class="notice_date"><?= date('Y年m月d日', strtotime($date)) ?></dt>            
+            <!--<dt><?= $notice->regist_date ?></dt>-->
             <dd><a href="show_notice.php?id=<?= $notice->id ?>"><?= $notice->title ?></a></dd>
         <?php endforeach; ?>
         <?php endif; ?>

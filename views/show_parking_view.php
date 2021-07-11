@@ -34,7 +34,7 @@
 <div id="main">    
 
     <h1><?= $parking->parking_name ?>駐車場の詳細情報</h1>
-    <h2>登録情報</h2>
+    <h2>登録情報の詳細</h2>
     
     <?php if($flash_message !== null): ?>
     <p><?= $flash_message ?></p>
@@ -47,15 +47,21 @@
     <?php endforeach; ?>
     </ul>
     <?php endif; ?>
-    
-    <ul>
-        <li>ID:<?= $parking->id ?></li>
-        <li>駐車場名：<?= $parking->parking_name ?></li>
-        <li>料金：<?= $parking->price ?>円/30分</li>
-        <li>場所：<?= $parking->address ?></li>
-        <li>サイズ：<?= $parking->size ?></li>
-        <li>備考/連絡事項：<?= $parking->remarks ?></li>
-    </ul>
+
+    <dl>
+        <dt>ID</dt>
+        <dd><?= $parking->id ?></dd>
+        <dt>駐車場名</dt>
+        <dd><?= $parking->parking_name ?></dd>
+        <dt>料金</dt>
+        <dd><?= $parking->price ?>円/30分</dd>
+        <dt>場所</dt>
+        <dd><?= $parking->address ?></dd>
+        <dt>サイズ</dt>
+        <dd><?= $parking->size ?></dd>
+        <dt>備考/連絡事項</dt>
+        <dd><?= $parking->remarks ?></dd>
+    </dl>
     <p><a href="edit_parking.php?id=<?= $parking->id ?>">編集</a></p>
     <p>
         <form action="delete_parking.php" method="POST">

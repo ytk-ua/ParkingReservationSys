@@ -33,6 +33,7 @@
 <!--メイン-->
 <div id="main">    
     <h1>新規管理者登録</h1>
+    <h2>新規管理者登録フォーム</h2>
 
     <?php if($flash_message !== null): ?>
     <p><?= $flash_message ?></p>
@@ -49,13 +50,13 @@
     <form action="admin_store.php" method="POST">
         <dl>
             <dt>名前<span class="must">※必須</span></dt>
-            <dd><input type="text" name="name" value="<?= $admin->name ?>" style="width: 80%;"></dd>
+            <dd><input type="text" id="name" name="name" value="<?= $admin->name ?>" placeholder="氏名"></dd>
             <dt>アカウント名<span class="must">※必須</span></dt>
-            <dd><input type="text" name="account" value="<?= $admin->account ?>" style="width: 80%;"></dd>
+            <dd><input type="text" id="account" name="account" value="<?= $admin->account ?>" placeholder="アカウント名(半角英数字)"></dd>
             <dt>パスワード<span class="must">※必須</span></dt>
-            <dd><input type="password" name="password" value="<?= $admin->password ?>" style="width: 80%;"></dd>
+            <dd><input type="password" id="password" name="password" value="<?= $admin->password ?>" placeholder="パスワード(半角英数字)"></dd>
             <dt>メールアドレス</dt>
-            <dd><input type="email" name="email" value="<?= $admin->email?>" style="width: 80%;"></dd>
+            <dd><input type="email" id="email" name="email" value="<?= $admin->email?>" placeholder="Emailアドレス"></dd>
         </dl>
             <input type="reset" value="リセットする"><br>
             <input type="submit" value="登録">

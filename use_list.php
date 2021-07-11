@@ -36,9 +36,15 @@
         $next = $this_year . '-' . $this_month . '-31';
 
     }
+    // var_dump($_GET['date']);
+    // var_dump($_GET);
+    // print $date;
+    // print $now;
+    // print $next;
 
     //DAOを使って＄user_id番のユーザーの予約登録情報を降順に並び替えてDBから持ってくる
-    $reservations0 = ReservationDAO::find5($user_id);
+    // $reservations0 = ReservationDAO::find5($user_id);
+    $reservations0 = ReservationDAO::find5($login_user->id);
     // var_dump($reservations);
     $reservations = ReservationDAO::find100($login_user->id, $now, $next);
 

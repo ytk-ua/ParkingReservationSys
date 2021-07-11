@@ -45,7 +45,7 @@
     <p><?= $flash_message ?></p>
     <?php endif; ?>
     
-    <?php $today = date("Y-m-d H:i:s"); ?>
+    <?php $today = date("Y年m月d日 H:i"); ?>
     <P>現在の日時：<?= $today ?></P>
 
     <P> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '-1 day')) ?>">前日</a> << <?= $date ?> >> <a href="search_vacant.php?date=<?= date("Y-m-d", strtotime($date . '+1 day')) ?>">翌日</a></P>

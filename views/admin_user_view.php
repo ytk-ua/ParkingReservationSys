@@ -48,7 +48,7 @@
     <p>
         ユーザーの名前を入力し検索してください
             <form action="search_user.php">
-                <input type="search" name="name">
+                <input type="search" name="name" placeholder="検索項目入力" style="width: 20%;">
             <button type="submit">検索</button>
         </form>
     </p>
@@ -59,14 +59,28 @@
     <?php if(count($users) === 0): ?>
     <p>ユーザーは誰もいません</p>
     <?php else: ?>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th>部屋番号</th>
+            <th>アカウント名</th>
+            <!--<th>パスワード</th>-->
+            <th>メールアドレス</th>
+            <!--<th>電話番号</th>-->
+        </tr>
     <?php foreach($users as $user): ?>
-    <ul>
-        <li>ID:<a href="show.php?id=<?= $user->id ?>"><?= $user->id ?></a></li>
-        <li>名前：<?= $user->name ?></li>
-        <li>部屋番号：<?= $user->room_no ?></li>
-        <li>アカウント名：<?= $user->account ?></li>
-    </ul>
+        <tr>
+            <td><a href="show.php?id=<?= $user->id ?>"><?= $user->id ?></a></td>
+            <td><?= $user->name ?></td>
+            <td><?= $user->room_no ?></td>
+            <td><?= $user->account ?></td>
+            <!--<td><?= $user->password ?></td>-->
+            <td><?= $user->email ?></td>
+            <!--<td><?= $user->tel ?></td>-->
+        </tr>
     <?php endforeach; ?>
+    </table>
     <?php endif; ?>
     
     <!--<p><a href="admin.php">管理者ページトップ</a></p>-->

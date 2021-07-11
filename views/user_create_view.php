@@ -29,6 +29,7 @@
 <!--メイン-->
 <div id="main">
     <h1>新規ユーザー登録</h1>
+    <h2>新規ユーザー登録フォーム</h2>
 
     <?php if($errors !== null): ?>
     <ul>
@@ -38,23 +39,25 @@
     </ul>
     <?php endif; ?>
 
+    <p>以下にご登録いただく内容を入力し登録ボタンを押してください。</p>
     <form action="user_store.php" method="POST">
         <dl>
             <dt>名前<span class="must">※必須</span></dt>
-            <dd><input type="text" name="name" value="<?= $user->name ?>" style="width: 80%;"></dd>
+            <dd><input type="text" id="name" name="name" value="<?= $user->name ?>" placeholder="氏名" ></dd>
             <dt>部屋番号<span class="must">※必須</span></dt>
-            <dd><input type="number" name="room_no" min="101" max="3020" step="10"value="<?= $user->room_no ?>" style="width: 30%;"></dd>
+            <dd><input type="number" id="room_no" name="room_no" min="101" max="3020" step="10"value="<?= $user->room_no ?>" placeholder="部屋番号(半角数字)"></dd>
             <dt>アカウント名<span class="must">※必須</span></dt>
-            <dd><input type="text" name="account" value="<?= $user->account ?>" style="width: 80%;"></dd>
+            <dd><input type="text" id="account" name="account" value="<?= $user->account ?>" placeholder="アカウント名(半角英数字)"></dd>
             <dt>パスワード<span class="must">※必須</span></dt>
-            <dd><input type="password" name="password" value="<?= $user->password ?>" style="width: 80%;"></dd>
+            <dd><input type="password" id="password" name="password" value="<?= $user->password ?>" placeholder="パスワード(半角英数字)"></dd>
             <dt>メールアドレス</dt>
-            <dd><input type="email" name="email" value="<?= $user->email ?>" style="width: 80%;"></dd>
+            <dd><input type="email" id="email" name="email" value="<?= $user->email ?>" placeholder="Emailアドレス"></dd>
             <dt>電話番号</dt>
-            <dd><input type="text" name="tel" value="<?= $user->tel ?>" style="width: 80%;"></dd>
+            <dd><input type="text" id="tel" name="tel" value="<?= $user->tel ?>" placeholder="電話番号(半角英数字-(ハイフン)不要)"></dd>
         </dl>
-            <input type="reset" value="リセットする"><br>
-            <input type="submit" value="登録">
+            <p id="reset_button"><input type="reset" value="リセット"></p>
+            <p id="submit_button"><input type="submit" value="登録"></p>
+            
     </form>
     <p><a href="index.php">キャンセル</a></p>
 </div>

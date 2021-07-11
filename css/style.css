@@ -272,14 +272,14 @@ footer small {
     border: 0px none;
 }
 #notices dt {
-    width: 8em;
+    width: 9em;
     float: left;
     margin-bottom: 10px;
     clear: both;
     border: 0px none;
 }
 #notices dd {
-    margin-left: 8em;
+    margin-left: 9em;
     margin-bottom: 10px;
     border: 0px none;
 }
@@ -294,12 +294,11 @@ table {
 th, td {
     border: 1.5px solid #c7c7c7;
     padding: 4px;
+    font-size: 0.8em;
+    text-align: center;
 }
 th {
     background-color: #d8ba9d;
-}
-td {
-    font-size: 0.8em;
 }
 
 .total {
@@ -344,4 +343,20 @@ dl dd {
     color: #f00;
     font-size:0.7em;
 }
+#name, #room_no, #account, #password, #email, #tel {
+    width: 80%;
+}
+#body {
+    height: 10em;
+}
+#title, #link_url, #overview {
+    width: 80%;
+}
+#parking_name, #price, #size, #address, #remarks {
+    width: 80%;
+}
+/*#submit_button, #reset_button {*/
+    /*margin-left: 16em;*/
+    /*text-align: center;*/
+/*}*/
 /**/

@@ -44,12 +44,12 @@
         
         <form action="admin_login_check.php" method="POST">
         アカウント名<br>
-        <input type="text" name="account"><br>
+        <input type="text" name="account" placeholder="アカウント名(半角英数字)" style="width: 30%;"><br>
         パスワード<br>
-        <input type="password" name="password"><br>
+        <input type="password" name="password" placeholder="パスワード(半角英数字)" style="width: 30%;"><br>
         <input type="checkbox" name="login_keep">次回からアカウント名の入力を省略する<br>
 
-        <input type ="submit" value="ログイン">
+        <p id="submit_button"><input type="submit" value="ログイン"></p>
 
     <!--<p><a href="admin.php">（仮設：管理者ページトップ）</a></p>        -->
         
