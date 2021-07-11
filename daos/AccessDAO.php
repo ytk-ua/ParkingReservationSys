@@ -25,7 +25,7 @@
             // 完成したユーザー一覧、はいあげる
             return $accesses;     
         }
-       //データーベースに新しいユーザーを登録するメソッド
+       //データーベースに新しいアクセスを登録するメソッド
         public static function insert($access){
             // 例外処理
             try{
@@ -73,6 +73,33 @@
             }
             // 完成したユーザー、はいあげる
             return $user;             
+        }
+
+        //id番目のユーザーを取得するメソッド
+        public static function find2($name){
+          // 例外処理:tryブロック。try chatch最後はcatchで終わる。
+            try{
+                // データベースに接続して万能の神様誕生。
+                $pdo = self::get_connection();
+                // SELECT文実行準備
+                $stmt = $pdo->prepare('SELECT count(*) FROM accesses WHERE name=:name');
+                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
+                $stmt->bindValue(':name', $name, PDO::PARAM_INT);
+                // SELECT文本番実行
+                $stmt->execute();                
+                
+                // Fetch ModeをUserクラスに設定。マッピング。PHPで使いやすい様に書き換える。
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Access');
+                // SELECT文の結果を Userクラスのインスタンスに格納。Fetch->抜き出せの意。
+                $access = $stmt->fetch();
+                
+            }catch(PDOException $e){
+            }finally{
+                // 後処理
+                self::close_connection($pdo, $stmt);
+            }
+            // 完成したユーザー、はいあげる
+            return $access;             
         }
         
         //$id番目のユーザー情報を更新
