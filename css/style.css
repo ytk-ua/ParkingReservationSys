@@ -61,11 +61,11 @@ a:hover img {
 img {
     vertical-align: bottom;
 }
-#main_visual {
-    width: 980px;
-    height: 440px;
-    margin: 0 auto 48px;
-}
+/*#main_visual {*/
+/*    width: 980px;*/
+/*    height: 440px;*/
+/*    margin: 0 auto 48px;*/
+/*}*/
 /**/
 
 /*ヘッダー*/
@@ -375,3 +375,37 @@ dl dd {
     /*text-align: center;*/
 /*}*/
 /**/
+
+/*レスポンシブ対応*/
+@media screen and (max-width : 767px){
+    img{
+        max-width: 100%;
+    }
+    header,
+    #main,
+    footer,
+    header #global_navi{
+        width: 100%;
+    }
+    header h1{
+        float: none;
+        text-align: center;
+    }
+    header h1{
+        float: none;
+        text-align: center;
+    }
+    header img{
+        width: 50%;
+    }
+    header #global_navi ul li{
+        width: 50%;
+        padding: 0.5px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    header #global_navi ul li a{
+        margin: 0;
+    }
+    
+}

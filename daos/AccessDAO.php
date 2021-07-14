@@ -49,22 +49,22 @@
         }
         
         //id番目のユーザーを取得するメソッド
-        public static function find($id){
+        public static function find($name){
           // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM users WHERE id=:id');
+                $stmt = $pdo->prepare('SELECT * FROM accesses WHERE name=:name ORDER BY id DESC');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+                $stmt->bindValue(':name', $name, PDO::PARAM_STR);
                 // SELECT文本番実行
                 $stmt->execute();                
                 
                 // Fetch ModeをUserクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
+                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Access');
                 // SELECT文の結果を Userクラスのインスタンスに格納。Fetch->抜き出せの意。
-                $user = $stmt->fetch();
+                $user_accesses = $stmt->fetchAll();
                 
             }catch(PDOException $e){
             }finally{
@@ -72,7 +72,7 @@
                 self::close_connection($pdo, $stmt);
             }
             // 完成したユーザー、はいあげる
-            return $user;             
+            return $user_accesses;             
         }
 
         //id番目のユーザーを取得するメソッド
@@ -84,7 +84,7 @@
                 // SELECT文実行準備
                 $stmt = $pdo->prepare('SELECT count(*) FROM accesses WHERE name=:name');
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':name', $name, PDO::PARAM_INT);
+                $stmt->bindValue(':name', $name, PDO::PARAM_STR);
                 // SELECT文本番実行
                 $stmt->execute();                
                 
@@ -101,6 +101,38 @@
             // 完成したユーザー、はいあげる
             return $access;             
         }
+        
+    //id番目のユーザーを取得するメソッド
+        public static function find3($name){
+          // 例外処理:tryブロック。try chatch最後はcatchで終わる。
+            try{
+                // データベースに接続して万能の神様誕生。
+                $pdo = self::get_connection();
+             
+                // SELECT文実行準備
+                $stmt = $pdo->prepare('SELECT count(*) AS count FROM accesses WHERE name=:name');
+                
+                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
+                $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+                
+                // SELECT文本番実行
+                $stmt->execute();                
+                
+                // Fetch Modeを連想配列に指定
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                
+                
+                // SELECT文の結果を 取得
+                $result = $stmt->fetch();
+                
+            }catch(PDOException $e){
+            }finally{
+                // 後処理
+                self::close_connection($pdo, $stmt);
+            }
+            // アクセス数、はいあげる
+            return $result['count'];             
+        }    
         
         //$id番目のユーザー情報を更新
         public static function update($user, $id){

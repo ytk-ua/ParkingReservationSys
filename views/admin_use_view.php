@@ -55,9 +55,11 @@
     <?php endif; ?>
 
    <p>駐車場予約一覧</p>
+
    <table>
         <tr>
             <th>駐車場ID</th>
+            <th>合計利用回数</th>
             <th>合計利用時間</th>
             <th>駐車場料金</th>
             <th>合計利用料金</th>
@@ -67,6 +69,7 @@
     <?php endforeach; ?>
         <tr>
             <td align="center"><?= $parking->parking_name ?></td>
+            <td align="right"><?= count($reservations1) ?>回</td>
             <td align="right"><?= total_time($reservations1)?>時間</td>
             <td align="right">¥<?= ($parking->price) ?>/1h</td>
             <td align="right">¥<?= total_price($reservations1)?></td>
@@ -76,6 +79,7 @@
     <?php endforeach; ?>
         <tr>
             <td align="center"><?= $parking->parking_name ?></td>
+            <td align="right"><?= count($reservations2) ?>回</td>
             <td align="right"><?= total_time($reservations2)?>時間</td>
             <td align="right">¥<?= ($parking->price) ?>/1h</td>
             <td align="right">¥<?= total_price($reservations2)?></td>
@@ -85,6 +89,7 @@
     <?php endforeach; ?>
         <tr>
             <td align="center"><?= $parking->parking_name ?></td>
+            <td align="right"><?= count($reservations3) ?>回</td>
             <td align="right"><?= total_time($reservations3)?>時間</td>
             <td align="right">¥<?= ($parking->price) ?>/1h</td>
             <td align="right">¥<?= total_price($reservations3)?></td>

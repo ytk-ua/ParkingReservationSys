@@ -1,5 +1,8 @@
 <?php
     //Filter
+    session_start();
+    // session_destroy();
+    // $_SESSION['login_user'] = null;
     require_once 'models/User.php';
     require_once 'models/Access.php';
     require_once 'daos/AccessDAO.php';
@@ -28,9 +31,9 @@
     // $count = AccessDAO::find2($name);
     $accesses = AccessDAO::get_all_accesses();
     
-    print $visited_time;
-    print $name;
-    print $url;
+    // print $visited_time;
+    // print $name;
+    // print $url;
     // print $count;
     
         // header('Location: index.php');

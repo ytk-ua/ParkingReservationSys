@@ -67,6 +67,7 @@
             <th>アカウント名</th>
             <!--<th>パスワード</th>-->
             <th>メールアドレス</th>
+            <th>アクセスログ</th>
             <!--<th>電話番号</th>-->
         </tr>
     <?php foreach($users as $user): ?>
@@ -77,6 +78,7 @@
             <td><?= $user->account ?></td>
             <!--<td><?= $user->password ?></td>-->
             <td><?= $user->email ?></td>
+            <td><a href="user_access.php?id=<?= $user->id ?>">アクセスログ</a></td>
             <!--<td><?= $user->tel ?></td>-->
         </tr>
     <?php endforeach; ?>
