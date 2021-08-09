@@ -9,7 +9,7 @@
         public $size; //サイズ
         public $remarks; //備考/連絡事項
         public $created_at; //登録時間
-        //コンストラクタ($nameから$name=''に変更。エラー対応で空文字を与えている)
+        //コンストラクタ
         public function __construct($parking_name='', $price='', $address='', $size='', $remarks=''){
             $this->parking_name = $parking_name;
             $this->price = $price;

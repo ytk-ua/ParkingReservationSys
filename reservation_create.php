@@ -15,13 +15,9 @@
     $start_date = $_GET['start_date'];
     $start_time = $_GET['start_time'];
     $parking_id = $_GET['parking_id'];
-    // var_dump($_GET);
 
     $end_date_times = ReservationDAO::find7($start_date, $start_time, $parking_id);
     $parking = ParkingDAO::find($parking_id);
-    // var_dump($parking);
-
-    // var_dump($end_date_times);
 
     if(count($end_date_times) === 0){
         $limit = 23;

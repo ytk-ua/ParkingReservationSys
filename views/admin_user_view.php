@@ -35,10 +35,6 @@
 
     <h1>ユーザー管理</h1>
 
-    <!--<h2>新規ユーザー登録</h2>-->
-    <!--<p>新規ユーザーの追加は以下から登録ください</p>-->
-    <!--<p><a href="user_create.php">新規ユーザー登録</a></p>-->
-
     <h2>登録ユーザー一覧</h2>
     
     <?php if($flash_message !== null): ?>
@@ -65,10 +61,7 @@
             <th>名前</th>
             <th>部屋番号</th>
             <th>アカウント名</th>
-            <!--<th>パスワード</th>-->
             <th>メールアドレス</th>
-            <th>アクセスログ</th>
-            <!--<th>電話番号</th>-->
         </tr>
     <?php foreach($users as $user): ?>
         <tr>
@@ -76,18 +69,12 @@
             <td><?= $user->name ?></td>
             <td><?= $user->room_no ?></td>
             <td><?= $user->account ?></td>
-            <!--<td><?= $user->password ?></td>-->
             <td><?= $user->email ?></td>
-            <td><a href="user_access.php?id=<?= $user->id ?>">アクセスログ</a></td>
-            <!--<td><?= $user->tel ?></td>-->
         </tr>
     <?php endforeach; ?>
     </table>
     <?php endif; ?>
     
-    <!--<p><a href="admin.php">管理者ページトップ</a></p>-->
-    <!--<p><a href="index.php">ログアウト</a></p>-->
-
 </div>
 <!--/メイン-->
 

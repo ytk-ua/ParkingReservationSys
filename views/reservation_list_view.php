@@ -77,14 +77,9 @@
                     </form>
                 </td>
             </tr>
-        <!--編集しなくても一度予約削除でも可能なので、今回は編集機能をOFFにしておく。-->
-        <!--<p><a href="edit_reservation.php?id=<?= $reservation->id ?>">編集</a></p>-->
     <?php endforeach; ?>
     </table>    
     <?php endif; ?>
-
-<!--    <p><a href="top.php">マイページトップに戻る</a></p>-->
-<!--    <p><a href="logout.php">ログアウト</a></p>-->
 
 </div>
 <!--/メイン-->

@@ -58,9 +58,6 @@
         </dl>
         <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">前のページに戻る</a>
 
-    <!--<p><a href="admin_parking.php">駐車場管理に戻る</a></p>-->
-    <!--<p><a href="admin.php">管理者ページトップに戻る</a></p>-->
-
 </div>
 <!--/メイン-->
 

@@ -2,7 +2,6 @@
     //(C)
     require_once 'daos/ParkingDAO.php';
     session_start();
-    // var_dump($_POST);
 
     $parking_name = $_POST['parking_name'];
     $price = $_POST['price'];
@@ -13,7 +12,6 @@
     
     //Userクラスの新しいインスタンス生成
     $parking = new Parking($parking_name, $price, $address, $size, $remarks);
-    // var_dump($user);
 
   //入力チェック(検証)
     $errors = $parking->validate();

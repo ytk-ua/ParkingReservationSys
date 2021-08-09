@@ -2,7 +2,6 @@
     //(C)
     require_once 'daos/UserDAO.php';
     session_start();
-    // var_dump($_POST);
     $name = $_POST['name'];
     $room_no = $_POST['room_no'];
     $account = $_POST['account'];
@@ -13,7 +12,6 @@
     
     //Userクラスの新しいインスタンス生成
     $user = new User($name, $room_no, $account, $password, $email, $tel);
-    // var_dump($user);
 
     //入力チェック(検証)
     $errors = $user->validate();
@@ -33,12 +31,6 @@
         exit;
     }
 
-    // // $_SESSION['user'] = $user;
-    // //UserDAOを使ってDBに保存
-    // UserDAO::update($user, $id);
-    
-    // $_SESSION['flash_message'] = $name . 'さんの情報を更新しました。';
-    
     // 画面遷移（show.phpへ）
     header('location: show.php?id=' . $id);
     exit;

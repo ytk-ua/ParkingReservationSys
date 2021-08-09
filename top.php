@@ -6,8 +6,6 @@
     session_start();
     $login_user = $_SESSION['login_user'];
     
-    // var_dump($login_user);
-    
     //NoticeDAOを使ってデータベースから全お知らせ情報を取得
     $notices = NoticeDAO::get_all_notices();
     

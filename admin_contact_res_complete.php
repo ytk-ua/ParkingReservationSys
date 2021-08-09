@@ -10,7 +10,6 @@
     session_start();
     //login_check.phpでSESSIONにいれたログインユーザー情報を引き出す
     $login_user = $_SESSION['login_user'];
-    // var_dump($_POST);
 
     // 問い合わせ内容を＄contact２としてSESSIONから引き出し
     $contact2 = $_SESSION['contact2'];
@@ -27,7 +26,6 @@
     
     //Contactクラスの新しいインスタンス生成
     $contact = new Contact($user_id, $name, $email, $tel, $subject, $body);
-    // var_dump($contact);
 
    //入力チェック(検証)
     $errors = $contact->validate();
@@ -39,8 +37,6 @@
         $flash_message = $_SESSION['flash_message'];
         $_SESSION['flash_message'] = null;  
         include_once 'views/admin_contact_res_complete_view.php';
-        // header('Location: index.php');
-        // exit;
     }else{ //エラーが一つでもあればセッションにエラー配列を保存
         $_SESSION['errors'] = $errors;
         //error情報を$errorsでSESSIONから取り出し
@@ -48,12 +44,9 @@
         //セッションに保存されたエラー情報を破棄
         $_SESSION['errors'] = null;
         include_once 'views/admin_contact_res_view.php';
-        // header('location: user_create.php');
-        // exit;
     }
     
     //自動返信メール
-    // $mailto = $_POST['email'];
     $mailto = $email;
     $to = AdminMailAddress; 
     $mailfrom = "From:" . AdminMailAddress; 
@@ -93,11 +86,8 @@
         $_SESSION['send_message'] = 'メールを送信しました';
         $send_message = $_SESSION['send_message'];
         $_SESSION['send_message'] = null;
-        // header('Location: form.php');
         exit;
     } else {
         header('Content-Type: text/html; charset=UTF-8');
         echo "メールの送信に失敗しました";
     };
-
-    // include_once 'views/contact_complete_view.php';

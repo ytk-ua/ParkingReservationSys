@@ -5,12 +5,6 @@
     <title>利用実績管理</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /*table, tr, th, td {*/
-        /*    border: solid 2px;*/
-        /*} */
-        /*table{*/
-        /*    width: 80%;*/
-        /*}*/
     </style>    
 </head>
 <body>
@@ -69,10 +63,8 @@
             <td align="center"><?= $parking->parking_name ?></td>
             <td align="center"><?= $reservation->start_date ?></td>
             <td align="center"><?= $start_time ?></td>
-            <!--<td><?= substr($reservation->start_time, 0, 5) ?></td>-->
             <td align="center"><?= $reservation->end_date ?></td>
             <td align="center"><?= $end_time ?></td>
-            <!--<td><?= substr($reservation->end_time, 0, 5) ?></td>-->
             <td align="right"><?= ($timestamp2 - $timestamp1)/60/60 ?>時間</td>
             <td align="right">¥<?= ($parking->price) ?>/1h</td>
             <td align="right">¥<?= number_format((($timestamp2 - $timestamp1)/60/60)*($parking->price)) ?></td>
@@ -85,7 +77,6 @@
        <?php if(strtotime($date . '+1 month') <= strtotime(date('Y-m'))): ?>
        >> <a href="use_list.php?date=<?= date("Y-m", strtotime($date . '+1 month')) ?>">翌月</a></P>
        <?php endif; ?>
-    <!--<P> <a href="use_list.php?date=<?= date("Y-m", strtotime($date . '-01' . '-1 month')) ?>">前月</a> << <?= date('Y-m', strtotime($date)) ?> >> <a href="use_list.php?date=<?= date("Y-m", strtotime($date . '+1 month')) ?>">翌月</a></P>   -->
     <table>
         <tr>
             <th>ユーザーID</th>
@@ -119,45 +110,6 @@
     <?php endforeach; ?>
     </table>
 
-  <!--<p>（※修正中）<?= $this_year ?>年<?= $last_month ?>月の利用実績</p>-->
-  <!-- <table>-->
-  <!--      <tr>-->
-  <!--          <th>ユーザーID</th>-->
-  <!--          <th>駐車場名</th>-->
-  <!--          <th>利用開始日</th>-->
-  <!--          <th>利用開始時間</th>-->
-  <!--          <th>利用終了日</th>-->
-  <!--          <th>利用終了時間</th>-->
-  <!--          <th>利用時間</th>-->
-  <!--          <th>駐車場料金</th>-->
-  <!--          <th>利用料金</th>-->
-  <!--      </tr>-->
-  <!--  <?php foreach($reservations as $reservation): ?>-->
-  <!--  <?php $start_time = substr($reservation->start_time, 0, 5) ?>-->
-  <!--  <?php $end_time = substr($reservation->end_time, 0, 5) ?>-->
-  <!--  <?php $timestamp1 = strtotime("$reservation->start_date $reservation->start_time" ) ?>-->
-  <!--  <?php $timestamp2 = strtotime("$reservation->end_date $reservation->end_time" ) ?>-->
-  <!--  <?php $parking = ParkingDAO::find($reservation->parking_id) ?>-->
-
-  <!--      <tr>-->
-  <!--          <td align="center"><?= $reservation->user_id ?></td>-->
-  <!--          <td align="center"><?= $parking->parking_name ?></td>-->
-  <!--          <td align="center"><?= $reservation->start_date ?></td>-->
-  <!--          <td align="center"><?= $start_time ?></td>-->
-            <!--<td><?= substr($reservation->start_time, 0, 5) ?></td>-->
-  <!--          <td align="center"><?= $reservation->end_date ?></td>-->
-  <!--          <td align="center"><?= $end_time ?></td>-->
-            <!--<td><?= substr($reservation->end_time, 0, 5) ?></td>-->
-  <!--          <td align="right"><?= ($timestamp2 - $timestamp1)/60/60 ?>時間</td>-->
-  <!--          <td align="right">¥<?= ($parking->price) ?>/1h</td>-->
-  <!--          <td align="right">¥<?= number_format((($timestamp2 - $timestamp1)/60/60)*($parking->price)) ?></td>-->
-  <!--      </tr>-->
-  <!--  <?php endforeach; ?>-->
-  <!--  </table>-->
- 
-    <!--<p><a href="top.php">マイページトップに戻る</a></p>-->
-    <!--<p><a href="logout.php">ログアウト</a></p>-->
-    
 </div>
 <!--/メイン-->
 

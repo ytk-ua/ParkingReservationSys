@@ -52,9 +52,6 @@
     <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
 
-    <!--<p><a href="admin_create.php">新規管理者登録</a></p>-->
-    <!--<p><a href="logout_admin.php">ログアウト</a></p>-->
-
 </div>
 <!--/メイン-->
 

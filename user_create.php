@@ -11,8 +11,6 @@
     $user = $_SESSION['user'];
     $_SESSION['user'] = null;
 
-    // var_dump($user);
-
     if($user === null){
         $user = new User();
     }

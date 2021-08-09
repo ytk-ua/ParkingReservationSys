@@ -42,7 +42,6 @@ a {
     text-decoration: none;
     text-decoration: underline; 
     }
-/*a:visited { color: #a8a8a8; }*/
 a:hover {
     color: #6f3f1e;
     font-weight:bolder;
@@ -61,11 +60,6 @@ a:hover img {
 img {
     vertical-align: bottom;
 }
-/*#main_visual {*/
-/*    width: 980px;*/
-/*    height: 440px;*/
-/*    margin: 0 auto 48px;*/
-/*}*/
 /**/
 
 /*ヘッダー*/
@@ -89,7 +83,6 @@ header .login_user {
     text-align:center;
     display:block;
     background: #C09933;
-    /*background: linear-gradient(to bottom, #C09933 0%, #E6D8B3 100%);*/
     border-radius: 5px;
 }
 header .login_admin {
@@ -101,7 +94,6 @@ header .login_admin {
     color: #f4f4f4;
     text-align:center;
     display:block;
-    /*background: linear-gradient(to bottom, #915524 0%, #c39665 100%);*/
     background: #915524;
     border-radius: 5px;
 }
@@ -115,7 +107,6 @@ header .user_edit {
     text-align:center;
     display:block;
     background: #C09933;
-    /*background: linear-gradient(to bottom, #C09933 0%, #E6D8B3 100%);*/
     border-radius: 5px;
 }
 header .user_logout {
@@ -127,7 +118,6 @@ header .user_logout {
     color: #f4f4f4;
     text-align:center;
     display:block;
-    /*background: linear-gradient(to bottom, #915524 0%, #c39665 100%);*/
     background: #915524;
     border-radius: 5px;
 }
@@ -141,7 +131,6 @@ header .admin_list {
     text-align:center;
     display:block;
     background: #C09933;
-    /*background: linear-gradient(to bottom, #C09933 0%, #E6D8B3 100%);*/
     border-radius: 5px;
 }
 header .admin_logout {
@@ -153,7 +142,6 @@ header .admin_logout {
     color: #f4f4f4;
     text-align:center;
     display:block;
-    /*background: linear-gradient(to bottom, #915524 0%, #c39665 100%);*/
     background: #915524;
     border-radius: 5px;
 }
@@ -168,12 +156,6 @@ header #header_button ul li {
     margin-right: 5px;
     text-align: center;
 }
-/*header .login_user .login_admin:hover {*/
-/*    color: #f4f4f4;*/
-    /*font-weight:bold;*/
-    /*text-decoration: underline;*/
-    /*background:#c39665;*/
-/*}*/
 
 /*グローバルナビ*/
 header #global_navi {
@@ -322,10 +304,6 @@ th {
     font-weight: bold;
     width: 100%;
 }
-/*table, tr, th, td {*/
-/*    border: solid 2px;*/
-/*} */
-/**/
 
 /*登録情報入力画面*/
 dl {
@@ -333,8 +311,6 @@ dl {
     background-color: #d8ba9d;
     border: 1px solid #ddd;
     border-top: 0;
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
 }
 dl dt, dl dd {
     padding: 10px;
@@ -351,9 +327,6 @@ dl dd {
     border-left: 1px solid #ddd;
     margin-left: 13em;
 }
-/*#notices dl{*/
-/*    background-color: #fff;*/
-/*}*/
 .must {
     color: #f00;
     font-size:0.7em;
@@ -370,11 +343,6 @@ dl dd {
 #parking_name, #price, #size, #address, #remarks {
     width: 80%;
 }
-/*#submit_button, #reset_button {*/
-    /*margin-left: 16em;*/
-    /*text-align: center;*/
-/*}*/
-/**/
 
 /*レスポンシブ対応*/
 @media screen and (max-width : 767px){

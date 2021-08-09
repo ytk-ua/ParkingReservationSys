@@ -82,13 +82,6 @@
     <h2>お知らせ一覧</h2>
     <p>現在登録されているお知らせの一覧です</p>
     
-    <!--<p>-->
-    <!--    <form action="search_parking.php">-->
-    <!--        <input type="search" name="parking_id">-->
-    <!--        <button type="submit">検索</button>-->
-    <!--    </form>-->
-    <!--</p>-->
-
     <?php if(count($notices) === 0): ?>
     <p>登録されたお知らせはありません</p>
     <?php else: ?>
@@ -108,7 +101,6 @@
     <tr>
         <td><?= $notice->id ?></td>
         <td class="notice_date"><?= date('Y年m月d日', strtotime($date)) ?></td>
-        <!--<td><?= $notice->regist_date ?></td>-->
         <td class="notice_title"><?= $notice->title ?></td>
         <td class="notice_overview"><?= $notice->overview ?></td>
         <td class="notice_url"><a href="<?= $notice->link_url ?>"><?= $notice->link_url ?></td>
@@ -121,28 +113,9 @@
         </form>
         </td>
     </tr>    
-    <!--<ul>-->
-    <!--    <li>ID:<?= $notice->id ?></li>-->
-    <!--    <li>登録日：<?= $notice->regist_date ?></li>-->
-    <!--    <li>タイトル：<?= $notice->title ?></a></li>-->
-    <!--    <li>概要：<?= $notice->overview ?></li>-->
-    <!--    <li>リンクURL：<a href="<?= $notice->link_url ?>"><?= $notice->link_url ?></li>-->
-    <!--    <li><img src="upload/<?= $notice->image ?>"></li>-->
-    <!--</ul>-->
-    <!--<p><a href="edit_notice.php?id=<?= $notice->id ?>">編集</a></p>-->
-    <!--<p>-->
-    <!--    <form action="delete_notice.php" method="POST">-->
-    <!--    <input type="hidden" name="id" value="<?= $notice->id ?>">-->
-    <!--    <button type="submit">削除</button>-->
-    <!--    </form>-->
-    <!--</p>-->
     <?php endforeach; ?>
     </table>
     <?php endif; ?>
-
-    <!--<p><a href="admin.php">管理者ページトップ</a></p>-->
-    <!--<p><a href="index.php">ログアウト</a></p>-->
-    
 </div>
 <!--/メイン-->
 

@@ -5,7 +5,7 @@
     // var_dump($_GET);
     $id = $_GET['id'];
 
-    //$id番目のユーザーを削除
+    //$id番目の問い合わせを削除
     ContactDAO::delete($id);
     
     $_SESSION['flash_message'] ='ID:' . $id . '番目の問い合わせを削除しました';

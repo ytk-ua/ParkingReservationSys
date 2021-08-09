@@ -2,8 +2,6 @@
     //(C)
     require_once 'daos/NoticeDAO.php';
     session_start();
-    // var_dump($_POST);
-    // var_dump($_FILES);
 
     // 入力画面から飛んできた値を取得する
     $id = $_POST['id'];
@@ -26,11 +24,9 @@
     if($_FILES['image']['size'] !== 0){
         $notice->image = $image;
     }
-    // var_dump($notice);
-    
+
     //入力チェック(検証)
     $errors = $notice->validate();
-    // var_dump($errors);
     //エラーが一つもなければ
     if(count($errors) === 0){
         //NoticeDAOを使ってDBに保存
@@ -51,7 +47,3 @@
         header('location: edit_notice.php?id=' . $id);
         exit;
     }
-    
-    // 画面遷移（show.phpへ）
-    // header('location: admin_notice.php');
-    // exit;

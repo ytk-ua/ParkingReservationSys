@@ -42,13 +42,6 @@
     <li>ご不明な点がありましたら<a href = contact.php>お問合せ</a>フォームもご利用ください</li>
     </ul>
     
-    <!--<ul>-->
-    <!--    <li><a href = about.php>システム概要</a></li>-->
-    <!--    <li><a href = guide.php>ご利用ガイド</a></li>-->
-    <!--    <li><a href = contact.php>お問合せ</a></li>-->
-    <!--</ul>-->
-    
-    <!--<p><a href="top.php">トップページに戻る</a></p>-->
 </div>
 <!--/メイン-->
 

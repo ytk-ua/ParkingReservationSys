@@ -54,7 +54,6 @@
     </form>
 
     <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">前のページに戻る</a>
-    <!--<p><a href="top.php">キャンセル</a></p>-->
 </div>
 <!--/メイン-->
 

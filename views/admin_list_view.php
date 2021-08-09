@@ -45,13 +45,6 @@
     
     <p>現在登録されている管理者の一覧です</p>
     
-    <!--<p>-->
-    <!--    <form action="search_user.php">-->
-    <!--        <input type="search" name="name">-->
-    <!--        <button type="submit">検索</button>-->
-    <!--    </form>-->
-    <!--</p>-->
-        
     <?php if($flash_message !== null): ?>
     <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>

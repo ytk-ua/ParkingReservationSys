@@ -4,27 +4,15 @@
     require_once 'daos/ParkingDAO.php';
     require_once 'daos/UserDAO.php';
     session_start();
-    // $login_user = $_SESSION['login_user'];
 
     //タイムゾーンの設定
     date_default_timezone_set('Asia/Tokyo');
     
-    // var_dump($_GET);
-    // $user_id = $_GET['id'];
-    // print $user_id;
-
-    // // //DAOを使って＄parking_id番の駐車場の予約登録情報をDBから持ってくる
-    // $reservations1 = ReservationDAO::find5($user_id);
-
     //DAOを使って＄start_dateの日付の予約登録情報をDBから持ってくる
     $reservations1 = ReservationDAO::find4(1);
     $reservations2 = ReservationDAO::find4(4);
     $reservations3 = ReservationDAO::find4(5);   
-    // var_dump($reservations3);
-    
-    //（試行）array_sum+array_columnでの合計値の算出
-    // $sum = array_sum(array_column($reservations1, 'user_id'));
-    
+
     //ReserveDAOを使ってデータベースから全予約登録情報を取得
     $reservations = ReservationDAO::get_all_reservations();
   

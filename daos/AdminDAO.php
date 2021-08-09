@@ -120,31 +120,7 @@
                 self::close_connection($pdo, $stmt);
             }
         }
-                //データベースからキーワード検索するメソッド
-        public static function search($keyword){
-       // 例外処理:tryブロック。try chatch最後はcatchで終わる。
-            try{
-                // データベースに接続して万能の神様誕生。
-                $pdo = self::get_connection();
-                // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM users WHERE name LIKE :name');
-                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':name', '%' . $keyword . '%', PDO::PARAM_STR);
-                // SELECT文本番実行
-                $stmt->execute();                
-                // Fetch ModeをUserクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
-                // SELECT文の結果を Userクラスのインスタンス配列に格納。Fetch->抜き出せの意。
-                $users = $stmt->fetchAll();
-            }catch(PDOException $e){
-            }finally{
-                // 後処理
-                self::close_connection($pdo, $stmt);
-            }
-            // 完成したユーザー一覧、はいあげる
-            return $users;     
-        }
-        
+
         //user_id, passwordをもらってその人をDBから探し出す
         public static function check($account, $password){
           // 例外処理:tryブロック。try chatch最後はcatchで終わる。

@@ -38,8 +38,6 @@
     <dl>
         <dt>開始日時[自動入力]</dt>
         <dd><input type="date" name="start_date"  value="<?= $start_date ?>" readonly><input type="time" name="start_time" step="1800" value="<?= $start_time ?>" readonly></dd>
-        <!--開始日時： <?= $start_date ?> / <?= $start_time ?><br>-->
-        <!--終了日時： <input type="date" name="end_date" value="<?= $start_date ?>" readonly><input type="time" name="end_time" step="1800" min="<?= $start_time ?>" value="<?= $start_time ?>"><br>-->
         <input type="hidden" name="end_date" value="<?= $start_date ?>">
         <dt>終了時間(選択)<span class="must">※必須</span></dt> 
         <dd>
@@ -49,12 +47,6 @@
             <?php endfor; ?>
         </select>
         </dd>
-        <!--利用駐車場番号： <select name= "parking_mul">-->
-        <!--    <option value = "">選択してください</option>-->
-        <!--    <option value = "park1">No.1</option>-->
-        <!--    <option value = "park2">No.2</option>-->
-        <!--    <option value = "park3">No.3</option>-->
-        <!--    </select><br>-->
         <dt>利用駐車場名[自動入力]</dt>
         <dd>
         <select name= "parking_id">
@@ -82,7 +74,6 @@
     </form>
 
     <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">前のページに戻る</a>
-    <!--<p><a href="top.php">マイページトップに戻る</a></p>-->
 
 </div>
 <!--/メイン-->

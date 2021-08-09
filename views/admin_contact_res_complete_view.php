@@ -74,7 +74,6 @@
         </tr>
     </table>
 
-    <!--<p><a href="">確認用メールを送る</a></p>-->
     <p><a href="admin_contact.php">問い合わせ管理に戻る</a></p>
     <p><a href="admin.php">トップページに戻る</a></p>
 </div>

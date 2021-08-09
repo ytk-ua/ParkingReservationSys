@@ -41,21 +41,11 @@
     <p>駐車場の予約と確認と利用実績の確認が可能です。<br>
         以下よりご希望のメニューをご利用ください</p>
     <ul>
-        <!--<li><a href="reservation_create.php">予約登録</a></li>-->
         <li><a href="search_vacant.php">空き状況確認</a></li>
         <li><a href="reservation_list.php?id=<?= $login_user->id ?>">予約確認</a></li>
         <li><a href="use_list.php?id=<?= $login_user->id ?>">利用実績確認</a></li>
     </ul>
 
-    <!--<p><a href="edit.php?id=<?= $login_user->id ?>">登録情報編集</a></p>-->
-    <!--<p><a href="logout.php">ログアウト</a></p>-->
-
-    <!--<ul>-->
-    <!--    <li><a href = about.php>システム概要</a></li>-->
-    <!--    <li><a href = guide.php>ご利用ガイド</a></li>-->
-    <!--    <li><a href = contact.php>お問合せ</a></li>-->
-    <!--</ul>-->
-    
     <section id="notices">
         <h2>お知らせ</h2>
         <?php if(count($notices) === 0): ?>

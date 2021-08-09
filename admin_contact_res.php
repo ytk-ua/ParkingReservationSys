@@ -8,12 +8,10 @@
     $login_user = $_SESSION['login_user'];
     
     $id = $_GET['id'];
-    // print $id;
     
     //ContactDAOを使ってDBに$idの問い合わせを探す
     $contact2 = ContactDAO::find($id);
-    // var_dump($contact2);
-
+    
     //問い合わせ情報を$contactでSESSIONに保存
     $_SESSION['contact2'] = $contact2;
 

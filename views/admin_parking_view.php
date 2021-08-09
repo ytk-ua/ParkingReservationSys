@@ -81,17 +81,6 @@
     </table>
     <?php endif; ?>
 
-    <!--<ul>-->
-    <!--    <li>ID:<a href="show_parking.php?id=<?= $parking->id ?>"><?= $parking->id ?></a></li>-->
-    <!--    <li>駐車場名：<?= $parking->parking_name ?></li>-->
-    <!--    <li>料金：<?= $parking->price ?>円/30分</li>-->
-    <!--    <li>場所：<?= $parking->address ?></li>-->
-    <!--</ul>-->
-    <!--<div id="map"></div>-->
-
-    <!--<p><a href="admin.php">管理者ページトップ</a></p>-->
-    <!--<p><a href="index.php">ログアウト</a></p>-->
-
 </div>
 <!--/メイン-->
 

@@ -51,13 +51,8 @@
 
         <p id="submit_button"><input type="submit" value="ログイン"></p>
 
-    <!--<p><a href="admin.php">（仮設：管理者ページトップ）</a></p>        -->
-        
     </form>
         
-    <!--<p>パスワードをお忘れの方</p>-->
-    <!--<p><a href="user_create.php">新規ユーザー登録</a></p>-->
-    
     <p><a href="index.php">キャンセル</a></p>
     
 </div>

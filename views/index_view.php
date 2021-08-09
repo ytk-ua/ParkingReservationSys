@@ -49,12 +49,6 @@
     <p>管理者専用ページです。管理者の方は以下よりお願いします</p>
     <p><a href="admin_login.php">管理者用ログイン</a></p><br>
 
-    <!--<ul>-->
-    <!--    <li><a href = about.php>システム概要</a></li>-->
-    <!--    <li><a href = guide.php>ご利用ガイド</a></li>-->
-    <!--    <li><a href = contact.php>お問合せ</a></li>-->
-    <!--</ul>-->
-    
     <section id="notices">
         <h2>お知らせ</h2>
         <?php if(count($notices) === 0): ?>

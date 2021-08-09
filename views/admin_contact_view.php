@@ -5,10 +5,8 @@
     <title>問い合わせ管理</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /*table, tr, th, td {*/
         .contact_body, .contact_subject{
             text-align: left;
-            /*border: solid 2px;*/
         } 
     </style>    
     </head>
@@ -47,13 +45,6 @@
     <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
     
-    <!--<p>-->
-    <!--    <form action="search_parking.php">-->
-    <!--        <input type="search" name="parking_id">-->
-    <!--        <button type="submit">検索</button>-->
-    <!--    </form>-->
-    <!--</p>-->
-
     <?php if(count($contacts) === 0): ?>
     <p>登録された問い合わせはありません</p>
     <?php else: ?>
@@ -84,10 +75,7 @@
     <?php endforeach; ?>
     </table>
     <?php endif; ?>
-    
-    <!--<p><a href="admin.php">管理者ページトップ</a></p>-->
-    <!--<p><a href="index.php">ログアウト</a></p>-->
-    
+
 </div>
 <!--/メイン-->
 

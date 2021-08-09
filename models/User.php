@@ -40,23 +40,10 @@
             }else if(UserDAO::check_duplicate_account($this->account) === true){
                 $errors[] = 'このアカウント名はすでに使用されています<br>別のアカウント名を入力してください';
             }
-            // if(empty($this->account)){
-            //     $errors[] = 'アカウント名を入力してください';
-            // }
             //パスワードが入力されていなければ
             if($this->password === ''){
                 $errors[] = 'パスワードを入力してください';
             }
-            // if($this->password === ''){
-            //     $errors[] = 'パスワードを入力してください';
-            // }elseif(!preg_match('[0-9]{8,}', $this->password)){
-            //     $errors[] = 'パスワードは数字８文字以上で入力して下さい';
-            // }
-            //電話番号の正規表現チェック
-            // if(!preg_match('/^[0-9]+$/', $this->tel)){ //０以上の整数でないならば
-            //     $errors[] = '電話番号は０以上の正数を入力してください';
-            // }
-            
             return $errors;
         }
         

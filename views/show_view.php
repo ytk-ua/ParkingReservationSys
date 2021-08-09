@@ -64,7 +64,6 @@
         <dt>電話番号</dt>
         <dd><?= $user->tel ?></dd>
     </dl>
-        <!--<p><a href="edit.php?id=<?= $user->id ?>">編集</a></p>-->
     <p>
         <form action="delete.php" method="POST">
         <input type="hidden" name="id" value="<?= $user->id ?>">
@@ -74,7 +73,6 @@
     </p>
 
     <p><a href="admin_user.php">ユーザー管理に戻る</a></p>
-    <!--<p><a href="admin.php">管理者ページトップに戻る</a></p>-->
 
 </div>
 <!--/メイン-->

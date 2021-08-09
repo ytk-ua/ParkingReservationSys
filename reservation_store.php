@@ -22,18 +22,15 @@
     $id = $_POST['parking_id'];    
     // //DAOを使って＄id番の駐車場情報をDBから持ってくる
     $parking = ParkingDAO::find($id);
-    // var_dump($parking);
-    
+
     //Reservationクラスの新しいインスタンス生成
     $reservation = new Reservation($user_id, $parking_id, $start_date, $start_time, $end_date, $end_time, $email, $tel, $remarks);
-    // var_dump($reservation);
 
     //ReserveDAOを使ってDBに保存
     ReservationDAO::insert($reservation);
     $_SESSION['flash_message'] = $login_user->name . 'さんの新しい予約が追加されました';
     
     // 画面遷移（マイページトップへ）
-    // header('location: top.php');
     header('Location: search_vacant.php?date=' . $start_date);
     exit;
     

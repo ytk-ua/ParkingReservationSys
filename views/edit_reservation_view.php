@@ -12,12 +12,6 @@
     <form action="update_reserve.php" method="POST">
         開始日時： <input type="date" name="start_date" value="<?= $reservation->start_date ?>"><input type="time" name="start_time" value="<?= $reservation->start_time ?>"><br>
         終了日時： <input type="date" name="end_date" value="<?= $reservation->end_date ?>"><input type="time" name="end_time" value="<?= $reservation->end_time ?>"><br>
-        <!--利用駐車場番号： <select name= "parking_mul">-->
-        <!--    <option value = "">選択してください</option>-->
-        <!--    <option value = "park1">No.1</option>-->
-        <!--    <option value = "park2">No.2</option>-->
-        <!--    <option value = "park3">No.3</option>-->
-        <!--    </select><br>-->
         利用駐車場番号：
         <select name= "parking_id">
         <?php if(count($parkings) === 0): ?>

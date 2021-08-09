@@ -15,8 +15,6 @@
     $admin = $_SESSION['admin'];
     $_SESSION['admin'] = null;
 
-    // var_dump($admin);
-
     if($admin === null){
         $admin = new Admin();
     }

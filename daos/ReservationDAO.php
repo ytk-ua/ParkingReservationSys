@@ -4,7 +4,7 @@
     require_once 'daos/DAO.php';
     //DAO(Database Access Object)
     class ReservationDAO extends DAO{
-        //データベースから全予約登録情報を取得するメソッド
+        //データベースから全予約情報を取得するメソッド
         public static function get_all_reservations(){
        // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
@@ -21,7 +21,7 @@
                 // 後処理
                 self::close_connection($pdo, $stmt);
             }
-            // 完成したユーザー一覧、はいあげる
+            // 完成した予約一覧、はいあげる
             return $reservations;     
         }
        //データーベースに新しい予約情報を登録するメソッド
@@ -192,33 +192,6 @@
             return $reservations;             
         }
  
-        //（※元find3の内容。現在は使用していない）$start_dateの日付の予約登録情報を全て取得するメソッド
-        public static function find6($start_date){
-          // 例外処理:tryブロック。try chatch最後はcatchで終わる。
-            try{
-                // データベースに接続して万能の神様誕生。
-                $pdo = self::get_connection();
-                // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM reservations WHERE start_date=:start_date');
-                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':start_date', $start_date, PDO::PARAM_STR);
-                // SELECT文本番実行
-                $stmt->execute();                
-                
-                // Fetch ModeをResereveクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reservation');
-                // SELECT文の結果を Reserveクラスのインスタンスに格納。Fetch->抜き出せの意。
-                $reservations = $stmt->fetchAll();
-                
-            }catch(PDOException $e){
-            }finally{
-                // 後処理
-                self::close_connection($pdo, $stmt);
-            }
-            // 完成した予約情報、はいあげる
-            return $reservations;             
-        }
-        
         //20210615_by_shimaからコピーしたfind7。
         public static function find7($start_date, $start_time, $parking_id){
           // 例外処理:tryブロック。try chatch最後はcatchで終わる。
@@ -252,25 +225,16 @@
         public static function find100($user_id, $now, $next){
           // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
-
-                // print $user_id  . '<br>';
-                // print $now  . '<br>';
-                // print $next  . '<br>';
                 // データベースに接続して万能の神様誕生。
                 $pdo = self::get_connection();
                 // SELECT文実行準備
                 $stmt = $pdo->prepare('SELECT * FROM reservations WHERE user_id=:user_id AND :now <= start_date AND start_date <= :next order by start_date desc, start_time desc');
-                // print 1 . '<br>';
                 // バインド処理（あいまいだった値を具体的な値で穴埋めする）
                 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-                // print 2 . '<br>';
                 $stmt->bindValue(':now', $now, PDO::PARAM_STR);
-                // print 3 . '<br>';
                 $stmt->bindValue(':next', $next, PDO::PARAM_STR);
                 // SELECT文本番実行
-                // print 4 . '<br>';
                 $stmt->execute();                
-                // print 5 . '<br>';
                 // Fetch ModeをResereveクラスに設定。マッピング。PHPで使いやすい様に書き換える。
                 $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Reservation');
                 // SELECT文の結果を Reserveクラスのインスタンスに格納。Fetch->抜き出せの意。
@@ -285,33 +249,8 @@
             // 完成した予約情報、はいあげる
             return $reservations;             
         }
-        
-        //$id番目のユーザー情報を更新
-        public static function update($user, $id){
-            // 例外処理
-            try{
-                // データベースに接続して万能の神様誕生
-                $pdo = self::get_connection();
-                // 具体的な値はあいまいにしたまま UPDATE文の実行準備
-                $stmt = $pdo->prepare('UPDATE users SET name=:name, user_id=:user_id, email=:email, password=:password WHERE id=:id');
-                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':name', $user->name, PDO::PARAM_STR);
-                $stmt->bindValue(':user_id', $user->user_id, PDO::PARAM_STR);
-                $stmt->bindValue(':email', $user->email, PDO::PARAM_STR);
-                $stmt->bindValue(':password', $user->password, PDO::PARAM_STR);
-                $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-                
-                // UPDATE文本番実行
-                $stmt->execute();
-                
-            }catch(PDOException $e){
-            }finally{
-                // 後処理
-                self::close_connection($pdo, $stmt);
-            }
-        }
-        
-        //id番目のユーザーを削除
+
+        //id番目の予約を削除
         public static function delete($id){
           // 例外処理:tryブロック。try chatch最後はcatchで終わる。
             try{
@@ -329,58 +268,6 @@
                 // 後処理
                 self::close_connection($pdo, $stmt);
             }
-        }
-                //データベースからキーワード検索するメソッド
-        public static function search($keyword){
-       // 例外処理:tryブロック。try chatch最後はcatchで終わる。
-            try{
-                // データベースに接続して万能の神様誕生。
-                $pdo = self::get_connection();
-                // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM users WHERE name LIKE :name');
-                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':name', '%' . $keyword . '%', PDO::PARAM_STR);
-                // SELECT文本番実行
-                $stmt->execute();                
-                // Fetch ModeをUserクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
-                // SELECT文の結果を Userクラスのインスタンス配列に格納。Fetch->抜き出せの意。
-                $users = $stmt->fetchAll();
-            }catch(PDOException $e){
-            }finally{
-                // 後処理
-                self::close_connection($pdo, $stmt);
-            }
-            // 完成したユーザー一覧、はいあげる
-            return $users;     
-        }
-        
-        //user_id, passwordをもらってその人をDBから探し出す
-        public static function check($user_id, $password){
-          // 例外処理:tryブロック。try chatch最後はcatchで終わる。
-            try{
-                // データベースに接続して万能の神様誕生。
-                $pdo = self::get_connection();
-                // SELECT文実行準備
-                $stmt = $pdo->prepare('SELECT * FROM users WHERE user_id=:user_id AND password=:password');
-                // バインド処理（あいまいだった値を具体的な値で穴埋めする）
-                $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-                $stmt->bindValue(':password', $password, PDO::PARAM_STR);
-                // SELECT文本番実行
-                $stmt->execute();                
-                
-                // Fetch ModeをUserクラスに設定。マッピング。PHPで使いやすい様に書き換える。
-                $stmt->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
-                // SELECT文の結果を Userクラスのインスタンスに格納。Fetch->抜き出せの意。
-                $user = $stmt->fetch();
-                
-            }catch(PDOException $e){
-            }finally{
-                // 後処理
-                self::close_connection($pdo, $stmt);
-            }
-            // 完成したユーザー、はいあげる
-            return $user;             
         }
         
     }

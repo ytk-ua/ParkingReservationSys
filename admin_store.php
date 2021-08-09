@@ -1,9 +1,7 @@
 <?php
     // (C)
-    // require_once 'models/Admin.php';
     require_once 'daos/AdminDAO.php';
     session_start();
-    // var_dump($_POST);
     $name = $_POST['name'];
     $account = $_POST['account'];
     $password = $_POST['password'];
@@ -11,8 +9,7 @@
 
     //Userクラスの新しいインスタンス生成
     $admin = new Admin($name, $account, $password, $email);
-    // var_dump($admin);
- 
+
     //入力チェック(検証)
     $errors = $admin->validate();
     //エラーが一つもなければ
@@ -33,8 +30,6 @@
         exit;
     }
 
-    // $_SESSION['login_admin'] = $admin;
-    
     // 画面遷移（管理者登録情報ページへ）
     header('location: admin_list.php');
     exit;

@@ -13,8 +13,7 @@
         public $tel; //電話番号
         public $remarks; //備考/連絡事項
         public $created_at; //登録時間
-        
-        //コンストラクタ($nameから$name=''に変更。エラー対応で空文字を与えている)
+        //コンストラクタ
         public function __construct($user_id='', $parking_id='', $start_date='', $start_time='', $end_date='', $end_time='', $email='', $tel='', $remarks=''){
             $this->user_id = $user_id;
             $this->parking_id = $parking_id;

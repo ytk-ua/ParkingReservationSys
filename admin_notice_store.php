@@ -1,6 +1,5 @@
 <?php
     // (C)
-    // require_once 'models/Notice.php';
     require_once 'daos/NoticeDAO.php';
     session_start();
     var_dump($_POST);
@@ -12,8 +11,7 @@
     
     //Noticeクラスの新しいインスタンス生成
     $notice = new Notice($regist_date, $title, $overview, $link_url, $image);
-    // var_dump($notice);
-    
+
     // 画像のフルパスを設定
     $file = 'upload/' . $image;
 
@@ -35,8 +33,6 @@
         exit;
     }
 
-    // $_SESSION['login_user'] = $user;
-    
     // 画面遷移（マイページトップへ）
     header('location: admin_notice.php');
     exit;

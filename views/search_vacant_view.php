@@ -79,9 +79,6 @@
     <?php endfor; ?>    
     </table>
 
-    <!--<p><a href="top.php">マイページトップに戻る</a></p>-->
-    <!--<p><a href="logout.php">ログアウト</a></p>-->
-
 </div>
 <!--/メイン-->
 

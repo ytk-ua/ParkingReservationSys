@@ -2,7 +2,6 @@
     //(C)
     require_once 'daos/UserDAO.php';
     session_start();
-    // var_dump($_POST);
     $id = $_POST['id'];
     $name = $_POST['name'];
     

@@ -2,7 +2,6 @@
     //(C)
     require_once 'daos/AdminDAO.php';
     session_start();
-    // var_dump($_POST);
     $name = $_POST['name'];
     $account = $_POST['account'];
     $password = $_POST['password'];
@@ -11,7 +10,6 @@
     
     //Adminクラスの新しいインスタンス生成
     $admin = new Admin($name, $account, $password, $email);
-    // var_dump($admin);
 
     //入力チェック(検証)
     $errors = $admin->validate();
@@ -29,8 +27,6 @@
         header('location: edit_admin.php?id=' . $id);
         exit;
     }
-    
-    // $_SESSION['admin'] = $admin;
     
     // 画面遷移（admin_list.phpへ）
     header('location: admin_list.php');

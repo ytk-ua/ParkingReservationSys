@@ -4,20 +4,6 @@
     <meta charset="UTF-8">
     <title>利用実績管理</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /*table, tr, th, td {*/
-        /*    border: solid 2px;*/
-        /*} */
-        /*table{*/
-        /*    width: 80%;*/
-        /*}*/
-        /*.total {*/
-        /*    text-align: right;*/
-        /*    color: purple;*/
-        /*    font-weight: bold;*/
-        /*    width: 100%;*/
-        /*}*/
-    </style>    
 </head>
 <body>
 
@@ -129,10 +115,8 @@
             <td align="center"><?= $reservation->user_id ?></td>
             <td align="center"><?= $reservation->start_date ?></td>
             <td align="center"><?= $start_time ?></td>
-            <!--<td><?= substr($reservation->start_time, 0, 5) ?></td>-->
             <td align="center"><?= $reservation->end_date ?></td>
             <td align="center"><?= $end_time ?></td>
-            <!--<td><?= substr($reservation->end_time, 0, 5) ?></td>-->
             <td align="right"><?= ($timestamp2 - $timestamp1)/60/60 ?>時間</td>
             <td align="right">¥<?= ($parking->price) ?>/1h</td>
             <td align="right">¥<?= number_format((($timestamp2 - $timestamp1)/60/60)*($parking->price)) ?></td>
@@ -170,10 +154,8 @@
             <td align="center"><?= $reservation->user_id ?></td>
             <td align="center"><?= $reservation->start_date ?></td>
             <td align="center"><?= $start_time ?></td>
-            <!--<td><?= substr($reservation->start_time, 0, 5) ?></td>-->
             <td align="center"><?= $reservation->end_date ?></td>
             <td align="center"><?= $end_time ?></td>
-            <!--<td><?= substr($reservation->end_time, 0, 5) ?></td>-->
             <td align="right"><?= ($timestamp2 - $timestamp1)/60/60 ?>時間</td>
             <td align="right">¥<?= ($parking->price) ?>/1h</td>
             <td align="right">¥<?= number_format((($timestamp2 - $timestamp1)/60/60)*($parking->price)) ?></td>
@@ -210,10 +192,8 @@
             <td align="center"><?= $reservation->user_id ?></td>
             <td align="center"><?= $reservation->start_date ?></td>
             <td align="center"><?= $start_time ?></td>
-            <!--<td><?= substr($reservation->start_time, 0, 5) ?></td>-->
             <td align="center"><?= $reservation->end_date ?></td>
             <td align="center"><?= $end_time ?></td>
-            <!--<td><?= substr($reservation->end_time, 0, 5) ?></td>-->
             <td align="right"><?= ($timestamp2 - $timestamp1)/60/60 ?>時間</td>
             <td align="right">¥<?= ($parking->price) ?>/1h</td>
             <td align="right">¥<?= number_format((($timestamp2 - $timestamp1)/60/60)*($parking->price)) ?></td>
@@ -247,10 +227,8 @@
             <td align="center"><?= $reservation->user_id ?></td>
             <td align="center"><?= $reservation->start_date ?></td>
             <td align="center"><?= $start_time ?></td>
-            <!--<td><?= substr($reservation->start_time, 0, 5) ?></td>-->
             <td align="center"><?= $reservation->end_date ?></td>
             <td align="center"><?= $end_time ?></td>
-            <!--<td><?= substr($reservation->end_time, 0, 5) ?></td>-->
             <td align="right"><?= ($timestamp2 - $timestamp1)/60/60 ?>時間</td>
             <td align="right">¥<?= ($parking->price) ?>/1h</td>
             <td align="right">¥<?= number_format((($timestamp2 - $timestamp1)/60/60)*($parking->price)) ?></td>
@@ -259,9 +237,6 @@
     </table>
     <p class="total">駐車場予約一覧の合計金額：¥<?= total_price($reservations)?>、合計利用時間：<?= total_time($reservations)?>時間</p>
 
-    <!--<p><a href="admin.php">管理者ページトップ</a></p>-->
-    <!--<p><a href="logout.php">ログアウト</a></p>-->
-    
 </div>
 <!--/メイン-->
 

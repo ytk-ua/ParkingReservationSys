@@ -5,7 +5,7 @@
     var_dump($_POST);
     $id = $_POST['id'];
 
-    //$id番目のユーザーを削除
+    //$id番目のお知らせを削除
     NoticeDAO::delete($id);
     
     $_SESSION['flash_message'] ='ID:' . $id . '番目のお知らせを削除しました';

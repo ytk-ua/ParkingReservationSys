@@ -35,16 +35,9 @@
 
     <h1>予約管理</h1>
     
-    <!--//カウント関数は数を数をかずえてくれる-->
     <h2>予約登録情報一覧</h2>
     <p>現在登録されている予約の一覧です</p>
-    <!--<p>-->
-    <!--    <form action="search_user.php">-->
-    <!--        <input type="search" name="name">-->
-    <!--        <button type="submit">検索</button>-->
-    <!--    </form>-->
-    <!--</p>-->
-        
+
     <?php if($flash_message !== null): ?>
     <p class="flash"><?= $flash_message ?></p>
     <?php endif; ?>
@@ -67,11 +60,9 @@
             <th>削除</dt>
         </tr>
     <?php foreach($reservations as $reservation): ?>
-    <!--<?php $start_date = $reservation->start_date ?>-->
 
         <tr>
             <td><?= $reservation->id ?></td>
-            <!--<td><a href="show_reservation.php?id=<?= $reservation->id ?>"><?= $reservation->id ?></td>-->
             <td><?= $reservation->user_id ?></td>
             <td><?= $reservation->parking_id ?></td>
             <td><?= $reservation->start_date ?></td>
@@ -89,25 +80,10 @@
                 <button type="submit">削除</button>
                 </form>
             </td>
-            <!--<td><a href="delete_reservation.php?id=<?= $reservation->id ?>">削除</a></p>-->
         </tr>
     <?php endforeach; ?>
     </table>
     <?php endif; ?>
-
-    <!--<ul>-->
-    <!--    <li>ID:<a href="show_reservation.php?id=<?= $reservation->id ?>"><?= $reservation->id ?></a></li>-->
-    <!--    <li>ユーザーID：<?= $reservation->user_id ?></li>-->
-    <!--    <li>駐車場ID：<?= $reservation->parking_id ?></li>-->
-    <!--    <li>予約開始日：<?= $reservation->start_date ?></li>-->
-    <!--    <li>予約開始時間：<?= $reservation->start_time ?></li>-->
-    <!--    <li>予約終了日：<?= $reservation->end_date ?></li>-->
-    <!--    <li>予約終了時間：<?= $reservation->end_time ?></li>-->
-    <!--</ul>-->
-    <!--<p><a href="reservation_create.php">新規予約登録</a></p>-->
-    
-    <!--<p><a href="admin.php">管理者ページトップ</a></p>-->
-    <!--<p><a href="index.php">ログアウト</a></p>-->
 
 </div>
 <!--/メイン-->
